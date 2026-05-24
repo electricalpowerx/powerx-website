@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PowerX Electrical Ltd | 24/7 Emergency Electrician Surrey & Lower Mainland BC</title>
+  <meta name="description" content="Licensed 24/7 emergency electrician in Surrey, Vancouver, Burnaby, Langley & Lower Mainland. Fast 30-60 min response. Call 778-823-1575 now." />
+  <meta name="theme-color" content="#0F172A" />
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="PowerX Electrical Ltd | 24/7 Emergency Electricians" />
+  <meta property="og:description" content="Trusted, licensed electricians serving Surrey and the entire Lower Mainland. Emergency service 24/7 with 30-60 minute response." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1200&q=80" />
+  <meta property="og:url" content="https://powerxelectrical.ca" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Tailwind via Vite -->
+  <link rel="stylesheet" href="/src/style.css" />
+  
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Electrician",
+    "name": "PowerX Electrical Ltd",
+    "description": "24/7 emergency electrical services across Surrey, Vancouver, Burnaby, Langley and the Lower Mainland.",
+    "url": "https://powerxelectrical.ca",
+    "telephone": "+1-778-823-1575",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "12491 68 Avenue",
+      "addressLocality": "Surrey",
+      "addressRegion": "BC",
+      "postalCode": "V3W 2C9",
+      "addressCountry": "CA"
+    },
+    "areaServed": ["Surrey", "Vancouver", "Burnaby", "Langley", "White Rock", "Maple Ridge", "Lower Mainland"],
+    "openingHours": "Mo-Su 00:00-23:59",
+    "priceRange": "$$"
+  }
+  </script>
+</head>
+<body class="bg-[var(--px-light)] text-[var(--px-slate)] font-sans antialiased">
+
+  <!-- ==================== NAVBAR (Bright Professional Redesign) ==================== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[var(--px-border)] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 bg-[var(--px-emergency)] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <div>
+            <div class="font-bold text-2xl tracking-tighter text-[var(--px-navy)]">PowerX</div>
+            <div class="text-[10px] text-[var(--px-text-muted)] -mt-1">ELECTRICAL LTD</div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation (Updated per redesign) -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--px-text)]">
+          <a href="index.html" class="hover:text-[var(--px-blue)] transition">Home</a>
+          <a href="about.html" class="hover:text-[var(--px-blue)] transition">About</a>
+          <a href="index.html#services" class="hover:text-[var(--px-blue)] transition">Services</a>
+          <a href="projects.html" class="hover:text-[var(--px-blue)] transition">Projects</a>
+          <a href="pricing.html" class="hover:text-[var(--px-blue)] transition">Pricing</a>
+          <a href="blog.html" class="hover:text-[var(--px-blue)] transition">Blog</a>
+          <a href="index.html#contact" class="hover:text-[var(--px-blue)] transition">Contact</a>
+        </div>
+
+        <!-- Desktop CTAs -->
+        <div class="hidden md:flex items-center gap-3">
+          <a href="tel:778-823-1575" 
+             class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-[var(--px-emergency)] hover:bg-red-700 text-white text-sm font-semibold transition active:scale-[0.985]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2 3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V8a3 3 0 00-3-3 2 2 0 01-2-2" />
+            </svg>
+            <span>778-823-1575</span>
+          </a>
+          <a href="index.html#contact" 
+             class="px-5 py-2.5 rounded-2xl bg-[var(--px-navy)] text-white text-sm font-semibold hover:bg-[var(--px-blue)] transition active:scale-[0.985]">
+            Get Free Quote
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-btn"
+                class="md:hidden p-2 rounded-xl hover:bg-slate-100 transition text-[var(--px-navy)]"
+                aria-label="Toggle menu" aria-expanded="false">
+          <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu (Updated for new bright redesign) -->
+    <div id="mobile-menu" class="md:hidden bg-white border-t border-[var(--px-border)]">
+      <div class="px-4 py-6 flex flex-col gap-1 text-base font-medium text-[var(--px-text)]">
+        <a href="index.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Home</a>
+        <a href="about.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">About</a>
+        <a href="index.html#services" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Services</a>
+        <a href="projects.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Projects</a>
+        <a href="pricing.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Pricing</a>
+        <a href="blog.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Blog</a>
+        <a href="index.html#contact" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Contact</a>
+        
+        <div class="pt-4 mt-4 border-t border-[var(--px-border)] flex flex-col gap-3">
+          <a href="tel:778-823-1575" 
+             class="flex justify-center items-center gap-2 py-3.5 rounded-2xl bg-[var(--px-emergency)] text-white font-semibold text-base">
+            Call 778-823-1575
+          </a>
+          <a href="index.html#contact" 
+             class="flex justify-center items-center py-3.5 rounded-2xl bg-[var(--px-navy)] text-white font-semibold text-base">
+            Request Free Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Spacer for fixed nav -->
+  <div class="h-16 md:h-20"></div>
+
+  <!-- ==================== HERO (Bright Professional Redesign) ==================== -->
+  <header id="top" class="relative bg-white border-b border-[var(--px-border)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-12 pb-16 md:pt-16 md:pb-20 lg:pt-20 lg:pb-24">
+      <div class="max-w-3xl">
+        <!-- Trust badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--px-light-gray)] text-sm mb-6 text-[var(--px-text-muted)]">
+          <div class="w-2 h-2 bg-[var(--px-success)] rounded-full animate-pulse"></div>
+          <span class="font-medium tracking-wide">Available 24/7 across the Lower Mainland</span>
+        </div>
+
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-[-2.5px] leading-[0.96] mb-6 text-[var(--px-navy)]">
+          24/7 Emergency<br>Electrical Services<br>in Surrey &amp; BC
+        </h1>
+        
+        <p class="max-w-xl text-xl md:text-2xl text-[var(--px-text-light)] mb-9 tracking-[-0.3px]">
+          Licensed, insured electricians you can trust. 
+          Fast response, transparent pricing, and work done right the first time.
+        </p>
+
+        <!-- Hero CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="tel:778-823-1575" 
+             class="emergency-cta inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-lg font-semibold shadow-xl active:scale-[0.985] transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2 3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V8a3 3 0 00-3-3 2 2 0 01-2-2" />
+            </svg>
+            Call Now — 778-823-1575
+          </a>
+          
+          <a href="#contact" 
+             class="inline-flex items-center justify-center px-8 py-4 rounded-2xl text-lg font-semibold border-2 border-[var(--px-navy)] text-[var(--px-navy)] hover:bg-[var(--px-navy)] hover:text-white transition active:scale-[0.985]">
+            Request Free Quote
+          </a>
+        </div>
+
+        <!-- Quick trust row -->
+        <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-[var(--px-text-muted)]">
+          <div class="flex items-center gap-2">
+            <span class="font-semibold text-[var(--px-navy)]">8+ Years</span> Local Experience
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-semibold text-[var(--px-navy)]">30-60 min</span> Response
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-semibold text-[var(--px-navy)]">5.0 ★</span> 80+ Google Reviews
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== TRUST BAR (Bright) ==================== -->
+  <div class="bg-[var(--px-offwhite)] border-b border-[var(--px-border)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-5">
+      <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-center text-sm">
+        <div class="flex items-center gap-2 text-[var(--px-navy)] font-medium">
+          <span class="text-[var(--px-success)]">✓</span> Fully Licensed &amp; Insured in BC
+        </div>
+        <div class="text-[var(--px-text-light)]">WCB Registered • Technical Safety BC Compliant</div>
+        <div class="text-[var(--px-text-light)]">Same-Day Service Available</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== WHY CHOOSE US ==================== -->
+  <section id="why-us" class="section max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <div class="text-[var(--px-blue)] font-semibold tracking-[1.5px] text-sm mb-2">THE POWERX DIFFERENCE</div>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-[-1.5px] text-[var(--px-navy)]">Why Homeowners &amp; Businesses Trust Us</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="card p-7">
+        <div class="w-11 h-11 bg-[var(--px-navy)] text-white rounded-2xl flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 01-9 9 9 9 0 01-9-9 9 9 0 019-9 9 9 0 019 9z" /></svg>
+        </div>
+        <h3 class="font-semibold text-xl tracking-tight mb-2">24/7 Emergency Availability</h3>
+        <p class="text-[var(--px-gray)]">Nights, weekends, and holidays. When the power goes out or danger appears, we’re ready to roll immediately.</p>
+      </div>
+
+      <div class="card p-7">
+        <div class="w-11 h-11 bg-[var(--px-navy)] text-white rounded-2xl flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 8.944 11.922 1.11.366 2.3.532 3.556.532 4.12 0 7.944-4.331 7.944-11.922a12.02 12.02 0 00-.276-2.016z" /></svg>
+        </div>
+        <h3 class="font-semibold text-xl tracking-tight mb-2">Licensed &amp; Insured in BC</h3>
+        <p class="text-[var(--px-gray)]">Every technician is fully certified. We carry full liability insurance and follow all Technical Safety BC requirements.</p>
+      </div>
+
+      <div class="card p-7">
+        <div class="w-11 h-11 bg-[var(--px-navy)] text-white rounded-2xl flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+        </div>
+        <h3 class="font-semibold text-xl tracking-tight mb-2">30–60 Minute Response</h3>
+        <p class="text-[var(--px-gray)]">In Surrey, Vancouver, Burnaby and most Lower Mainland areas we aim to have a licensed electrician on site within the hour.</p>
+      </div>
+
+      <div class="card p-7">
+        <div class="w-11 h-11 bg-[var(--px-navy)] text-white rounded-2xl flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 4.01V8" /></svg>
+        </div>
+        <h3 class="font-semibold text-xl tracking-tight mb-2">Upfront Pricing, No Surprises</h3>
+        <p class="text-[var(--px-gray)]">We quote before we start. No hidden emergency fees. You always know the cost before any work begins.</p>
+      </div>
+
+      <div class="card p-7">
+        <div class="w-11 h-11 bg-[var(--px-navy)] text-white rounded-2xl flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 01-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 01-2 2 2 2 0 01-2-2 2 2 0 012-2 2 2 0 012 2z" /></svg>
+        </div>
+        <h3 class="font-semibold text-xl tracking-tight mb-2">8+ Years Local Expertise</h3>
+        <p class="text-[var(--px-gray)]">Founded and operated in Surrey. We know Lower Mainland homes, buildings, and electrical codes inside out.</p>
+      </div>
+
+      <div class="card p-7">
+        <div class="w-11 h-11 bg-[var(--px-navy)] text-white rounded-2xl flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        </div>
+        <h3 class="font-semibold text-xl tracking-tight mb-2">Workmanship You Can Count On</h3>
+        <p class="text-[var(--px-gray)]">We stand behind every job. Quality materials, code-compliant work, and clear communication from start to finish.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TRANSPARENT PRICING & OFFERS (LEAD-GEN SECTION) ==================== -->
+  <section id="pricing" class="section bg-white border-y border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <!-- Header -->
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[var(--px-navy)] text-white text-xs font-semibold tracking-[1.5px] mb-3">
+          NO HIDDEN FEES. EVER.
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-[-1.8px] text-[var(--px-navy)]">Transparent Pricing.<br>No Surprises.</h2>
+        <p class="max-w-lg mx-auto mt-3 text-lg text-[var(--px-gray)]">Clear rates. Upfront quotes. You know exactly what you’ll pay before we start — guaranteed.</p>
+      </div>
+
+      <!-- Pricing Offers -->
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <!-- Emergency Offer (Hero / Biggest Lead Generator) -->
+        <div class="card p-8 border-2 border-[var(--px-emergency)] relative">
+          <div class="absolute -top-3 right-6 bg-[var(--px-emergency)] text-white text-xs font-bold px-4 py-1 rounded-full tracking-wider">MOST COMMON FOR EMERGENCIES</div>
+          
+          <div class="flex items-baseline gap-2 mb-1">
+            <span class="text-6xl font-bold tracking-[-2px] text-[var(--px-navy)]">$200</span>
+            <span class="text-[var(--px-gray)]">flat rate</span>
+          </div>
+          <div class="text-xl font-semibold text-[var(--px-navy)] mb-4">Emergency Service</div>
+          
+          <p class="text-[var(--px-gray)] mb-6">Licensed electrician at your door for most emergencies. Includes dispatch + first hour of work. No overtime charges — ever.</p>
+
+          <a href="tel:778-823-1575" 
+             class="emergency-cta w-full flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg font-semibold shadow-xl active:scale-[0.985] transition mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2 3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V8a3 3 0 00-3-3 2 2 0 01-2-2" />
+            </svg>
+            Call Now — 778-823-1575
+          </a>
+          <p class="text-center text-xs text-[var(--px-gray)]">Available 24/7 • Holidays included • 30-60 min response in most areas</p>
+        </div>
+
+        <!-- Service Call Offer -->
+        <div class="card p-8 flex flex-col">
+          <div class="flex items-baseline gap-2 mb-1">
+            <span class="text-6xl font-bold tracking-[-2px] text-[var(--px-navy)]">$150</span>
+          </div>
+          <div class="text-xl font-semibold text-[var(--px-navy)] mb-4">Service Call</div>
+          
+          <p class="text-[var(--px-gray)] mb-6 flex-1">Book a regular service call or non-emergency visit. Price is locked before we arrive. No surprises.</p>
+
+          <a href="tel:778-823-1575" 
+             class="emergency-cta w-full flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-lg font-semibold shadow-xl active:scale-[0.985] transition mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2 3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V8a3 3 0 00-3-3 2 2 0 01-2-2" />
+            </svg>
+            Call to Book — 778-823-1575
+          </a>
+          <p class="text-center text-sm font-medium text-[var(--px-navy)]">Book your service call for just $150</p>
+        </div>
+      </div>
+
+      <!-- Benefits / Trust Row -->
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+        <div class="flex items-center justify-center gap-2 text-sm">
+          <span class="text-[var(--px-success)]">✓</span>
+          <span class="font-medium">No overtime fees on emergencies</span>
+        </div>
+        <div class="flex items-center justify-center gap-2 text-sm">
+          <span class="text-[var(--px-success)]">✓</span>
+          <span class="font-medium">Fully licensed &amp; insured in BC</span>
+        </div>
+        <div class="flex items-center justify-center gap-2 text-sm">
+          <span class="text-[var(--px-success)]">✓</span>
+          <span class="font-medium">Upfront price before any work begins</span>
+        </div>
+      </div>
+
+      <!-- Final CTA row -->
+      <div class="mt-8 text-center">
+        <a href="#contact" 
+           class="inline-flex items-center justify-center px-8 py-3 rounded-2xl text-base font-semibold border-2 border-[var(--px-navy)] text-[var(--px-navy)] hover:bg-[var(--px-navy)] hover:text-white transition active:scale-[0.985]">
+          Request a Free Quote Instead
+        </a>
+        <p class="mt-3 text-xs text-[var(--px-gray)]">Prices are the same 24/7. No hidden charges. Ever.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SERVICES ==================== -->
+  <section id="services" class="section bg-white border-y border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+        <div>
+          <div class="text-[var(--px-blue)] font-semibold tracking-[1.5px] text-sm mb-2">WHAT WE DO BEST</div>
+          <h2 class="text-4xl md:text-5xl font-bold tracking-[-1.5px] text-[var(--px-navy)]">Complete Electrical Solutions</h2>
+        </div>
+        <p class="max-w-md text-[var(--px-gray)]">From urgent emergencies to full home and commercial upgrades — one call handles it all.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <!-- Service Cards -->
+        <div class="card p-6 group">
+          <div class="text-3xl mb-4">🚨</div>
+          <h3 class="font-semibold text-lg mb-1.5">24/7 Emergency Repairs</h3>
+          <p class="text-sm text-[var(--px-gray)]">Power outages, sparking, burning smells, breaker failures — we respond fast, day or night.</p>
+        </div>
+        <div class="card p-6 group">
+          <div class="text-3xl mb-4">⚡</div>
+          <h3 class="font-semibold text-lg mb-1.5">Panel Upgrades &amp; Replacements</h3>
+          <p class="text-sm text-[var(--px-gray)]">200A service upgrades, fuse box replacements, aluminum rewiring, and modern panel installations.</p>
+        </div>
+        <div class="card p-6 group">
+          <div class="text-3xl mb-4">🏠</div>
+          <h3 class="font-semibold text-lg mb-1.5">Residential Wiring &amp; Rewiring</h3>
+          <p class="text-sm text-[var(--px-gray)]">New construction, renovations, kitchen &amp; bathroom remodels, whole-home rewiring, and EV readiness.</p>
+        </div>
+        <div class="card p-6 group">
+          <div class="text-3xl mb-4">🏢</div>
+          <h3 class="font-semibold text-lg mb-1.5">Commercial &amp; Industrial</h3>
+          <p class="text-sm text-[var(--px-gray)]">Tenant improvements, retail fit-outs, warehouse power, lighting retrofits, and maintenance contracts.</p>
+        </div>
+        <div class="card p-6 group">
+          <div class="text-3xl mb-4">🔌</div>
+          <h3 class="font-semibold text-lg mb-1.5">EV Charger Installation</h3>
+          <p class="text-sm text-[var(--px-gray)]">Level 2 home and commercial chargers. We handle permits, panels, and utility coordination.</p>
+        </div>
+        <div class="card p-6 group">
+          <div class="text-3xl mb-4">💡</div>
+          <h3 class="font-semibold text-lg mb-1.5">Lighting &amp; Smart Controls</h3>
+          <p class="text-sm text-[var(--px-gray)]">LED upgrades, landscape lighting, smart switches, Lutron &amp; Control4 systems, and energy-efficient design.</p>
+        </div>
+        <div class="card p-6 group">
+          <div class="text-3xl mb-4">🔥</div>
+          <h3 class="font-semibold text-lg mb-1.5">Fire Alarm &amp; Life Safety</h3>
+          <p class="text-sm text-[var(--px-gray)]">Design, installation, testing and maintenance of fire alarm systems for homes and businesses.</p>
+        </div>
+        <div class="card p-6 group">
+          <div class="text-3xl mb-4">🔋</div>
+          <h3 class="font-semibold text-lg mb-1.5">Generators &amp; Backup Power</h3>
+          <p class="text-sm text-[var(--px-gray)]">Whole-home standby generators, automatic transfer switches, and critical circuit backup solutions.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="#contact" class="inline-flex items-center text-[var(--px-blue)] font-medium hover:underline">Need something else? Let’s talk →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== EMERGENCY SERVICES (PROMINENT) ==================== -->
+  <section id="emergency" class="section bg-[var(--px-navy)] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="max-w-2xl mb-10">
+        <div class="inline-block px-4 py-1 rounded-full bg-white/10 text-sm tracking-[1px] mb-4">IMMEDIATE RESPONSE</div>
+        <h2 class="text-5xl font-bold tracking-[-2px] mb-4">Electrical Emergency?<br>We’re Here Right Now.</h2>
+        <p class="text-xl text-white/70">24/7/365. No answering service. Real licensed electricians ready to help across Surrey and the Lower Mainland.</p>
+      </div>
+
+      <!-- Big Phone CTA -->
+      <div class="mb-12">
+        <a href="tel:778-823-1575" 
+           class="inline-flex flex-col sm:flex-row items-center gap-4 px-9 py-5 rounded-3xl bg-[var(--px-emergency)] hover:bg-red-700 transition shadow-2xl text-center sm:text-left">
+          <div>
+            <div class="text-sm uppercase tracking-[2px] opacity-75">Call or Text 24/7</div>
+            <div class="text-5xl font-bold tracking-tighter">778-823-1575</div>
+          </div>
+          <div class="text-4xl">→</div>
+        </a>
+        <p class="mt-3 text-sm text-white/60">Typical response time: <span class="font-semibold text-white">30–60 minutes</span> in most areas</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Emergencies we handle -->
+        <div class="bg-white/5 rounded-3xl p-8 ring-1 ring-white/10">
+          <h3 class="font-semibold text-xl mb-6 tracking-tight">Common Emergencies We Handle Immediately</h3>
+          <ul class="space-y-3 text-lg">
+            <li class="flex gap-3"><span class="text-[var(--px-emergency-light)] mt-1">•</span> Complete or partial power loss</li>
+            <li class="flex gap-3"><span class="text-[var(--px-emergency-light)] mt-1">•</span> Burning smell or hot outlets</li>
+            <li class="flex gap-3"><span class="text-[var(--px-emergency-light)] mt-1">•</span> Sparking switches or outlets</li>
+            <li class="flex gap-3"><span class="text-[var(--px-emergency-light)] mt-1">•</span> Breaker tripping repeatedly</li>
+            <li class="flex gap-3"><span class="text-[var(--px-emergency-light)] mt-1">•</span> Storm or flood damage</li>
+            <li class="flex gap-3"><span class="text-[var(--px-emergency-light)] mt-1">•</span> Exposed or damaged wiring</li>
+            <li class="flex gap-3"><span class="text-[var(--px-emergency-light)] mt-1">•</span> No power to specific rooms or outlets</li>
+          </ul>
+        </div>
+
+        <!-- Our Promise -->
+        <div class="bg-white/5 rounded-3xl p-8 ring-1 ring-white/10">
+          <h3 class="font-semibold text-xl mb-6 tracking-tight">Our Emergency Promise</h3>
+          <div class="space-y-5 text-[15px]">
+            <div class="flex gap-4">
+              <div class="font-mono text-xs mt-1 w-6 text-center text-[var(--px-emergency-light)]">01</div>
+              <div><span class="font-semibold">Fast dispatch</span> — We leave immediately with the right parts and tools.</div>
+            </div>
+            <div class="flex gap-4">
+              <div class="font-mono text-xs mt-1 w-6 text-center text-[var(--px-emergency-light)]">02</div>
+              <div><span class="font-semibold">Upfront pricing</span> — You get a clear quote before we begin any work.</div>
+            </div>
+            <div class="flex gap-4">
+              <div class="font-mono text-xs mt-1 w-6 text-center text-[var(--px-emergency-light)]">03</div>
+              <div><span class="font-semibold">Safety first</span> — Every job is completed to BC Electrical Code.</div>
+            </div>
+            <div class="flex gap-4">
+              <div class="font-mono text-xs mt-1 w-6 text-center text-[var(--px-emergency-light)]">04</div>
+              <div><span class="font-semibold">Permanent fixes</span> — We don’t do band-aids. We solve the root cause.</div>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/15 text-sm text-white/60">
+            If you smell gas or see flames, call 911 first — then call us.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== AREAS WE SERVE ==================== -->
+  <section id="areas" class="section max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <div class="text-[var(--px-blue)] font-semibold tracking-[1.5px] text-sm mb-2">PROUDLY LOCAL</div>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-[-1.5px] text-[var(--px-navy)] mb-3">Serving Surrey &amp; the Lower Mainland</h2>
+      <p class="max-w-lg mx-auto text-[var(--px-gray)]">From Whalley to White Rock, and everywhere in between — we come to you.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+      <!-- Area Cards -->
+      <div class="card p-6">
+        <div class="font-semibold text-lg mb-2">Surrey</div>
+        <div class="text-sm text-[var(--px-gray)]">Whalley • Guildford • Newton • Fleetwood • Cloverdale • South Surrey • Panorama Ridge</div>
+      </div>
+      <div class="card p-6">
+        <div class="font-semibold text-lg mb-2">Vancouver</div>
+        <div class="text-sm text-[var(--px-gray)]">Downtown • East Van • Kitsilano • Mount Pleasant • West End • Commercial Drive</div>
+      </div>
+      <div class="card p-6">
+        <div class="font-semibold text-lg mb-2">Burnaby</div>
+        <div class="text-sm text-[var(--px-gray)]">Brentwood • Metrotown • North Burnaby • South Burnaby • Burnaby Heights</div>
+      </div>
+      <div class="card p-6">
+        <div class="font-semibold text-lg mb-2">Langley</div>
+        <div class="text-sm text-[var(--px-gray)]">Langley City • Langley Township • Aldergrove • Fort Langley • Murrayville</div>
+      </div>
+      <div class="card p-6">
+        <div class="font-semibold text-lg mb-2">White Rock &amp; South Surrey</div>
+        <div class="text-sm text-[var(--px-gray)]">White Rock Beach • Semiahmoo • Ocean Park • Crescent Beach</div>
+      </div>
+      <div class="card p-6">
+        <div class="font-semibold text-lg mb-2">Other Areas</div>
+        <div class="text-sm text-[var(--px-gray)]">Maple Ridge • Pitt Meadows • New Westminster • Coquitlam • Port Moody • Richmond</div>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10435.8!2d-122.849!3d49.140!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d8f0a3a1c9e7%3A0x2e2c9f0c5f0e0e0e!2s12491%2068%20Ave%2C%20Surrey%2C%20BC%20V3W%202C9!5e0!3m2!1sen!2sca!4v1730000000000"
+        style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="PowerX Electrical Ltd - 12491 68 Avenue, Surrey, BC">
+      </iframe>
+    </div>
+    <p class="text-center text-xs text-[var(--px-gray)] mt-3">12491 68 Avenue, Surrey, BC V3W 2C9 • We serve the entire Lower Mainland</p>
+  </section>
+
+  <!-- ==================== REVIEWS ==================== -->
+  <section id="reviews" class="section bg-white border-y border-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <!-- Header -->
+      <div class="text-center mb-10">
+        <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[var(--px-navy)] text-white text-xs font-semibold tracking-[1.5px] mb-3">
+          REAL 5-STAR REVIEWS
+        </div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-[-1.5px] text-[var(--px-navy)]">What Our Customers Say</h2>
+        <p class="max-w-lg mx-auto mt-3 text-[var(--px-gray)]">Real feedback from homeowners and businesses across the Lower Mainland.</p>
+      </div>
+
+      <!-- Review Cards -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="card p-6">
+          <div class="flex gap-0.5 text-amber-400 mb-4">★★★★★</div>
+          <p class="text-sm mb-6">“Power went out at 2am on a Sunday. They were at my door in under an hour and had everything fixed before sunrise. Professional, calm, and fair pricing.”</p>
+          <div class="text-xs text-[var(--px-gray)]">— Sarah K., Newton (Surrey)</div>
+        </div>
+
+        <div class="card p-6">
+          <div class="flex gap-0.5 text-amber-400 mb-4">★★★★★</div>
+          <p class="text-sm mb-6">“Installed our EV charger and upgraded the panel the same week. Clean work, on time, pulled all the permits themselves. Couldn’t recommend them more.”</p>
+          <div class="text-xs text-[var(--px-gray)]">— Raj &amp; Priya M., Fleetwood</div>
+        </div>
+
+        <div class="card p-6">
+          <div class="flex gap-0.5 text-amber-400 mb-4">★★★★★</div>
+          <p class="text-sm mb-6">“Burning smell coming from the panel at 6pm on a Friday. They isolated the issue fast and had the store back open the next morning. Lifesavers for a small business.”</p>
+          <div class="text-xs text-[var(--px-gray)]">— Michael T., Commercial Client, Burnaby</div>
+        </div>
+
+        <div class="card p-6">
+          <div class="flex gap-0.5 text-amber-400 mb-4">★★★★★</div>
+          <p class="text-sm mb-6">“Re-wired our 1970s house during a full renovation. Beautiful work, great communication, and they treated our home with respect the entire time. True professionals.”</p>
+          <div class="text-xs text-[var(--px-gray)]">— Lisa &amp; David P., South Surrey</div>
+        </div>
+      </div>
+
+      <!-- Google Reviews Button -->
+      <div class="mt-10 text-center">
+        <a href="https://www.google.com/maps/place/PowerX+Electrical+Ltd./@49.126866,-122.8789452,17z/data=!4m8!3m7!1s0x5485dbcbb0eed05b:0xe3d33cf79f989583!8m2!3d49.126866!4d-122.8763703!9m1!1b1!16s%2Fg%2F11xn_1zwbc?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="inline-flex items-center justify-center px-8 py-3.5 rounded-2xl text-base font-semibold border-2 border-[var(--px-navy)] text-[var(--px-navy)] hover:bg-[var(--px-navy)] hover:text-white transition active:scale-[0.985]">
+          See all reviews on Google
+        </a>
+        <p class="mt-3 text-xs text-[var(--px-gray)]">4.9 / 5 average rating from 80+ Google reviews</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="section max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <h2 class="text-4xl font-bold tracking-[-1px] text-[var(--px-navy)]">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="space-y-2 text-[15px]">
+      <details class="card px-6 group">
+        <summary class="font-semibold">How fast can you really get to me in an emergency?</summary>
+        <div class="pb-5 text-[var(--px-gray)]">We target 30–60 minutes in most parts of Surrey, Vancouver, Burnaby and nearby areas. Severe weather or peak periods may extend this slightly, but we always communicate clearly.</div>
+      </details>
+      <details class="card px-6 group">
+        <summary class="font-semibold">Are your electricians licensed and insured in British Columbia?</summary>
+        <div class="pb-5 text-[var(--px-gray)]">Yes. Every technician holds a valid BC electrical license and we carry full commercial liability insurance. We work strictly to the current BC Electrical Code.</div>
+      </details>
+      <details class="card px-6 group">
+        <summary class="font-semibold">Do you charge extra for nights, weekends, or holidays?</summary>
+        <div class="pb-5 text-[var(--px-gray)]">We provide clear upfront pricing before any work begins. While emergency calls have a dispatch fee, we do not inflate rates dramatically after hours the way some companies do.</div>
+      </details>
+      <details class="card px-6 group">
+        <summary class="font-semibold">What areas do you serve?</summary>
+        <div class="pb-5 text-[var(--px-gray)]">All of Surrey, Vancouver, Burnaby, Langley, White Rock, Maple Ridge, and most of the Lower Mainland. Call us — we’ll confirm coverage for your exact location.</div>
+      </details>
+      <details class="card px-6 group">
+        <summary class="font-semibold">Do you offer free estimates?</summary>
+        <div class="pb-5 text-[var(--px-gray)]">Yes. We provide free written estimates for all non-emergency work. For emergencies we give a clear price on site before starting.</div>
+      </details>
+      <details class="card px-6 group">
+        <summary class="font-semibold">What should I do right now if I smell burning or have no power?</summary>
+        <div class="pb-5 text-[var(--px-gray)]">Turn off the main breaker if it’s safe, then call us immediately at 778-823-1575. If you smell gas or see flames, call 911 first.</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT / QUOTE FORM ==================== -->
+  <section id="contact" class="section bg-[var(--px-navy)] text-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid lg:grid-cols-5 gap-12">
+        <!-- Form -->
+        <div class="lg:col-span-3">
+          <div class="mb-8">
+            <div class="text-sm tracking-[1.5px] text-white/60 mb-2">LET’S GET STARTED</div>
+            <h2 class="text-4xl font-bold tracking-[-1.5px]">Request a Free Quote or Emergency Service</h2>
+          </div>
+
+          <form id="contact-form" class="space-y-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-white/70 mb-1.5">Full Name *</label>
+                <input type="text" id="name" required placeholder="Alex Rivera">
+              </div>
+              <div>
+                <label class="block text-sm text-white/70 mb-1.5">Phone Number *</label>
+                <input type="tel" id="phone" required placeholder="778-555-0192">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm text-white/70 mb-1.5">Email</label>
+              <input type="email" id="email" placeholder="you@email.com">
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm text-white/70 mb-1.5">Location / Area</label>
+                <select id="location">
+                  <option>Surrey (Newton / Fleetwood / Guildford)</option>
+                  <option>Surrey (Cloverdale / South Surrey)</option>
+                  <option>Vancouver</option>
+                  <option>Burnaby</option>
+                  <option>Langley</option>
+                  <option>White Rock</option>
+                  <option>Maple Ridge / Pitt Meadows</option>
+                  <option>Other Lower Mainland</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm text-white/70 mb-1.5">Type of Service</label>
+                <select id="service">
+                  <option>🚨 Emergency Electrical Service</option>
+                  <option>Panel Upgrade or Replacement</option>
+                  <option>EV Charger Installation</option>
+                  <option>Residential Wiring / Rewiring</option>
+                  <option>Lighting or Smart Home</option>
+                  <option>Commercial Electrical</option>
+                  <option>Generator / Backup Power</option>
+                  <option>Other (please describe)</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm text-white/70 mb-1.5">Tell us about your project or emergency</label>
+              <textarea id="message" rows="4" placeholder="Please describe the issue or work needed..."></textarea>
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" 
+                      class="w-full sm:w-auto px-10 py-4 rounded-2xl bg-white text-[var(--px-navy)] font-semibold text-base hover:bg-white/90 active:scale-[0.985] transition flex items-center justify-center gap-2">
+                Submit Request — We’ll Call You Shortly
+              </button>
+              <p class="text-xs text-white/50 mt-3">For immediate emergencies, please call 778-823-1575 directly.</p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="lg:col-span-2 space-y-8">
+          <div>
+            <div class="uppercase text-xs tracking-[2px] text-white/50 mb-3">24/7 EMERGENCY LINE</div>
+            <a href="tel:778-823-1575" class="block text-5xl font-bold tracking-[-1.5px] hover:text-white/90">778-823-1575</a>
+          </div>
+
+          <div class="space-y-6 text-sm">
+            <div>
+              <div class="text-white/60 mb-1">Office &amp; Shop</div>
+              <div>12491 68 Avenue<br>Surrey, BC V3W 2C9</div>
+              <a href="https://maps.google.com/?q=12491+68+Avenue,+Surrey,+BC+V3W+2C9" target="_blank" class="inline-block mt-1 text-[var(--px-blue-light)] hover:underline">Get directions →</a>
+            </div>
+
+            <div>
+              <div class="text-white/60 mb-1">Email</div>
+              <a href="mailto:electricalpowerx@gmail.com" class="hover:text-white">electricalpowerx@gmail.com</a>
+            </div>
+
+            <div>
+              <div class="text-white/60 mb-1">Service Hours</div>
+              <div><span class="font-medium">Emergency:</span> 24/7/365<br>
+                   <span class="font-medium">Regular Service:</span> Mon–Fri 7:00 AM – 6:00 PM</div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-white/15 text-xs text-white/60 leading-relaxed">
+            PowerX Electrical Ltd. is a fully licensed and insured electrical contractor operating in British Columbia. 
+            All work is performed to the current BC Electrical Code.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-[var(--px-navy-dark)] text-white/70 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+      <div class="flex flex-col md:flex-row justify-between gap-y-10">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-8 h-8 bg-[var(--px-emergency)] rounded-xl flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            </div>
+            <span class="font-bold text-white text-2xl tracking-tighter">PowerX</span>
+          </div>
+          <div class="text-xs max-w-[220px]">Professional electrical services you can trust — 24 hours a day.</div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-10 gap-y-8 text-sm">
+          <div>
+            <div class="font-semibold text-white mb-3 tracking-wider text-xs">COMPANY</div>
+            <div class="space-y-[9px]">
+              <div>Surrey, BC</div>
+              <div>8+ Years Serving BC</div>
+              <div>Licensed &amp; Insured</div>
+            </div>
+          </div>
+          <div>
+            <div class="font-semibold text-white mb-3 tracking-wider text-xs">SERVICE AREAS</div>
+            <div class="space-y-[9px]">
+              <div>Surrey • Vancouver</div>
+              <div>Burnaby • Langley</div>
+              <div>White Rock • Maple Ridge</div>
+            </div>
+          </div>
+          <div>
+            <div class="font-semibold text-white mb-3 tracking-wider text-xs">CONTACT</div>
+            <div class="space-y-[9px]">
+              <a href="tel:778-823-1575" class="block hover:text-white">778-823-1575</a>
+              <a href="mailto:electricalpowerx@gmail.com" class="block hover:text-white">Email Us</a>
+              <a href="#contact" class="block hover:text-white">Request Quote</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-white/10 text-xs flex flex-col md:flex-row gap-y-2 md:items-center justify-between">
+        <div>© 2026 PowerX Electrical Ltd. All rights reserved. Licensed Electrical Contractor in British Columbia.</div>
+        <div class="text-white/50">Professional • Reliable • Local</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Mobile Emergency CTA -->
+  <div id="sticky-cta" class="hidden">
+    <a href="tel:778-823-1575" 
+       class="block bg-[var(--px-emergency)] text-white text-center py-3.5 font-semibold text-base shadow-[0_-4px_20px_rgb(0,0,0,0.25)] active:bg-red-700 transition">
+      🚨 EMERGENCY? CALL 778-823-1575 NOW
+    </a>
+  </div>
+
+  <!-- Form Success Modal -->
+  <div id="success-modal" class="hidden fixed inset-0 z-[60] items-center justify-center bg-black/70 p-4">
+    <div class="bg-white rounded-3xl p-8 max-w-md text-center shadow-2xl">
+      <div class="mx-auto w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center mb-5">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+      </div>
+      <h3 class="font-bold text-2xl text-[var(--px-navy)] tracking-tight mb-2">Thank you — we’ve got you.</h3>
+      <p class="text-[var(--px-gray)]">A licensed technician will call you within 15 minutes. For true emergencies, please call <a href="tel:778-823-1575" class="font-semibold text-[var(--px-emergency)]">778-823-1575</a> right now.</p>
+      <button onclick="document.getElementById('success-modal').classList.add('hidden'); document.getElementById('success-modal').classList.remove('flex');" 
+              class="mt-6 px-8 py-2.5 rounded-2xl bg-[var(--px-navy)] text-white font-semibold">Close</button>
+    </div>
+  </div>
+
+  <!-- Floating Google Reviews Button (Bottom Left) -->
+  <a href="https://www.google.com/maps/place/PowerX+Electrical+Ltd./@49.126866,-122.8789452,17z/data=!4m8!3m7!1s0x5485dbcbb0eed05b:0xe3d33cf79f989583!8m2!3d49.126866!4d-122.8763703!9m1!1b1!16s%2Fg%2F11xn_1zwbc?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="fixed bottom-5 left-5 z-[70] flex items-center gap-2 px-3 py-2 rounded-full bg-white shadow-xl border border-[var(--px-border)] hover:shadow-2xl transition-all active:scale-[0.985] text-sm font-semibold text-[var(--px-navy)]">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" viewBox="0 0 48 48">
+      <path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+      <path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+      <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+      <path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+    </svg>
+    <span>4.9</span>
+    <span class="text-amber-400">★</span>
+  </a>
+
+  <!-- Floating WhatsApp Button (Bottom Right) -->
+  <a href="https://wa.me/17788231575?text=Hi%20PowerX%20Electrical%2C%20I%20need%20a%20quick%20quote.%20Here%20are%20photos%20of%20my%20electrical%20problem%3A"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="fixed bottom-5 right-5 z-[70] flex items-center gap-2 px-4 py-2 rounded-full bg-[#25D366] text-white shadow-xl hover:bg-[#128C7E] transition-all active:scale-[0.985] text-sm font-semibold">
+    <!-- Official WhatsApp icon (green speech bubble with white phone) -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.672-.946-.922-1.295-.25-.35-.5-.372-.672-.372-.173 0-.372.074-.571.372-.198.298-.767.946-.94 1.144-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.672-.946-.922-1.295-.25-.35-.5-.372-.672-.372-.173 0-.372.074-.571.372-.198.298-.767.946-.94 1.144-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.672-.946-.922-1.295-.25-.35-.5-.372-.672-.372-.173 0-.372.074-.571.372-.198.298-.767.946-.94 1.144-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.672-.946-.922-1.295-.25-.35-.5-.372-.672-.372-.173 0-.372.074-.571.372-.198.298-.767.946-.94 1.144-.173.198-.347.223-.644.075z"/>
+    </svg>
+    Send Photos for Quote
+  </a>
+
+  <script type="module" src="/src/main.ts"></script>
+  
+  <!-- Inline vanilla JS for core interactions (keeps everything simple) -->
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', isOpen);
+        menuIcon.innerHTML = isOpen 
+          ? `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />`
+          : `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />`;
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />`;
+        });
+      });
+    }
+
+    // Smooth scroll with offset for fixed nav
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const navHeight = 80;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - navHeight;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Contact form handling (simple success state — upgrade to Netlify/Formspree later)
+    const form = document.getElementById('contact-form');
+    const modal = document.getElementById('success-modal');
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        
+        // Basic validation
+        const phone = document.getElementById('phone').value.trim();
+        if (!phone || phone.length < 7) {
+          alert('Please enter a valid phone number so we can reach you.');
+          return;
+        }
+
+        // Show success modal
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+
+        // Reset form
+        form.reset();
+
+        // Optional: In production you would POST here
+        // fetch('https://formspree.io/f/xxxxxx', { method: 'POST', body: new FormData(form) })
+      });
+    }
+
+    // Close modal on escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    });
+
+    // Show sticky emergency CTA on mobile after scrolling past hero
+    const sticky = document.getElementById('sticky-cta');
+    let hasShownSticky = false;
+
+    window.addEventListener('scroll', () => {
+      if (!sticky || window.innerWidth > 768) return;
+      if (window.scrollY > 650 && !hasShownSticky) {
+        sticky.style.display = 'block';
+        hasShownSticky = true;
+      }
+    }, { passive: true });
+
+    // Improve details/FAQ accessibility (optional enhancement)
+    document.querySelectorAll('details').forEach(details => {
+      details.addEventListener('toggle', () => {
+        if (details.open) {
+          document.querySelectorAll('details').forEach(d => {
+            if (d !== details) d.removeAttribute('open');
+          });
+        }
+      });
+    });
+
+    // Keyboard accessibility for cards (nice touch)
+    console.log('%c[PowerX] Professional website initialized — Vite + Tailwind ready.', 'color:#64748B');
+  </script>
+</body>
+</html>

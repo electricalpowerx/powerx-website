@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing | Transparent Electrical Services – PowerX Electrical Ltd.</title>
+  <meta name="description" content="Clear, upfront pricing for emergency electrical services ($200), service calls ($150), and other work in Surrey and the Lower Mainland. No hidden fees." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body class="bg-[var(--px-light)] text-[var(--px-slate)] font-sans antialiased">
+
+  <!-- Consistent Bright Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[var(--px-border)] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 bg-[var(--px-emergency)] rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+          </div>
+          <div>
+            <div class="font-bold text-2xl tracking-tighter text-[var(--px-navy)]">PowerX</div>
+            <div class="text-[10px] text-[var(--px-text-muted)] -mt-1">ELECTRICAL LTD</div>
+          </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--px-text)]">
+          <a href="index.html" class="hover:text-[var(--px-blue)] transition">Home</a>
+          <a href="about.html" class="hover:text-[var(--px-blue)] transition">About</a>
+          <a href="index.html#services" class="hover:text-[var(--px-blue)] transition">Services</a>
+          <a href="projects.html" class="hover:text-[var(--px-blue)] transition">Projects</a>
+          <a href="pricing.html" class="text-[var(--px-blue)] font-semibold">Pricing</a>
+          <a href="blog.html" class="hover:text-[var(--px-blue)] transition">Blog</a>
+          <a href="contact.html" class="hover:text-[var(--px-blue)] transition">Contact</a>
+        </div>
+
+        <div class="hidden md:flex items-center gap-3">
+          <a href="tel:778-823-1575" class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-[var(--px-emergency)] hover:bg-red-700 text-white text-sm font-semibold transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2 3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V8a3 3 0 00-3-3 2 2 0 01-2-2" /></svg>
+            <span>778-823-1575</span>
+          </a>
+          <a href="contact.html" class="px-5 py-2.5 rounded-2xl bg-[var(--px-navy)] text-white text-sm font-semibold hover:bg-[var(--px-blue)] transition">Get Free Quote</a>
+        </div>
+
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl hover:bg-slate-100 transition text-[var(--px-navy)]" aria-label="Toggle menu">
+          <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden bg-white border-t border-[var(--px-border)] hidden">
+      <div class="px-4 py-6 flex flex-col gap-1 text-base font-medium text-[var(--px-text)]">
+        <a href="index.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Home</a>
+        <a href="about.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">About</a>
+        <a href="index.html#services" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Services</a>
+        <a href="projects.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Projects</a>
+        <a href="pricing.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Pricing</a>
+        <a href="blog.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Blog</a>
+        <a href="contact.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Contact</a>
+        <div class="pt-4 mt-4 border-t border-[var(--px-border)] flex flex-col gap-3">
+          <a href="tel:778-823-1575" class="flex justify-center items-center gap-2 py-3.5 rounded-2xl bg-[var(--px-emergency)] text-white font-semibold text-base">Call 778-823-1575</a>
+          <a href="contact.html" class="flex justify-center items-center py-3.5 rounded-2xl bg-[var(--px-navy)] text-white font-semibold text-base">Request Free Quote</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="h-16 md:h-20"></div>
+
+  <!-- Pricing Hero -->
+  <section class="bg-white border-b border-[var(--px-border)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-20 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[var(--px-light-gray)] text-sm mb-4 text-[var(--px-text-muted)]">NO HIDDEN FEES. EVER.</div>
+      <h1 class="text-5xl md:text-6xl font-bold tracking-[-2px] text-[var(--px-navy)] mb-4">Transparent Pricing.<br>No Surprises.</h1>
+      <p class="max-w-lg mx-auto text-xl text-[var(--px-text-light)]">Clear rates. Upfront quotes. You know exactly what you’ll pay before we start.</p>
+    </div>
+  </section>
+
+  <!-- Emergency & Service Call Pricing -->
+  <section class="section max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Emergency -->
+      <div class="bg-white border-2 border-[var(--px-emergency)] rounded-2xl p-8 relative">
+        <div class="absolute -top-3 right-6 bg-[var(--px-emergency)] text-white text-xs font-bold px-4 py-1 rounded-full tracking-wider">MOST REQUESTED</div>
+        <div class="flex items-baseline gap-2 mb-1">
+          <span class="text-6xl font-bold tracking-[-2px] text-[var(--px-navy)]">$200</span>
+          <span class="text-[var(--px-text-muted)]">flat rate</span>
+        </div>
+        <div class="text-2xl font-semibold text-[var(--px-navy)] mb-4">Emergency Service</div>
+        <ul class="space-y-2 text-[var(--px-text-light)] mb-6">
+          <li>✓ Licensed electrician dispatch</li>
+          <li>✓ First hour of diagnostic & repair included</li>
+          <li>✓ No overtime charges — ever</li>
+          <li>✓ Available 24/7, including holidays</li>
+        </ul>
+        <a href="tel:778-823-1575" class="block w-full text-center py-3.5 rounded-2xl bg-[var(--px-emergency)] text-white font-semibold text-lg active:scale-[0.985] transition">Call 778-823-1575 Now</a>
+        <p class="text-center text-xs text-[var(--px-text-muted)] mt-3">Most emergencies resolved same day</p>
+      </div>
+
+      <!-- Service Call -->
+      <div class="bg-white border border-[var(--px-border)] rounded-2xl p-8">
+        <div class="flex items-baseline gap-2 mb-1">
+          <span class="text-6xl font-bold tracking-[-2px] text-[var(--px-navy)]">$150</span>
+        </div>
+        <div class="text-2xl font-semibold text-[var(--px-navy)] mb-4">Service Call</div>
+        <p class="text-[var(--px-text-light)] mb-6">Book a non-emergency visit or scheduled work. Price is locked before we arrive.</p>
+        <a href="tel:778-823-1575" class="block w-full text-center py-3.5 rounded-2xl border-2 border-[var(--px-navy)] text-[var(--px-navy)] font-semibold hover:bg-[var(--px-navy)] hover:text-white transition active:scale-[0.985]">Book a Service Call</a>
+        <p class="text-center text-xs text-[var(--px-text-muted)] mt-3">Available Mon–Fri 7am–6pm</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Other Services Pricing -->
+  <section class="section bg-[var(--px-offwhite)]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-3xl font-bold tracking-[-1px] text-[var(--px-navy)] mb-8 text-center">Other Common Services</h2>
+      
+      <div class="bg-white border border-[var(--px-border)] rounded-2xl overflow-hidden">
+        <table class="w-full text-left">
+          <thead>
+            <tr class="border-b border-[var(--px-border)] bg-[var(--px-light-gray)]">
+              <th class="px-6 py-4 font-semibold">Service</th>
+              <th class="px-6 py-4 font-semibold">Starting At</th>
+              <th class="px-6 py-4 font-semibold hidden md:table-cell">Notes</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[var(--px-border)] text-[var(--px-text-light)]">
+            <tr>
+              <td class="px-6 py-4 font-medium">Electrical Panel Upgrade (200A)</td>
+              <td class="px-6 py-4 font-semibold">$1,850</td>
+              <td class="px-6 py-4 hidden md:table-cell text-sm">Includes permit & inspection</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-medium">EV Charger Installation (Level 2)</td>
+              <td class="px-6 py-4 font-semibold">$1,250</td>
+              <td class="px-6 py-4 hidden md:table-cell text-sm">Most homes – includes permit</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-medium">Whole Home Rewire (1970s–80s homes)</td>
+              <td class="px-6 py-4 font-semibold">$6,500</td>
+              <td class="px-6 py-4 hidden md:table-cell text-sm">Average 3-bed home</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-medium">LED Lighting Upgrade (whole home)</td>
+              <td class="px-6 py-4 font-semibold">$850</td>
+              <td class="px-6 py-4 hidden md:table-cell text-sm">Fixtures + installation</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-medium">Generator Install (whole-home standby)</td>
+              <td class="px-6 py-4 font-semibold">$4,800</td>
+              <td class="px-6 py-4 hidden md:table-cell text-sm">Includes transfer switch</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-center text-sm text-[var(--px-text-muted)] mt-6">All prices are estimates. Final quote provided after site visit or photos. No hidden fees.</p>
+    </div>
+  </section>
+
+  <!-- Floating Google Reviews Button (Bottom Left) -->
+  <a href="https://www.google.com/maps/place/PowerX+Electrical+Ltd./@49.126866,-122.8789452,17z/data=!4m8!3m7!1s0x5485dbcbb0eed05b:0xe3d33cf79f989583!8m2!3d49.126866!4d-122.8763703!9m1!1b1!16s%2Fg%2F11xn_1zwbc?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="fixed bottom-5 left-5 z-[70] flex items-center gap-2 px-3 py-2 rounded-full bg-white shadow-xl border border-[var(--px-border)] hover:shadow-2xl transition-all text-sm font-semibold text-[var(--px-navy)]">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" viewBox="0 0 48 48">
+      <path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+      <path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+      <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+      <path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+    </svg>
+    <span>4.9</span>
+    <span class="text-amber-400">★</span>
+  </a>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/17788231575?text=Hi%20PowerX%20Electrical%2C%20I%20need%20a%20quick%20quote.%20Here%20are%20photos%20of%20my%20electrical%20problem%3A"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="fixed bottom-5 right-5 z-[70] flex items-center gap-2 px-4 py-2 rounded-full bg-[#25D366] text-white shadow-xl hover:bg-[#128C7E] transition-all active:scale-[0.985] text-sm font-semibold">
+    <!-- Official WhatsApp icon (green speech bubble with white phone) -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.672-.946-.922-1.295-.25-.35-.5-.372-.672-.372-.173 0-.372.074-.571.372-.198.298-.767.946-.94 1.144-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.672-.946-.922-1.295-.25-.35-.5-.372-.672-.372-.173 0-.372.074-.571.372-.198.298-.767.946-.94 1.144-.173.198-.347.223-.644.075z"/>
+    </svg>
+    Send Photos for Quote
+  </a>
+
+  <!-- Footer -->
+  <footer class="bg-[var(--px-navy)] text-white/70 text-sm mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-center md:text-left">
+      <div class="flex flex-col md:flex-row justify-between gap-y-6">
+        <div class="font-bold text-white text-2xl tracking-tighter">PowerX Electrical Ltd.</div>
+        <div class="space-x-6 text-sm">
+          <a href="tel:778-823-1575" class="hover:text-white">778-823-1575</a>
+          <a href="mailto:electricalpowerx@gmail.com" class="hover:text-white">Email Us</a>
+          <a href="contact.html" class="hover:text-white">Contact Page</a>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-white/10 text-xs text-white/50">© 2026 PowerX Electrical Ltd. Licensed Electrical Contractor in British Columbia. All prices are estimates and subject to site inspection.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', !isOpen);
+        menuIcon.innerHTML = !isOpen ? `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />` : `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />`;
+      });
+    }
+  </script>
+</body>
+</html>
