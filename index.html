@@ -10,7 +10,7 @@
   <!-- Open Graph / Social -->
   <meta property="og:title" content="PowerX Electrical Ltd | 24/7 Emergency Electricians" />
   <meta property="og:description" content="Trusted, licensed electricians serving Surrey and the entire Lower Mainland. Emergency service 24/7 with 30-60 minute response." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1200&q=80" />
+  <meta property="og:image" content="/images/IMG_3843.JPG" />
   <meta property="og:url" content="https://powerxelectrical.ca" />
   <meta property="og:type" content="website" />
 
@@ -23,7 +23,7 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Electrician",
+    "@type": "LocalBusiness",
     "name": "PowerX Electrical Ltd",
     "description": "24/7 emergency electrical services across Surrey, Vancouver, Burnaby, Langley and the Lower Mainland.",
     "url": "https://powerxelectrical.ca",
@@ -37,8 +37,81 @@
       "addressCountry": "CA"
     },
     "areaServed": ["Surrey", "Vancouver", "Burnaby", "Langley", "White Rock", "Maple Ridge", "Lower Mainland"],
-    "openingHours": "Mo-Su 00:00-23:59",
-    "priceRange": "$$"
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "priceRange": "$$",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Electrical Services",
+      "itemListElement": [
+        {"@type": "OfferCatalog", "name": "24/7 Emergency Electrical Repairs"},
+        {"@type": "OfferCatalog", "name": "Electrical Panel Upgrades"},
+        {"@type": "OfferCatalog", "name": "EV Charger Installation"},
+        {"@type": "OfferCatalog", "name": "Whole Home Rewiring"}
+      ]
+    }
+  }
+  </script>
+
+  <!-- FAQ Schema for Services -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you offer 24/7 emergency electrical service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We provide true 24/7 emergency electrical repairs across Surrey, Vancouver, Burnaby, Langley and the entire Lower Mainland. Our licensed electricians are available every day of the year, including holidays."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What areas do you serve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We serve Surrey, Vancouver, Burnaby, Langley, White Rock, Maple Ridge, and surrounding areas in the Lower Mainland. Most emergency calls are responded to within 30-60 minutes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly can you respond to an electrical emergency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In most cases, we can reach you within 30 to 60 minutes. We keep our vans stocked and ready so we can respond fast to power outages, burning smells, and other urgent issues."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you install EV chargers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We specialize in Level 2 EV charger installations for homes and businesses. We handle permits, panel upgrades when needed, and utility coordination."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you upgrade my electrical panel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. We perform 200A panel upgrades, aluminum rewiring, and full service upgrades. All work includes permits and inspections."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you do commercial and industrial electrical work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. We handle tenant improvements, retail fit-outs, warehouse power upgrades, lighting retrofits, fire alarm systems, and ongoing maintenance contracts."
+        }
+      }
+    ]
   }
   </script>
 </head>

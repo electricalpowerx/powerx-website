@@ -7,6 +7,56 @@
   <meta name="description" content="Clear, upfront pricing for emergency electrical services ($200), service calls ($150), and other work in Surrey and the Lower Mainland. No hidden fees." />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="/src/style.css" />
+
+  <!-- FAQ Schema for Pricing -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the cost of an emergency service call?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our emergency service rate is $200 flat rate. This includes licensed electrician dispatch and the first hour of diagnostic and repair work. No overtime charges ever."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does a standard service call cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A regular non-emergency service call is $150. The price is locked before we arrive and includes the first hour of work."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is included in the price for a 200A panel upgrade?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The $5,200 starting price for a 200A panel upgrade includes the permit and inspection. Materials and additional work are quoted upfront after assessment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does EV charger installation include a panel upgrade?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our Level 2 EV charger installation starts at $520 for most homes and includes the permit. If a panel upgrade is needed, we provide a separate upfront quote."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there any hidden fees?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. We are completely transparent. You receive a clear quote before any work begins. No overtime, no surprise fees, ever."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="bg-[var(--px-light)] text-[var(--px-slate)] font-sans antialiased">
 
@@ -167,6 +217,51 @@
       </div>
 
       <p class="text-center text-sm text-[var(--px-text-muted)] mt-6">All prices are estimates. Final quote provided after site visit or photos. No hidden fees.</p>
+    </div>
+  </section>
+
+  <!-- FAQ Section for Pricing -->
+  <section class="section max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[var(--px-light-gray)] text-sm mb-3 text-[var(--px-text-muted)]">HAVE QUESTIONS?</div>
+      <h2 class="text-4xl font-bold tracking-[-1px] text-[var(--px-navy)]">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="space-y-2">
+      <details class="card px-6 group">
+        <summary class="font-semibold py-4 cursor-pointer flex items-center justify-between">What is the cost of an emergency service call?
+          <span class="text-[var(--px-blue)] group-open:rotate-180 transition-transform">⌄</span>
+        </summary>
+        <div class="pb-5 text-[var(--px-gray)]">Our emergency service rate is $200 flat rate. This includes licensed electrician dispatch and the first hour of diagnostic and repair work. No overtime charges ever.</div>
+      </details>
+
+      <details class="card px-6 group">
+        <summary class="font-semibold py-4 cursor-pointer flex items-center justify-between">How much does a standard service call cost?
+          <span class="text-[var(--px-blue)] group-open:rotate-180 transition-transform">⌄</span>
+        </summary>
+        <div class="pb-5 text-[var(--px-gray)]">A regular non-emergency service call is $150. The price is locked before we arrive and includes the first hour of work.</div>
+      </details>
+
+      <details class="card px-6 group">
+        <summary class="font-semibold py-4 cursor-pointer flex items-center justify-between">What is included in the price for a 200A panel upgrade?
+          <span class="text-[var(--px-blue)] group-open:rotate-180 transition-transform">⌄</span>
+        </summary>
+        <div class="pb-5 text-[var(--px-gray)]">The $5,200 starting price for a 200A panel upgrade includes the permit and inspection. Materials and additional work are quoted upfront after assessment.</div>
+      </details>
+
+      <details class="card px-6 group">
+        <summary class="font-semibold py-4 cursor-pointer flex items-center justify-between">Does EV charger installation include a panel upgrade?
+          <span class="text-[var(--px-blue)] group-open:rotate-180 transition-transform">⌄</span>
+        </summary>
+        <div class="pb-5 text-[var(--px-gray)]">Our Level 2 EV charger installation starts at $520 for most homes and includes the permit. If a panel upgrade is needed, we provide a separate upfront quote.</div>
+      </details>
+
+      <details class="card px-6 group">
+        <summary class="font-semibold py-4 cursor-pointer flex items-center justify-between">Are there any hidden fees?
+          <span class="text-[var(--px-blue)] group-open:rotate-180 transition-transform">⌄</span>
+        </summary>
+        <div class="pb-5 text-[var(--px-gray)]">No. We are completely transparent. You receive a clear quote before any work begins. No overtime, no surprise fees, ever.</div>
+      </details>
     </div>
   </section>
 
