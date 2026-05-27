@@ -67,7 +67,7 @@ html {
 
 /* Emergency accent elements (kept for urgency) */
 .emergency-cta {
-  @apply bg-[var(--px-emergency)] hover:bg-[var(--px-emergency-light)] text-white font-semibold transition-colors;
+  @apply bg-[var(--px-emergency)] hover:bg-[var(--px-emergency-light)] text-white font-semibold transition-all active:scale-[0.985] px-4 py-2.5 text-sm rounded-2xl shadow-sm md:px-6 md:py-3 md:text-base md:rounded-2xl md:shadow-md;
 }
 
 /* Primary blue buttons (new bright theme) */

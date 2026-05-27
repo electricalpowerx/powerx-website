@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div id="mobile-menu" class="md:hidden bg-white border-t border-[var(--px-border)] hidden">
+    <div id="mobile-menu" class="md:hidden bg-white border-t border-[var(--px-border)]">
       <div class="px-4 py-6 flex flex-col gap-1 text-base font-medium text-[var(--px-text)]">
         <a href="index.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Home</a>
         <a href="about.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">About</a>
@@ -100,7 +100,7 @@
           <li>✓ No overtime charges — ever</li>
           <li>✓ Available 24/7, including holidays</li>
         </ul>
-        <a href="tel:778-823-1575" class="flex items-center justify-center gap-2 w-full text-center py-3.5 rounded-2xl bg-[var(--px-emergency)] text-white font-semibold text-lg active:scale-[0.985] transition">
+        <a href="tel:778-823-1575" class="flex items-center justify-center gap-2 w-full text-center py-2.5 rounded-2xl bg-[var(--px-emergency)] text-white font-semibold text-sm active:scale-[0.985] transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
           </svg>
@@ -214,11 +214,23 @@
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIcon = document.getElementById('menu-icon');
+
     if (menuBtn && mobileMenu) {
       menuBtn.addEventListener('click', () => {
-        const isOpen = mobileMenu.classList.toggle('hidden');
-        menuBtn.setAttribute('aria-expanded', !isOpen);
-        menuIcon.innerHTML = !isOpen ? `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />` : `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />`;
+        const isOpen = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', isOpen);
+        menuIcon.innerHTML = isOpen 
+          ? `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />`
+          : `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />`;
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          menuIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />`;
+        });
       });
     }
   </script>
