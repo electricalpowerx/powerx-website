@@ -30,18 +30,26 @@
   <!-- Tailwind via Vite -->
 
   
-  <!-- Structured Data for SEO -->
+  <!-- Structured Data for SEO + Generative Engine Optimization (GEO) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "Electrician"],
+    "@type": ["Organization", "LocalBusiness", "Electrician"],
     "@id": "https://powerxelectrical.ca/#business",
     "name": "PowerX Electrical Ltd",
-    "description": "24/7 emergency electrical services across Surrey, Vancouver, Burnaby, Langley and the Lower Mainland.",
+    "legalName": "PowerX Electrical Ltd",
+    "description": "Licensed 24/7 emergency electrician serving Surrey, Vancouver, Burnaby, Langley and the entire Lower Mainland. Fast response for panel upgrades, EV chargers, rewiring and commercial electrical work.",
     "url": "https://powerxelectrical.ca",
     "image": "https://powerxelectrical.ca/images/powerx-electrical-surrey-team.jpg",
     "logo": "https://powerxelectrical.ca/images/powerx-logo.jpg",
     "telephone": "+1-778-823-1575",
+    "email": "electricalpowerx@gmail.com",
+    "foundingDate": "2016",
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "minValue": 5,
+      "maxValue": 10
+    },
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "12491 68 Avenue",
@@ -50,7 +58,10 @@
       "postalCode": "V3W 2C9",
       "addressCountry": "CA"
     },
-    "areaServed": ["Surrey", "Vancouver", "Burnaby", "Langley", "White Rock", "Maple Ridge", "Lower Mainland"],
+    "areaServed": [
+      "Surrey", "Vancouver", "Burnaby", "Langley", "Coquitlam", 
+      "Delta", "White Rock", "Maple Ridge", "New Westminster", "Pitt Meadows"
+    ],
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -77,9 +88,34 @@
         {"@type": "OfferCatalog", "name": "24/7 Emergency Electrical Repairs"},
         {"@type": "OfferCatalog", "name": "Electrical Panel Upgrades"},
         {"@type": "OfferCatalog", "name": "EV Charger Installation"},
-        {"@type": "OfferCatalog", "name": "Whole Home Rewiring"}
+        {"@type": "OfferCatalog", "name": "Whole Home Rewiring"},
+        {"@type": "OfferCatalog", "name": "Commercial Electrical Services"},
+        {"@type": "OfferCatalog", "name": "Generator Installation"}
       ]
-    }
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-778-823-1575",
+      "contactType": "Customer Service",
+      "areaServed": "CA-BC",
+      "availableLanguage": "English"
+    },
+    "knowsAbout": [
+      "Electrical Panel Upgrades",
+      "EV Charger Installation",
+      "Emergency Electrical Repairs",
+      "Residential Rewiring",
+      "Commercial Electrical Work",
+      "Fire Alarm Systems",
+      "Standby Generators"
+    ],
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Licensed Electrical Contractor - British Columbia"
+    },
+    "sameAs": [
+      "https://www.google.com/maps/place/PowerX+Electrical+Ltd./@49.126866,-122.8789452,17z/data=!4m8!3m7!1s0x5485dbcbb0eed05b:0xe3d33cf79f989583!8m2!3d49.126866!4d-122.8763703!9m1!1b1!16s%2Fg%2F11xn_1zwbc"
+    ]
   }
   </script>
 
