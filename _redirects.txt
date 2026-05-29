@@ -1,0 +1,11 @@
+# Force HTTPS
+http://powerxelectrical.ca/* https://powerxelectrical.ca/:splat 301!
+
+# Force HTTPS for www
+http://www.powerxelectrical.ca/* https://powerxelectrical.ca/:splat 301!
+
+# Redirect www to non-www (optional but common for cleanliness)
+https://www.powerxelectrical.ca/* https://powerxelectrical.ca/:splat 301!
+
+# Clean trailing slashes (optional)
+https://powerxelectrical.ca/:splat/ https://powerxelectrical.ca/:splat 301!
