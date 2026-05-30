@@ -3,17 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Electrical Services Surrey BC | Panel Upgrades, EV Chargers &amp; Emergency Repairs | PowerX Electrical</title>
-  <meta name="description" content="Professional electrical services in Surrey and the Lower Mainland. Transparent flat rates: $150 standard calls, $200 for 24/7 emergency. Licensed electricians for panel upgrades, EV chargers, rewiring &amp; more." />
+  <title>Electrical Services Surrey & Lower Mainland | 9 Expert Services | PowerX Electrical</title>
+  <meta name="description" content="Professional electrical services across Surrey, Langley, Delta, Abbotsford and the Lower Mainland. Panel upgrades, EV chargers, emergency service, rewiring, generators, new home construction & more." />
+  <meta name="theme-color" content="#0F172A" />
   <link rel="canonical" href="https://powerxelectrical.ca/services/" />
-  <meta property="og:title" content="Electrical Services Surrey BC | PowerX Electrical" />
-  <meta property="og:description" content="Expert electrical services with clear pricing. $150 standard, $200 emergency. Panel upgrades, EV charger installation, 24/7 emergency repairs and more." />
-  <meta property="og:url" content="https://powerxelectrical.ca/services/" />
-  <meta property="og:type" content="website" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="stylesheet" href="/src/style.css" />
 
-  <!-- ElectricalContractor Schema for Services Parent Page -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -30,7 +24,7 @@
       "postalCode": "V3W 2C9",
       "addressCountry": "CA"
     },
-    "areaServed": ["Surrey", "Langley", "Delta", "White Rock", "Abbotsford", "Burnaby", "Vancouver", "Coquitlam", "Maple Ridge", "Pitt Meadows"],
+    "areaServed": ["Surrey", "Langley", "Delta", "Abbotsford", "White Rock", "Burnaby", "Vancouver", "Coquitlam", "Maple Ridge", "Mission", "Chilliwack"],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Electrical Services",
@@ -40,125 +34,173 @@
         {"@type": "OfferCatalog", "name": "24/7 Emergency Electrician"},
         {"@type": "OfferCatalog", "name": "House Rewiring & Renovations"},
         {"@type": "OfferCatalog", "name": "Commercial Electrical"},
-        {"@type": "OfferCatalog", "name": "Generator Installation"}
+        {"@type": "OfferCatalog", "name": "Generator Installation"},
+        {"@type": "OfferCatalog", "name": "New Home Electrical Construction"},
+        {"@type": "OfferCatalog", "name": "Landscape & Outdoor Lighting"},
+        {"@type": "OfferCatalog", "name": "Smart Home Automation"}
       ]
     }
   }
   </script>
-</head>
-<body>
-  <!-- Navigation (same as other pages) -->
-  <!-- ... keep existing nav ... -->
 
-  <main>
-    <section class="hero">
-      <div class="max-w-7xl mx-auto px-6 pt-20 pb-16 text-center">
-        <h1 class="text-5xl md:text-6xl font-bold tracking-tighter text-[var(--px-navy)] mb-6">
-          Professional Electrical Services in Surrey &amp; the Lower Mainland
-        </h1>
-        <p class="text-xl max-w-2xl mx-auto text-[var(--px-gray)] mb-8">
-          Clear pricing. Licensed electricians. Fast response. $150 standard service calls • $200 for 24/7 emergency dispatch.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="tel:778-823-1575" class="emergency-cta text-lg px-10 py-4">Call 778-823-1575</a>
-          <a href="#services" class="inline-flex items-center justify-center px-10 py-4 rounded-2xl border-2 border-[var(--px-navy)] text-[var(--px-navy)] font-semibold hover:bg-[var(--px-navy)] hover:text-white transition">See All Services</a>
+  <!-- Breadcrumb Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://powerxelectrical.ca/"},
+      {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://powerxelectrical.ca/services/"}
+    ]
+  }
+  </script>
+</head>
+<body class="bg-[var(--px-light)] text-[var(--px-slate)] font-sans antialiased">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[var(--px-border)] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="index.html" class="flex items-center gap-2 group">
+          <img src="/images/powerx-logo.jpg" alt="PowerX Electrical Ltd" class="h-[54px] md:h-[66px] w-auto object-contain" />
+        </a>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a href="services.html" class="text-[var(--px-blue)] font-semibold">Services</a>
+          <a href="service-areas.html" class="hover:text-[var(--px-blue)] transition">Service Areas</a>
+          <a href="projects.html" class="hover:text-[var(--px-blue)] transition">Projects</a>
+          <a href="pricing.html" class="hover:text-[var(--px-blue)] transition">Pricing</a>
+          <a href="blog.html" class="hover:text-[var(--px-blue)] transition">Blog</a>
+          <a href="contact.html" class="hover:text-[var(--px-blue)] transition">Contact</a>
+        </div>
+        <div class="hidden md:flex items-center gap-3">
+          <a href="tel:778-823-1575" class="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-[var(--px-emergency)] hover:bg-red-700 text-white text-sm font-semibold transition">778-823-1575</a>
+          <a href="contact.html" class="px-5 py-2.5 rounded-2xl bg-[var(--px-navy)] text-white text-sm font-semibold hover:bg-[var(--px-blue)] transition">Get Free Quote</a>
         </div>
       </div>
-    </section>
+    </div>
+  </nav>
+  <div class="h-16 md:h-20"></div>
 
-    <!-- Pricing Banner (NEW - Gemini recommendation) -->
-    <div class="bg-emerald-50 border-y border-emerald-100 py-4">
-      <div class="max-w-7xl mx-auto px-6 text-center text-sm font-medium text-emerald-800">
-        <strong>No hidden fees.</strong> Standard service call: <span class="font-bold">$150</span> • 24/7 Emergency dispatch: <span class="font-bold">$200</span>. All work includes permits where required.
+  <!-- Hero -->
+  <section class="bg-white border-b border-[var(--px-border)]">
+    <div class="max-w-5xl mx-auto px-6 py-16 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[var(--px-light-gray)] text-sm mb-4">9 SPECIALIZED SERVICES</div>
+      <h1 class="text-5xl md:text-6xl font-bold tracking-[-2.5px] text-[var(--px-navy)] mb-6">Expert Electrical Services<br>Across the Lower Mainland</h1>
+      <p class="max-w-2xl mx-auto text-xl text-[var(--px-gray)]">From emergency repairs to full new home construction, we deliver professional electrical work with transparent flat-rate pricing.</p>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Service 1 -->
+      <a href="electrical-panel-upgrades.html" class="group block bg-white border border-[var(--px-border)] rounded-3xl p-8 hover:border-[var(--px-navy)] hover:shadow-lg transition">
+        <div class="text-4xl mb-4">⚡</div>
+        <h3 class="text-2xl font-semibold tracking-tight mb-3 group-hover:text-[var(--px-blue)]">Electrical Panel Upgrades</h3>
+        <p class="text-[var(--px-gray)] mb-4">100A to 200A upgrades, sub panels, and full service upgrades for growing homes and businesses.</p>
+        <span class="text-sm font-medium text-[var(--px-blue)]">Starting at $4,299 →</span>
+      </a>
+
+      <!-- Service 2 -->
+      <a href="ev-charger-installation.html" class="group block bg-white border border-[var(--px-border)] rounded-3xl p-8 hover:border-[var(--px-navy)] hover:shadow-lg transition">
+        <div class="text-4xl mb-4">🔌</div>
+        <h3 class="text-2xl font-semibold tracking-tight mb-3 group-hover:text-[var(--px-blue)]">EV Charger Installation</h3>
+        <p class="text-[var(--px-gray)] mb-4">Level 2 home charging stations for Tesla, ChargePoint, Wallbox and all major brands.</p>
+        <span class="text-sm font-medium text-[var(--px-blue)]">Starting at $2,299 →</span>
+      </a>
+
+      <!-- Service 3 -->
+      <a href="emergency-electrician.html" class="group block bg-white border border-[var(--px-border)] rounded-3xl p-8 hover:border-[var(--px-navy)] hover:shadow-lg transition">
+        <div class="text-4xl mb-4">🚨</div>
+        <h3 class="text-2xl font-semibold tracking-tight mb-3 group-hover:text-[var(--px-blue)]">24/7 Emergency Electrician</h3>
+        <p class="text-[var(--px-gray)] mb-4">Fast response for power outages, burning smells, breaker failures, and urgent electrical issues.</p>
+        <span class="text-sm font-medium text-[var(--px-blue)]">$300 flat rate call-out →</span>
+      </a>
+
+      <!-- Service 4 -->
+      <a href="house-rewiring-renovations.html" class="group block bg-white border border-[var(--px-border)] rounded-3xl p-8 hover:border-[var(--px-navy)] hover:shadow-lg transition">
+        <div class="text-4xl mb-4">🏠</div>
+        <h3 class="text-2xl font-semibold tracking-tight mb-3 group-hover:text-[var(--px-blue)]">House Rewiring & Renovations</h3>
+        <p class="text-[var(--px-gray)] mb-4">Full home rewiring, knob & tube replacement, aluminum wiring upgrades, and renovation wiring.</p>
+        <span class="text-sm font-medium text-[var(--px-blue)]">Starting at $14,999 →</span>
+      </a>
+
+      <!-- Service 5 -->
+      <a href="commercial-electrical.html" class="group block bg-white border border-[var(--px-border)] rounded-3xl p-8 hover:border-[var(--px-navy)] hover:shadow-lg transition">
+        <div class="text-4xl mb-4">🏢</div>
+        <h3 class="text-2xl font-semibold tracking-tight mb-3 group-hover:text-[var(--px-blue)]">Commercial Electrical</h3>
+        <p class="text-[var(--px-gray)] mb-4">Tenant improvements, retail fit-outs, warehouse power, lighting upgrades, and maintenance.</p>
+        <span class="text-sm font-medium text-[var(--px-blue)]">Starting at $6,499 →</span>
+      </a>
+
+      <!-- Service 6 -->
+      <a href="generator-installation.html" class="group block bg-white border border-[var(--px-border)] rounded-3xl p-8 hover:border-[var(--px-navy)] hover:shadow-lg transition">
+        <div class="text-4xl mb-4">🔋</div>
+        <h3 class="text-2xl font-semibold tracking-tight mb-3 group-hover:text-[var(--px-blue)]">Generator Installation</h3>
+        <p class="text-[var(--px-gray)] mb-4">Whole-home standby generators with automatic transfer switches for homes and businesses.</p>
+        <span class="text-sm font-medium text-[var(--px-blue)]">Starting at $10,999 →</span>
+      </a>
+
+      <!-- Service 7 -->
+      <a href="new-home-electrical-construction.html" class="group block bg-white border border-[var(--px-border)] rounded-3xl p-8 hover:border-[var(--px-navy)] hover:shadow-lg transition">
+        <div class="text-4xl mb-4">🏗️</div>
+        <h3 class="text-2xl font-semibold tracking-tight mb-3 group-hover:text-[var(--px-blue)]">New Home Electrical Construction</h3>
+        <p class="text-[var(--px-gray)] mb-4">Complete electrical rough-in, lighting design, and panel planning for new home builds.</p>
+        <span class="text-sm font-medium text-[var(--px-blue)]">Starting at $18,999 →</span>
+      </a>
+
+      <!-- Service 8 -->
+      <a href="landscape-outdoor-lighting.html" class="group block bg-white border border-[var(--px-border)] rounded-3xl p-8 hover:border-[var(--px-navy)] hover:shadow-lg transition">
+        <div class="text-4xl mb-4">🌳</div>
+        <h3 class="text-2xl font-semibold tracking-tight mb-3 group-hover:text-[var(--px-blue)]">Landscape & Outdoor Lighting</h3>
+        <p class="text-[var(--px-gray)] mb-4">Professional landscape, architectural, and outdoor lighting design and installation.</p>
+        <span class="text-sm font-medium text-[var(--px-blue)]">Starting at $4,299 →</span>
+      </a>
+
+      <!-- Service 9 -->
+      <a href="smart-home-automation.html" class="group block bg-white border border-[var(--px-border)] rounded-3xl p-8 hover:border-[var(--px-navy)] hover:shadow-lg transition">
+        <div class="text-4xl mb-4">🏡</div>
+        <h3 class="text-2xl font-semibold tracking-tight mb-3 group-hover:text-[var(--px-blue)]">Smart Home Automation</h3>
+        <p class="text-[var(--px-gray)] mb-4">Lighting control systems, smart switches, scenes, and whole-home automation integration.</p>
+        <span class="text-sm font-medium text-[var(--px-blue)]">Starting at $7,499 →</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Service Areas Quick Links -->
+  <section class="max-w-7xl mx-auto px-6 py-12 bg-white border-t border-[var(--px-border)]">
+    <h3 class="text-2xl font-semibold mb-6 text-center">We Serve These Areas</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-6 gap-y-3 text-center text-[var(--px-gray)]">
+      <a href="electrician-surrey.html" class="hover:text-[var(--px-blue)]">Surrey</a>
+      <a href="electrician-langley.html" class="hover:text-[var(--px-blue)]">Langley</a>
+      <a href="electrician-delta.html" class="hover:text-[var(--px-blue)]">Delta</a>
+      <a href="electrician-abbotsford.html" class="hover:text-[var(--px-blue)]">Abbotsford</a>
+      <a href="electrician-coquitlam.html" class="hover:text-[var(--px-blue)]">Coquitlam</a>
+      <a href="electrician-maple-ridge.html" class="hover:text-[var(--px-blue)]">Maple Ridge</a>
+      <a href="electrician-white-rock.html" class="hover:text-[var(--px-blue)]">White Rock</a>
+      <a href="electrician-chilliwack.html" class="hover:text-[var(--px-blue)]">Chilliwack</a>
+      <a href="electrician-mission.html" class="hover:text-[var(--px-blue)]">Mission</a>
+      <a href="service-areas.html" class="hover:text-[var(--px-blue)] font-medium">See All Areas →</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-[var(--px-navy)] text-white py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold tracking-tight mb-4">Need Electrical Work Done Right?</h2>
+      <p class="text-xl text-white/80 mb-8 max-w-md mx-auto">Get a clear, upfront quote with no surprises.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="tel:778-823-1575" class="px-8 py-4 rounded-2xl bg-white text-[var(--px-navy)] font-semibold text-lg hover:bg-gray-100 transition">Call 778-823-1575</a>
+        <a href="contact.html" class="px-8 py-4 rounded-2xl border-2 border-white text-white font-semibold text-lg hover:bg-white hover:text-[var(--px-navy)] transition">Request Free Quote</a>
       </div>
     </div>
+  </section>
 
-    <section id="services" class="max-w-7xl mx-auto px-6 py-16">
-      <h2 class="text-4xl font-bold tracking-tight text-center mb-12">Our Electrical Services</h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="panel-upgrade-surrey.html" class="group block p-8 border rounded-3xl hover:border-[var(--px-navy)] transition">
-          <h3 class="font-semibold text-2xl mb-3 group-hover:text-[var(--px-navy)]">Electrical Panel Upgrades</h3>
-          <p class="text-[var(--px-gray)]">200A service upgrades, fuse box replacements, and full electrical service upgrades for homes and businesses.</p>
-          <div class="mt-4 text-sm font-medium text-[var(--px-blue)] group-hover:underline">Learn more →</div>
-          <div class="text-xs mt-2 text-emerald-700">Flat rate $150–$200</div>
-        </a>
-        
-        <a href="ev-charger-installation-surrey.html" class="group block p-8 border rounded-3xl hover:border-[var(--px-navy)] transition">
-          <h3 class="font-semibold text-2xl mb-3 group-hover:text-[var(--px-navy)]">EV Charger Installation</h3>
-          <p class="text-[var(--px-gray)]">Level 2 home and commercial EV charger installation, including panel upgrades and permits.</p>
-          <div class="mt-4 text-sm font-medium text-[var(--px-blue)] group-hover:underline">Learn more →</div>
-          <div class="text-xs mt-2 text-emerald-700">Flat rate $150–$200</div>
-        </a>
-        
-        <a href="emergency-electrician-surrey.html" class="group block p-8 border rounded-3xl hover:border-[var(--px-navy)] transition">
-          <h3 class="font-semibold text-2xl mb-3 group-hover:text-[var(--px-navy)]">24/7 Emergency Electrician</h3>
-          <p class="text-[var(--px-gray)]">Fast emergency electrical repairs for power outages, burning smells, and urgent issues. 30-60 min response.</p>
-          <div class="mt-4 text-sm font-medium text-[var(--px-blue)] group-hover:underline">Learn more →</div>
-          <div class="text-xs mt-2 text-emerald-700">Flat rate $200 emergency</div>
-        </a>
-        
-        <a href="residential-rewiring-surrey.html" class="group block p-8 border rounded-3xl hover:border-[var(--px-navy)] transition">
-          <h3 class="font-semibold text-2xl mb-3 group-hover:text-[var(--px-navy)]">House Rewiring &amp; Renovations</h3>
-          <p class="text-[var(--px-gray)]">Full home rewiring, kitchen &amp; bathroom remodels, aluminum &amp; knob-and-tube replacement.</p>
-          <div class="mt-4 text-sm font-medium text-[var(--px-blue)] group-hover:underline">Learn more →</div>
-          <div class="text-xs mt-2 text-emerald-700">Flat rate $150–$200</div>
-        </a>
-        
-        <a href="commercial-electrical-surrey.html" class="group block p-8 border rounded-3xl hover:border-[var(--px-navy)] transition">
-          <h3 class="font-semibold text-2xl mb-3 group-hover:text-[var(--px-navy)]">Commercial Electrical</h3>
-          <p class="text-[var(--px-gray)]">Tenant improvements, retail fit-outs, warehouse power, lighting retrofits &amp; maintenance contracts.</p>
-          <div class="mt-4 text-sm font-medium text-[var(--px-blue)] group-hover:underline">Learn more →</div>
-          <div class="text-xs mt-2 text-emerald-700">Flat rate $150–$200</div>
-        </a>
-        
-        <a href="generator-installation-surrey.html" class="group block p-8 border rounded-3xl hover:border-[var(--px-navy)] transition">
-          <h3 class="font-semibold text-2xl mb-3 group-hover:text-[var(--px-navy)]">Generator Installation</h3>
-          <p class="text-[var(--px-gray)]">Whole-home standby generators, automatic transfer switches, and backup power solutions.</p>
-          <div class="mt-4 text-sm font-medium text-[var(--px-blue)] group-hover:underline">Learn more →</div>
-          <div class="text-xs mt-2 text-emerald-700">Flat rate $150–$200</div>
-        </a>
+  <footer class="border-t border-[var(--px-border)] py-8 text-center text-sm text-[var(--px-text-muted)]">
+    <p>© PowerX Electrical Ltd. Licensed & Insured in British Columbia.</p>
+  </footer>
 
-        <!-- New Pages -->
-        <a href="new-home-electrical-surrey.html" class="group block p-8 border rounded-3xl hover:border-[var(--px-navy)] transition">
-          <h3 class="font-semibold text-2xl mb-3 group-hover:text-[var(--px-navy)]">New Home Electrical Construction</h3>
-          <p class="text-[var(--px-gray)]">Electrical rough-in, lighting design, and future-proof wiring for new home builds across Surrey.</p>
-          <div class="mt-4 text-sm font-medium text-[var(--px-blue)] group-hover:underline">Learn more →</div>
-          <div class="text-xs mt-2 text-emerald-700">Flat rate $150–$200</div>
-        </a>
-
-        <a href="landscape-lighting-surrey.html" class="group block p-8 border rounded-3xl hover:border-[var(--px-navy)] transition">
-          <h3 class="font-semibold text-2xl mb-3 group-hover:text-[var(--px-navy)]">Landscape &amp; Outdoor Lighting</h3>
-          <p class="text-[var(--px-gray)]">Professional landscape, architectural, and outdoor lighting design for homes and properties.</p>
-          <div class="mt-4 text-sm font-medium text-[var(--px-blue)] group-hover:underline">Learn more →</div>
-          <div class="text-xs mt-2 text-emerald-700">Flat rate $150–$200</div>
-        </a>
-
-        <a href="smart-home-automation-surrey.html" class="group block p-8 border rounded-3xl hover:border-[var(--px-navy)] transition">
-          <h3 class="font-semibold text-2xl mb-3 group-hover:text-[var(--px-navy)]">Smart Home Automation</h3>
-          <p class="text-[var(--px-gray)]">Lighting control systems, scenes, smart switches, and whole-home automation integration.</p>
-          <div class="mt-4 text-sm font-medium text-[var(--px-blue)] group-hover:underline">Learn more →</div>
-          <div class="text-xs mt-2 text-emerald-700">Flat rate $150–$200</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- FAQ Schema for Services Parent Page -->
-    <section class="max-w-7xl mx-auto px-6 pb-16">
-      <h2 class="text-3xl font-bold tracking-tight text-center mb-8">Frequently Asked Questions</h2>
-      <div class="max-w-3xl mx-auto space-y-4">
-        <details class="card px-6">
-          <summary class="font-semibold py-4">Do you offer flat-rate pricing for all services?</summary>
-          <div class="pb-5 text-[var(--px-gray)]">Yes. We charge a flat $150 for standard service calls and $200 for 24/7 emergency dispatch across all services. No hidden fees.</div>
-        </details>
-        <details class="card px-6">
-          <summary class="font-semibold py-4">Do your prices include permits and inspections?</summary>
-          <div class="pb-5 text-[var(--px-gray)]">Yes. Permits and inspections are included in our flat rates for panel upgrades, EV charger installations, and rewiring projects.</div>
-        </details>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer etc. -->
 </body>
 </html>
