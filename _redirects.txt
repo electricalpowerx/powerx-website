@@ -10,6 +10,14 @@ https://www.powerxelectrical.ca/* https://powerxelectrical.ca/:splat 301!
 # Clean trailing slashes (optional)
 https://powerxelectrical.ca/:splat/ https://powerxelectrical.ca/:splat 301!
 
+# ============================================================
+# GOOGLE SEARCH CONSOLE VERIFICATION
+# The verification file MUST be accessible at the exact URL with .html
+# Google does not accept the version without the extension.
+# This rule must come BEFORE any general .html stripping rules.
+# ============================================================
+/googledebbbf9ea2128906.html  /googledebbbf9ea2128906.html  200!
+
 # Redirect old .html URLs to clean URLs (important for SEO to avoid duplicate content)
 # Core pages
 /about.html                    /about                    301!
