@@ -41,3 +41,55 @@ https://powerxelectrical.ca/:splat/ https://powerxelectrical.ca/:splat 301!
 /blog/smart-home-wiring-value.html              /blog/smart-home-wiring-value              301!
 /blog/what-to-do-when-power-goes-out.html       /blog/what-to-do-when-power-goes-out       301!
 /blog/when-to-upgrade-your-electrical-panel.html /blog/when-to-upgrade-your-electrical-panel 301!
+
+# ============================================================
+# FULL SEO SILO SUPPORT (Massive expansion - 300+ pages)
+# Generated neighborhood, service, and location pages
+# ============================================================
+
+# General: strip .html for clean URLs (SEO best practice, avoids duplicates)
+# This catches the hundreds of new generated pages
+/*.html   /:splat   301!
+
+# Support the detailed local/ silo pages (aluminum wiring, panel upgrades, EV, rewiring, etc. per city)
+/local/*   /local/:splat   200!
+
+# Services sub-pages (detailed service landing pages)
+/services/*   /services/:splat   200!
+
+# Locations / neighborhood detail pages
+/locations/*   /locations/:splat   200!
+
+# Projects sub-pages
+/projects/*   /projects/:splat   200!
+
+# Additional root-level location & service pages added in expansions (no .html versions)
+/electrician-abbotsford     /electrician-abbotsford     200!
+/electrician-chilliwack     /electrician-chilliwack     200!
+/electrician-mission        /electrician-mission        200!
+/electrician-pitt-meadows   /electrician-pitt-meadows   200!
+/electrician-surrey         /electrician-surrey         200!
+/cloverdale                 /cloverdale                 200!
+/fleetwood                  /fleetwood                  200!
+/fraser-heights             /fraser-heights             200!
+/guildford                  /guildford                  200!
+/newton                     /newton                     200!
+/ocean-park                 /ocean-park                 200!
+/panorama-ridge             /panorama-ridge             200!
+/south-surrey               /south-surrey               200!
+
+# New blog posts from expansions
+/blog/electrical-panel-upgrade-cost-bc.html               /blog/electrical-panel-upgrade-cost-bc               301!
+/blog/electrician-cost-lower-mainland.html                /blog/electrician-cost-lower-mainland                301!
+/blog/ev-charger-installation-cost-rebates-bc.html        /blog/ev-charger-installation-cost-rebates-bc        301!
+/blog/knob-and-tube-wiring-guide.html                     /blog/knob-and-tube-wiring-guide                     301!
+/blog/signs-you-need-emergency-electrician.html           /blog/signs-you-need-emergency-electrician           301!
+/blog/smart-home-automation-worth-it.html                 /blog/smart-home-automation-worth-it                 301!
+/blog/landscape-lighting-worth-it.html                    /blog/landscape-lighting-worth-it                    301!
+/blog/new-home-electrical-construction-guide.html         /blog/new-home-electrical-construction-guide         301!
+
+# AI / LLM optimization files (explicitly allowed in robots.txt)
+/llms.txt            /llms.txt            200!
+/llms-emergency.txt  /llms-emergency.txt  200!
+/llms-ev-charger.txt /llms-ev-charger.txt 200!
+/llms-panel.txt      /llms-panel.txt      200!
