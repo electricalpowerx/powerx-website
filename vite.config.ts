@@ -1,6 +1,25 @@
 import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
-import { resolve } from 'path'
+import { resolve, relative } from 'path'
+import { readdirSync, statSync } from 'fs'
+
+// Recursively discover every .html entry point so new SEO pages
+// (services/*, locations/*, blog/*) are built automatically.
+function findHtmlEntries(dir: string, root = dir): Record<string, string> {
+  const skip = new Set(['node_modules', 'dist', '.git', 'public', 'src', 'scripts'])
+  const entries: Record<string, string> = {}
+  for (const name of readdirSync(dir)) {
+    const full = resolve(dir, name)
+    if (statSync(full).isDirectory()) {
+      if (skip.has(name)) continue
+      Object.assign(entries, findHtmlEntries(full, root))
+    } else if (name.endsWith('.html')) {
+      const key = relative(root, full).replace(/\.html$/, '').replace(/[\\/]/g, '-')
+      entries[key] = full
+    }
+  }
+  return entries
+}
 
 export default defineConfig({
   plugins: [
@@ -12,14 +31,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        about: resolve(__dirname, 'about.html'),
-        projects: resolve(__dirname, 'projects.html'),
-        pricing: resolve(__dirname, 'pricing.html'),
-        blog: resolve(__dirname, 'blog.html'),
-        contact: resolve(__dirname, 'contact.html'),
-      },
+      input: findHtmlEntries(__dirname),
     },
   },
 })

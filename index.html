@@ -6,7 +6,8 @@
   <title>PowerX Electrical Ltd | 24/7 Emergency Electrician Surrey & Lower Mainland BC</title>
   <meta name="description" content="Licensed 24/7 emergency electrician in Surrey, Vancouver, Burnaby, Langley & Lower Mainland. Fast 30-60 min response. Call 778-823-1575 now." />
   <meta name="theme-color" content="#0F172A" />
-  
+  <link rel="canonical" href="https://powerxelectrical.ca/" />
+
   <!-- Open Graph / Social -->
   <meta property="og:title" content="PowerX Electrical Ltd | 24/7 Emergency Electricians" />
   <meta property="og:description" content="Trusted, licensed electricians serving Surrey and the entire Lower Mainland. Emergency service 24/7 with 30-60 minute response." />
@@ -23,11 +24,13 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "Electrician",
     "name": "PowerX Electrical Ltd",
     "description": "24/7 emergency electrical services across Surrey, Vancouver, Burnaby, Langley and the Lower Mainland.",
     "url": "https://powerxelectrical.ca",
+    "image": "https://powerxelectrical.ca/images/powerx-logo.png",
     "telephone": "+1-778-823-1575",
+    "email": "electricalpowerx@gmail.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "12491 68 Avenue",
@@ -36,7 +39,10 @@
       "postalCode": "V3W 2C9",
       "addressCountry": "CA"
     },
-    "areaServed": ["Surrey", "Vancouver", "Burnaby", "Langley", "White Rock", "Maple Ridge", "Lower Mainland"],
+    "geo": { "@type": "GeoCoordinates", "latitude": 49.126866, "longitude": -122.8763703 },
+    "sameAs": ["https://www.google.com/maps/place/PowerX+Electrical+Ltd./@49.126866,-122.8789452,17z/data=!4m8!3m7!1s0x5485dbcbb0eed05b:0xe3d33cf79f989583!8m2!3d49.126866!4d-122.8763703!9m1!1b1!16s%2Fg%2F11xn_1zwbc"],
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "80" },
+    "areaServed": ["Surrey", "Vancouver", "Burnaby", "Langley", "Coquitlam", "Port Coquitlam", "Port Moody", "New Westminster", "White Rock", "Delta", "Richmond", "North Vancouver", "Maple Ridge", "Pitt Meadows", "Abbotsford", "Tsawwassen", "Lower Mainland"],
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -122,27 +128,20 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="flex items-center justify-between h-16 md:h-20">
         <!-- Logo -->
-        <a href="index.html" class="flex items-center gap-3 group">
-          <div class="w-9 h-9 bg-[var(--px-emergency)] rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          </div>
-          <div>
-            <div class="font-bold text-2xl tracking-tighter text-[var(--px-navy)]">PowerX</div>
-            <div class="text-[10px] text-[var(--px-text-muted)] -mt-1">ELECTRICAL LTD</div>
-          </div>
+        <a href="index.html" class="flex items-center gap-2 group">
+          <img src="/images/powerx-logo.png" alt="PowerX Electrical Ltd" class="h-[54px] md:h-[66px] w-auto object-contain" />
         </a>
 
         <!-- Desktop Navigation (Updated per redesign) -->
         <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--px-text)]">
           <a href="index.html" class="hover:text-[var(--px-blue)] transition">Home</a>
           <a href="about.html" class="hover:text-[var(--px-blue)] transition">About</a>
-          <a href="index.html#services" class="hover:text-[var(--px-blue)] transition">Services</a>
+          <a href="services.html" class="hover:text-[var(--px-blue)] transition">Services</a>
+          <a href="service-areas.html" class="hover:text-[var(--px-blue)] transition">Areas</a>
           <a href="projects.html" class="hover:text-[var(--px-blue)] transition">Projects</a>
           <a href="pricing.html" class="hover:text-[var(--px-blue)] transition">Pricing</a>
           <a href="blog.html" class="hover:text-[var(--px-blue)] transition">Blog</a>
-          <a href="index.html#contact" class="hover:text-[var(--px-blue)] transition">Contact</a>
+          <a href="contact.html" class="hover:text-[var(--px-blue)] transition">Contact</a>
         </div>
 
         <!-- Desktop CTAs -->
@@ -176,11 +175,12 @@
       <div class="px-4 py-6 flex flex-col gap-1 text-base font-medium text-[var(--px-text)]">
         <a href="index.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Home</a>
         <a href="about.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">About</a>
-        <a href="index.html#services" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Services</a>
+        <a href="services.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Services</a>
+        <a href="service-areas.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Areas We Serve</a>
         <a href="projects.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Projects</a>
         <a href="pricing.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Pricing</a>
         <a href="blog.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Blog</a>
-        <a href="index.html#contact" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Contact</a>
+        <a href="contact.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Contact</a>
         
         <div class="pt-4 mt-4 border-t border-[var(--px-border)] flex flex-col gap-3">
           <a href="tel:778-823-1575" 
@@ -421,66 +421,66 @@
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         <!-- Service Cards -->
-        <div class="card overflow-hidden group">
-          <img src="/images/fire alarm.jpg" class="w-full h-36 object-cover" alt="Emergency Response">
+        <a href="services/emergency-electrician.html" class="card overflow-hidden group block">
+          <img src="/images/fire alarm.jpg" class="w-full h-36 object-cover" alt="24/7 Emergency Electrician">
           <div class="p-6">
-            <h3 class="font-semibold text-lg mb-1.5">24/7 Emergency Repairs</h3>
+            <h3 class="font-semibold text-lg mb-1.5 group-hover:text-[var(--px-blue)] transition">24/7 Emergency Repairs</h3>
             <p class="text-sm text-[var(--px-gray)]">Power outages, sparking, burning smells, breaker failures — we respond fast, day or night.</p>
           </div>
-        </div>
-        <div class="card overflow-hidden group">
-          <img src="/images/panel-upgrade.jpg" class="w-full h-36 object-cover" alt="Panel Upgrade">
+        </a>
+        <a href="services/electrical-panel-upgrades.html" class="card overflow-hidden group block">
+          <img src="/images/panel-upgrade.jpg" class="w-full h-36 object-cover" alt="Electrical Panel Upgrade">
           <div class="p-6">
-            <h3 class="font-semibold text-lg mb-1.5">Panel Upgrades &amp; Replacements</h3>
+            <h3 class="font-semibold text-lg mb-1.5 group-hover:text-[var(--px-blue)] transition">Panel Upgrades &amp; Replacements</h3>
             <p class="text-sm text-[var(--px-gray)]">200A service upgrades, fuse box replacements, aluminum rewiring, and modern panel installations.</p>
           </div>
-        </div>
-        <div class="card overflow-hidden group">
-          <img src="/images/house-rewire(2).jpg" class="w-full h-36 object-cover" alt="Home Rewire">
+        </a>
+        <a href="services/home-rewiring.html" class="card overflow-hidden group block">
+          <img src="/images/house-rewire(2).jpg" class="w-full h-36 object-cover" alt="Home Wiring & Rewiring">
           <div class="p-6">
-            <h3 class="font-semibold text-lg mb-1.5">Residential Wiring &amp; Rewiring</h3>
+            <h3 class="font-semibold text-lg mb-1.5 group-hover:text-[var(--px-blue)] transition">Residential Wiring &amp; Rewiring</h3>
             <p class="text-sm text-[var(--px-gray)]">New construction, renovations, kitchen &amp; bathroom remodels, whole-home rewiring, and EV readiness.</p>
           </div>
-        </div>
-        <div class="card overflow-hidden group">
+        </a>
+        <a href="services/commercial-electrical.html" class="card overflow-hidden group block">
           <img src="/images/commercial project.jpg" class="w-full h-36 object-cover" alt="Commercial Electrical Work">
           <div class="p-6">
-            <h3 class="font-semibold text-lg mb-1.5">Commercial &amp; Industrial</h3>
+            <h3 class="font-semibold text-lg mb-1.5 group-hover:text-[var(--px-blue)] transition">Commercial &amp; Industrial</h3>
             <p class="text-sm text-[var(--px-gray)]">Tenant improvements, retail fit-outs, warehouse power, lighting retrofits, and maintenance contracts.</p>
           </div>
-        </div>
-        <div class="card overflow-hidden group">
-          <img src="/images/ev charger.JPG" class="w-full h-36 object-cover" alt="EV Charger">
+        </a>
+        <a href="services/ev-charger-installation.html" class="card overflow-hidden group block">
+          <img src="/images/ev charger.JPG" class="w-full h-36 object-cover" alt="EV Charger Installation">
           <div class="p-6">
-            <h3 class="font-semibold text-lg mb-1.5">EV Charger Installation</h3>
+            <h3 class="font-semibold text-lg mb-1.5 group-hover:text-[var(--px-blue)] transition">EV Charger Installation</h3>
             <p class="text-sm text-[var(--px-gray)]">Level 2 home and commercial chargers. We handle permits, panels, and utility coordination.</p>
           </div>
-        </div>
-        <div class="card overflow-hidden group">
-          <img src="/images/led lighting.jpg" class="w-full h-36 object-cover" alt="LED Lighting">
+        </a>
+        <a href="services/lighting-installation.html" class="card overflow-hidden group block">
+          <img src="/images/led lighting.jpg" class="w-full h-36 object-cover" alt="Lighting Installation">
           <div class="p-6">
-            <h3 class="font-semibold text-lg mb-1.5">Lighting &amp; Smart Controls</h3>
+            <h3 class="font-semibold text-lg mb-1.5 group-hover:text-[var(--px-blue)] transition">Lighting &amp; Smart Controls</h3>
             <p class="text-sm text-[var(--px-gray)]">LED upgrades, landscape lighting, smart switches, Lutron &amp; Control4 systems, and energy-efficient design.</p>
           </div>
-        </div>
-        <div class="card overflow-hidden group">
-          <img src="/images/smoke detector.jpg" class="w-full h-36 object-cover" alt="Fire Alarm & Safety">
+        </a>
+        <a href="services/fire-alarm-systems.html" class="card overflow-hidden group block">
+          <img src="/images/smoke detector.jpg" class="w-full h-36 object-cover" alt="Fire Alarm & Life Safety">
           <div class="p-6">
-            <h3 class="font-semibold text-lg mb-1.5">Fire Alarm &amp; Life Safety</h3>
+            <h3 class="font-semibold text-lg mb-1.5 group-hover:text-[var(--px-blue)] transition">Fire Alarm &amp; Life Safety</h3>
             <p class="text-sm text-[var(--px-gray)]">Design, installation, testing and maintenance of fire alarm systems for homes and businesses.</p>
           </div>
-        </div>
-        <div class="card overflow-hidden group">
-          <img src="/images/van&guy.jpg" class="w-full h-36 object-cover" alt="Backup Power & Generators">
+        </a>
+        <a href="services/generator-installation.html" class="card overflow-hidden group block">
+          <img src="/images/van-guy.jpg" class="w-full h-36 object-cover" alt="Generators & Backup Power">
           <div class="p-6">
-            <h3 class="font-semibold text-lg mb-1.5">Generators &amp; Backup Power</h3>
+            <h3 class="font-semibold text-lg mb-1.5 group-hover:text-[var(--px-blue)] transition">Generators &amp; Backup Power</h3>
             <p class="text-sm text-[var(--px-gray)]">Whole-home standby generators, automatic transfer switches, and critical circuit backup solutions.</p>
           </div>
-        </div>
+        </a>
       </div>
 
       <div class="text-center mt-10">
-        <a href="#contact" class="inline-flex items-center text-[var(--px-blue)] font-medium hover:underline">Need something else? Let’s talk →</a>
+        <a href="services.html" class="inline-flex items-center text-[var(--px-blue)] font-medium hover:underline">View all electrical services →</a>
       </div>
     </div>
   </section>
@@ -560,32 +560,35 @@
       <p class="max-w-lg mx-auto text-[var(--px-gray)]">From Whalley to White Rock, and everywhere in between — we come to you.</p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
       <!-- Area Cards -->
-      <div class="card p-6">
-        <div class="font-semibold text-lg mb-2">Surrey</div>
+      <a href="locations/electrician-surrey.html" class="card p-6 group block">
+        <div class="font-semibold text-lg mb-2 group-hover:text-[var(--px-blue)] transition">Surrey</div>
         <div class="text-sm text-[var(--px-gray)]">Whalley • Guildford • Newton • Fleetwood • Cloverdale • South Surrey • Panorama Ridge</div>
-      </div>
-      <div class="card p-6">
-        <div class="font-semibold text-lg mb-2">Vancouver</div>
+      </a>
+      <a href="locations/electrician-vancouver.html" class="card p-6 group block">
+        <div class="font-semibold text-lg mb-2 group-hover:text-[var(--px-blue)] transition">Vancouver</div>
         <div class="text-sm text-[var(--px-gray)]">Downtown • East Van • Kitsilano • Mount Pleasant • West End • Commercial Drive</div>
-      </div>
-      <div class="card p-6">
-        <div class="font-semibold text-lg mb-2">Burnaby</div>
+      </a>
+      <a href="locations/electrician-burnaby.html" class="card p-6 group block">
+        <div class="font-semibold text-lg mb-2 group-hover:text-[var(--px-blue)] transition">Burnaby</div>
         <div class="text-sm text-[var(--px-gray)]">Brentwood • Metrotown • North Burnaby • South Burnaby • Burnaby Heights</div>
-      </div>
-      <div class="card p-6">
-        <div class="font-semibold text-lg mb-2">Langley</div>
+      </a>
+      <a href="locations/electrician-langley.html" class="card p-6 group block">
+        <div class="font-semibold text-lg mb-2 group-hover:text-[var(--px-blue)] transition">Langley</div>
         <div class="text-sm text-[var(--px-gray)]">Langley City • Langley Township • Aldergrove • Fort Langley • Murrayville</div>
-      </div>
-      <div class="card p-6">
-        <div class="font-semibold text-lg mb-2">White Rock &amp; South Surrey</div>
+      </a>
+      <a href="locations/electrician-white-rock.html" class="card p-6 group block">
+        <div class="font-semibold text-lg mb-2 group-hover:text-[var(--px-blue)] transition">White Rock &amp; South Surrey</div>
         <div class="text-sm text-[var(--px-gray)]">White Rock Beach • Semiahmoo • Ocean Park • Crescent Beach</div>
-      </div>
-      <div class="card p-6">
-        <div class="font-semibold text-lg mb-2">Other Areas</div>
-        <div class="text-sm text-[var(--px-gray)]">Maple Ridge • Pitt Meadows • New Westminster • Coquitlam • Port Moody • Richmond</div>
-      </div>
+      </a>
+      <a href="locations/electrician-coquitlam.html" class="card p-6 group block">
+        <div class="font-semibold text-lg mb-2 group-hover:text-[var(--px-blue)] transition">Tri-Cities &amp; Beyond</div>
+        <div class="text-sm text-[var(--px-gray)]">Coquitlam • Port Moody • New Westminster • Maple Ridge • Richmond • Delta</div>
+      </a>
+    </div>
+    <div class="text-center mb-10">
+      <a href="service-areas.html" class="inline-flex items-center text-[var(--px-blue)] font-medium hover:underline">See all 16 service areas →</a>
     </div>
 
     <!-- Map -->
@@ -797,30 +800,27 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
       <div class="flex flex-col md:flex-row justify-between gap-y-10">
         <div>
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-8 h-8 bg-[var(--px-emergency)] rounded-xl flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-            </div>
-            <span class="font-bold text-[var(--px-blue)] text-2xl tracking-tighter">PowerX</span>
-          </div>
+          <a href="/index.html" class="inline-flex bg-white rounded-xl p-2.5 mb-3 w-max"><img src="/images/powerx-logo.png" alt="PowerX Electrical Ltd" class="h-9 w-auto" /></a>
           <div class="text-xs max-w-[220px] text-[var(--px-blue)]">Professional electrical services you can trust — 24 hours a day.</div>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-10 gap-y-8 text-sm">
           <div>
-            <div class="font-semibold text-[var(--px-blue)] mb-3 tracking-wider text-xs">COMPANY</div>
+            <div class="font-semibold text-[var(--px-blue)] mb-3 tracking-wider text-xs">POPULAR SERVICES</div>
             <div class="space-y-[9px]">
-              <div>Surrey, BC</div>
-              <div>8+ Years Serving BC</div>
-              <div>Licensed &amp; Insured</div>
+              <a href="services/emergency-electrician.html" class="block hover:text-white text-[var(--px-blue)]">Emergency Electrician</a>
+              <a href="services/electrical-panel-upgrades.html" class="block hover:text-white text-[var(--px-blue)]">Panel Upgrades</a>
+              <a href="services/ev-charger-installation.html" class="block hover:text-white text-[var(--px-blue)]">EV Charger Installation</a>
+              <a href="services.html" class="block hover:text-white text-[var(--px-blue-light)] font-semibold">All services →</a>
             </div>
           </div>
           <div>
             <div class="font-semibold text-[var(--px-blue)] mb-3 tracking-wider text-xs">SERVICE AREAS</div>
             <div class="space-y-[9px]">
-              <div>Surrey • Vancouver</div>
-              <div>Burnaby • Langley</div>
-              <div>White Rock • Maple Ridge</div>
+              <a href="locations/electrician-surrey.html" class="block hover:text-white text-[var(--px-blue)]">Surrey • Vancouver</a>
+              <a href="locations/electrician-burnaby.html" class="block hover:text-white text-[var(--px-blue)]">Burnaby • Langley</a>
+              <a href="locations/electrician-coquitlam.html" class="block hover:text-white text-[var(--px-blue)]">Coquitlam • Tri-Cities</a>
+              <a href="service-areas.html" class="block hover:text-white text-[var(--px-blue-light)] font-semibold">All areas →</a>
             </div>
           </div>
           <div>

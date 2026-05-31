@@ -19,6 +19,7 @@
 
   /* Accents */
   --px-navy: #0F172A;           /* Keep for strong headlines */
+  --px-navy-dark: #0B1120;      /* Footer / deep background */
   --px-blue: #1E40AF;           /* Professional primary accent */
   --px-blue-light: #3B82F6;
   --px-emergency: #DC2626;      /* Keep for emergency CTAs */
@@ -150,4 +151,14 @@ img {
 /* Subtle divider */
 .divider {
   @apply border-t border-slate-200;
+}
+
+/* Footer renders on dark navy — lighten the variable-driven text/links
+   for proper contrast without editing every page's markup. */
+footer {
+  --px-blue: #BFDBFE;        /* light blue for body text & links on dark */
+  --px-blue-light: #93C5FD;
+}
+footer a:hover {
+  color: #ffffff;
 }

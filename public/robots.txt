@@ -1,7 +1,38 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://powerxelectrical.ca/sitemap.xml
+# Explicitly welcome AI search & answer engines (AI Overviews, ChatGPT,
+# Perplexity, Claude, etc.) so PowerX can be cited in AI-generated answers.
+User-agent: Google-Extended
+Allow: /
 
-# Disallow admin or private paths (none currently)
-# Disallow: /admin/
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# AI-readable site summary: https://powerxelectrical.ca/llms.txt
+
+Sitemap: https://powerxelectrical.ca/sitemap.xml
