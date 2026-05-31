@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+﻿import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 import { resolve, relative } from 'path'
 import { readdirSync, statSync } from 'fs'
@@ -35,3 +35,4 @@ export default defineConfig({
     },
   },
 })
+

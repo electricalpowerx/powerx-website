@@ -1,0 +1,43 @@
+# Force HTTPS
+http://powerxelectrical.ca/* https://powerxelectrical.ca/:splat 301!
+
+# Force HTTPS for www
+http://www.powerxelectrical.ca/* https://powerxelectrical.ca/:splat 301!
+
+# Redirect www to non-www (optional but common for cleanliness)
+https://www.powerxelectrical.ca/* https://powerxelectrical.ca/:splat 301!
+
+# Clean trailing slashes (optional)
+https://powerxelectrical.ca/:splat/ https://powerxelectrical.ca/:splat 301!
+
+# Redirect old .html URLs to clean URLs (important for SEO to avoid duplicate content)
+# Core pages
+/about.html                    /about                    301!
+/blog.html                     /blog                     301!
+/contact.html                  /contact                  301!
+/pricing.html                  /pricing                  301!
+/projects.html                 /projects                 301!
+
+# Service pages
+/commercial-electrical-surrey.html     /commercial-electrical-surrey     301!
+/emergency-electrician-surrey.html     /emergency-electrician-surrey     301!
+/ev-charger-installation-surrey.html   /ev-charger-installation-surrey   301!
+/generator-installation-surrey.html    /generator-installation-surrey    301!
+/panel-upgrade-surrey.html             /panel-upgrade-surrey             301!
+/residential-rewiring-surrey.html      /residential-rewiring-surrey      301!
+
+# Location pages
+/electrician-burnaby.html              /electrician-burnaby              301!
+/electrician-coquitlam.html            /electrician-coquitlam            301!
+/electrician-delta.html                /electrician-delta                301!
+/electrician-langley.html              /electrician-langley              301!
+/electrician-maple-ridge.html          /electrician-maple-ridge          301!
+/electrician-new-westminster.html      /electrician-new-westminster      301!
+/electrician-pitt-meadows.html         /electrician-pitt-meadows         301!
+/electrician-vancouver.html            /electrician-vancouver            301!
+/electrician-white-rock.html           /electrician-white-rock           301!
+
+# Blog posts
+/blog/smart-home-wiring-value.html              /blog/smart-home-wiring-value              301!
+/blog/what-to-do-when-power-goes-out.html       /blog/what-to-do-when-power-goes-out       301!
+/blog/when-to-upgrade-your-electrical-panel.html /blog/when-to-upgrade-your-electrical-panel 301!
