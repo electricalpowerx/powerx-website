@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Loop Quest — Learn Loops &amp; Workflows</title>
+<style>
+  :root{
+    --bg:#0f1226; --panel:#1a1f3d; --panel2:#232a52; --ink:#e8ecff;
+    --muted:#9aa3d4; --accent:#ffd23f; --accent2:#3fb6ff; --good:#46e08a;
+    --bad:#ff5d6c; --line:#323a73;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:radial-gradient(1200px 600px at 70% -10%,#222a5e,#0f1226);
+    color:var(--ink);min-height:100vh;
+  }
+  header{padding:18px 24px;border-bottom:1px solid var(--line)}
+  h1{margin:0;font-size:22px;letter-spacing:.3px}
+  h1 .z{color:var(--accent)}
+  .sub{color:var(--muted);font-size:13px;margin-top:4px}
+  .wrap{display:grid;grid-template-columns:minmax(360px,1fr) 420px;gap:20px;padding:20px;max-width:1200px;margin:0 auto}
+  @media(max-width:900px){.wrap{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .lvltitle{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .lvltitle h2{margin:0;font-size:17px}
+  .pill{background:var(--panel2);border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:12px;color:var(--muted)}
+  .lesson{color:var(--muted);font-size:13px;line-height:1.5;margin:10px 0 14px}
+  .lesson b{color:var(--accent2)}
+  canvas{display:block;background:#0b0e20;border-radius:10px;margin:0 auto;image-rendering:pixelated}
+  .status{margin-top:12px;min-height:22px;font-size:14px;font-weight:600}
+  .status.ok{color:var(--good)} .status.err{color:var(--bad)} .status.info{color:var(--accent2)}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .controls{margin-top:12px}
+  button{
+    cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:var(--ink);
+    border-radius:9px;padding:8px 12px;font-size:13px;font-weight:600;transition:.12s;
+  }
+  button:hover:not(:disabled){border-color:var(--accent2);transform:translateY(-1px)}
+  button:disabled{opacity:.4;cursor:not-allowed}
+  button.cmd{background:#2a3168}
+  button.loop{background:#3a2f5e;border-color:#5a4b8a}
+  button.go{background:linear-gradient(180deg,#46e08a,#27b86a);color:#06231a;border:0}
+  button.warn{background:#3a2440;border-color:#7a3a5a}
+  .palette h3{font-size:12px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin:14px 0 8px}
+  input[type=number]{width:54px;background:#0b0e20;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:6px;font-size:13px}
+  select{background:#0b0e20;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:6px;font-size:13px}
+  .prog{background:#0b0e20;border:1px solid var(--line);border-radius:10px;padding:10px;min-height:140px;max-height:300px;overflow:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+  .prog .ln{padding:2px 6px;border-radius:5px;white-space:pre}
+  .prog .ln.active{background:#34407e;outline:1px solid var(--accent2)}
+  .prog .kw{color:var(--accent)} .prog .wh{color:#c89bff} .prog .end{color:var(--muted)}
+  .prog .empty{color:var(--muted);font-style:italic}
+  .budget{font-size:13px;color:var(--muted)}
+  .budget b{color:var(--ink)}
+  .budget.over b{color:var(--bad)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:10px}
+  .legend span{display:inline-flex;align-items:center;gap:5px}
+  .dot{width:14px;height:14px;border-radius:4px;display:inline-block}
+  /* modal */
+  .overlay{position:fixed;inset:0;background:rgba(6,8,20,.72);display:none;align-items:center;justify-content:center;z-index:50}
+  .overlay.show{display:flex}
+  .modal{background:var(--panel);border:1px solid var(--accent);border-radius:16px;padding:24px;max-width:420px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .modal h3{margin:0 0 8px;color:var(--accent);font-size:18px}
+  .modal p{color:var(--muted);font-size:14px;line-height:1.5}
+  .modal .big{font-size:34px;margin:6px 0}
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}
+  footer a{color:var(--accent2)}
+</style>
+</head>
+<body>
+<header>
+  <h1>⚡ Loop <span class="z">Quest</span></h1>
+  <div class="sub">Program the robot with workflows &amp; loops. Discover why one loop beats a hundred steps.</div>
+</header>
+
+<div class="wrap">
+  <!-- LEFT: world -->
+  <div class="card">
+    <div class="lvltitle">
+      <h2 id="lvlName">Level</h2>
+      <span class="pill" id="lvlPill">1 / 5</span>
+    </div>
+    <div class="lesson" id="lvlLesson"></div>
+    <canvas id="canvas" width="480" height="240"></canvas>
+    <div class="status info" id="status">Build a program, then press Run ▶</div>
+    <div class="legend">
+      <span><span class="dot" style="background:#2a3168"></span>Path</span>
+      <span><span class="dot" style="background:#080a18"></span>Wall</span>
+      <span><span class="dot" style="background:#ffd23f"></span>Power cell</span>
+      <span><span class="dot" style="background:#46e08a"></span>Goal</span>
+      <span>🤖 Robot</span>
+    </div>
+    <div class="controls row">
+      <button id="prevLvl">◀ Prev</button>
+      <button id="nextLvl">Next ▶</button>
+      <span style="flex:1"></span>
+      <label class="budget">Speed <input type="range" id="speed" min="60" max="600" value="300" style="vertical-align:middle"></label>
+    </div>
+  </div>
+
+  <!-- RIGHT: editor -->
+  <div class="card palette">
+    <div class="row" style="justify-content:space-between">
+      <strong>Your Program</strong>
+      <span class="budget" id="budget"></span>
+    </div>
+    <div class="prog" id="prog"></div>
+
+    <div class="controls row">
+      <button class="go" id="run">▶ Run</button>
+      <button id="step">⏭ Step</button>
+      <button id="reset">↺ Reset</button>
+      <button id="undo">⌫ Undo</button>
+      <button class="warn" id="clear">🗑 Clear</button>
+    </div>
+
+    <h3>Commands (the workflow)</h3>
+    <div class="row">
+      <button class="cmd" data-cmd="FWD">⬆ Forward</button>
+      <button class="cmd" data-cmd="LEFT">↺ Left</button>
+      <button class="cmd" data-cmd="RIGHT">↻ Right</button>
+      <button class="cmd" data-cmd="COLLECT">⚡ Collect</button>
+    </div>
+
+    <h3>Loops (the power)</h3>
+    <div class="row">
+      <button class="loop" id="addRepeat">🔁 Repeat</button>
+      <input type="number" id="repeatN" min="1" max="50" value="3">
+      <span class="budget">times</span>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button class="loop" id="addWhile">🔄 While</button>
+      <select id="whileCond">
+        <option value="clear">path ahead is clear</option>
+        <option value="cells">power cells remain</option>
+      </select>
+    </div>
+    <div class="row" style="margin-top:8px">
+      <button class="loop" id="addEnd">⤶ End Loop</button>
+      <span class="budget" id="depthHint"></span>
+    </div>
+    <div class="lesson" style="margin-top:14px">
+      🛡️ <b>Loop Guard:</b> any loop automatically pauses and asks you after
+      <b id="guardN">10</b> repeats — your safety net against runaway loops.
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="big">🛡️🔄</div>
+    <h3>Loop Guard Tripped</h3>
+    <p id="guardMsg"></p>
+    <div class="row" style="justify-content:center;margin-top:14px">
+      <button class="go" id="contLoop">Keep looping</button>
+      <button class="warn" id="stopLoop">Stop this loop</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Loop Quest · a tiny lab for understanding loops &amp; workflows ·
+  built alongside <a href="/">PowerX</a>
+</footer>
+
+<script>
+/* =========================================================================
+   LOOP QUEST — an educational game about loops & workflows.
+
+   Core idea: you write a "workflow" (a sequence of commands). Loops let you
+   repeat parts of that workflow, so a few instructions can do a lot of work.
+
+   LOOP GUARD: every loop pauses and asks for confirmation after this many
+   repeats. This is the requested "max recurring loops = 10 before asking".
+   ========================================================================= */
+const MAX_LOOP_BEFORE_ASK = 10;
+document.getElementById('guardN').textContent = MAX_LOOP_BEFORE_ASK;
+
+/* ---- Levels -------------------------------------------------------------
+   Grid chars:  # wall   . path   * power cell   G goal   S start
+   dir: 0=up 1=right 2=down 3=left
+   budget: max tokens allowed (forces players to discover loops)            */
+const DIR_S = {N:0,E:1,S:2,W:3};
+const LEVELS = [
+  {
+    name:'1 · First Steps',
+    lesson:'A program is a <b>workflow</b>: a list of commands run top to bottom. Reach the goal with Forward commands.',
+    dir:DIR_S.E, budget:6,
+    grid:[
+      '#######',
+      '#S...G#',
+      '#######',
+    ],
+  },
+  {
+    name:'2 · The Long Hall',
+    lesson:'This hall needs 7 Forwards but your budget is only 5. A <b>Repeat loop</b> runs the same step many times — that is its power.',
+    dir:DIR_S.E, budget:5,
+    grid:[
+      '##########',
+      '#S......G#',
+      '##########',
+    ],
+  },
+  {
+    name:'3 · Turn the Corner',
+    lesson:'Combine a <b>Repeat loop</b> with a Turn. Go up the column, turn, then run along the row.',
+    dir:DIR_S.N, budget:9,
+    grid:[
+      '######',
+      '#...G#',
+      '#.####',
+      '#.####',
+      '#S####',
+      '######',
+    ],
+  },
+  {
+    name:'4 · Power Collector',
+    lesson:'Five power cells in a row. A <b>While loop</b> repeats <i>while a condition holds</i> — loop “while cells remain”, then step onto the goal.',
+    dir:DIR_S.E, budget:7,
+    grid:[
+      '#########',
+      '#S*****G#',
+      '#########',
+    ],
+  },
+  {
+    name:'5 · Into the Unknown',
+    lesson:'You do not know the corridor length. Loop “while path ahead is clear”. It runs past 10 steps — watch the <b>Loop Guard</b> step in.',
+    dir:DIR_S.E, budget:5,
+    grid:[
+      '##############',
+      '#S..........G#',
+      '##############',
+    ],
+  },
+];
+
+/* ---- State -------------------------------------------------------------- */
+let levelIx = 0;
+let program = [];        // tokens: {t, n?, cond?}
+let world = null;        // live sim state during a run
+let runToken = 0;        // increments to cancel in-flight runs
+let activeLine = -1;     // highlighted program line during run
+
+const $ = id => document.getElementById(id);
+const canvas = $('canvas'), ctx = canvas.getContext('2d');
+
+/* ---- Level / world helpers --------------------------------------------- */
+function findStart(grid){
+  for(let r=0;r<grid.length;r++)for(let c=0;c<grid[r].length;c++)
+    if(grid[r][c]==='S') return {r,c};
+  return {r:0,c:0};
+}
+function findGoal(grid){
+  for(let r=0;r<grid.length;r++)for(let c=0;c<grid[r].length;c++)
+    if(grid[r][c]==='G') return {r,c};
+  return null;
+}
+function countCells(grid){
+  let n=0; for(const row of grid) for(const ch of row) if(ch==='*') n++;
+  return n;
+}
+function freshWorld(){
+  const L = LEVELS[levelIx];
+  const cells = new Set();
+  L.grid.forEach((row,r)=>[...row].forEach((ch,c)=>{ if(ch==='*') cells.add(r+','+c); }));
+  const s = findStart(L.grid);
+  return {
+    grid:L.grid, goal:findGoal(L.grid), totalCells:countCells(L.grid),
+    pos:{r:s.r,c:s.c}, dir:L.dir, cells, collected:0, steps:0,
+  };
+}
+function walkable(w,r,c){
+  if(r<0||r>=w.grid.length||c<0||c>=w.grid[r].length) return false;
+  return w.grid[r][c] !== '#';
+}
+const DR=[-1,0,1,0], DC=[0,1,0,-1];
+function ahead(w){ return {r:w.pos.r+DR[w.dir], c:w.pos.c+DC[w.dir]}; }
+
+/* ---- Drawing ------------------------------------------------------------ */
+function draw(w){
+  const rows=w.grid.length, cols=w.grid[0].length, CS=Math.min(48, Math.floor(440/cols));
+  canvas.width=cols*CS; canvas.height=rows*CS;
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){
+    const ch=w.grid[r][c];
+    ctx.fillStyle = ch==='#' ? '#080a18' : '#2a3168';
+    ctx.fillRect(c*CS,r*CS,CS-1,CS-1);
+    if(w.goal && w.goal.r===r && w.goal.c===c){
+      ctx.fillStyle='#46e08a'; ctx.fillRect(c*CS+CS*0.18,r*CS+CS*0.18,CS*0.64,CS*0.64);
+      ctx.fillStyle='#06231a'; ctx.font=`${CS*0.5}px serif`; ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText('★', c*CS+CS/2, r*CS+CS/2+1);
+    }
+    if(w.cells.has(r+','+c)){
+      ctx.fillStyle='#ffd23f'; ctx.font=`${CS*0.55}px serif`; ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText('⚡', c*CS+CS/2, r*CS+CS/2+1);
+    }
+  }
+  // robot
+  const {r,c}=w.pos, x=c*CS+CS/2, y=r*CS+CS/2;
+  ctx.save(); ctx.translate(x,y); ctx.rotate(w.dir*Math.PI/2);
+  ctx.fillStyle='#3fb6ff';
+  ctx.beginPath();
+  ctx.moveTo(0,-CS*0.32); ctx.lineTo(CS*0.26,CS*0.26); ctx.lineTo(0,CS*0.1); ctx.lineTo(-CS*0.26,CS*0.26);
+  ctx.closePath(); ctx.fill();
+  ctx.fillStyle='#06223a'; ctx.beginPath(); ctx.arc(0,-CS*0.05,CS*0.08,0,7); ctx.fill();
+  ctx.restore();
+}
+
+/* ---- Program rendering -------------------------------------------------- */
+function renderProgram(){
+  const el=$('prog');
+  if(program.length===0){ el.innerHTML='<div class="ln empty">// empty — add commands &amp; loops →</div>'; }
+  else{
+    let depth=0, html='';
+    program.forEach((tk,i)=>{
+      if(tk.t==='END') depth=Math.max(0,depth-1);
+      const pad='  '.repeat(depth);
+      let txt='', cls='';
+      switch(tk.t){
+        case 'FWD': txt='forward'; break;
+        case 'LEFT': txt='turn left'; break;
+        case 'RIGHT': txt='turn right'; break;
+        case 'COLLECT': txt='collect ⚡'; break;
+        case 'REPEAT': txt=`<span class="kw">repeat ${tk.n} times {</span>`; cls='kw'; break;
+        case 'WHILE': txt=`<span class="wh">while ${tk.cond==='clear'?'path ahead clear':'cells remain'} {</span>`; break;
+        case 'END': txt='<span class="end">}</span>'; break;
+      }
+      html+=`<div class="ln${i===activeLine?' active':''}">${pad}${txt}</div>`;
+      if(tk.t==='REPEAT'||tk.t==='WHILE') depth++;
+    });
+    el.innerHTML=html;
+    const active=el.querySelector('.active'); if(active) active.scrollIntoView({block:'nearest'});
+  }
+  // budget + depth
+  const L=LEVELS[levelIx], used=program.length, over=used>L.budget;
+  const b=$('budget'); b.textContent=`${used} / ${L.budget} tokens`;
+  b.className='budget'+(over?' over':'');
+  $('depthHint').textContent = openDepth()>0 ? `${openDepth()} loop(s) open` : '';
+  // enable/disable controls
+  const balanced=openDepth()===0;
+  $('run').disabled = program.length===0 || !balanced;
+  $('step').disabled = program.length===0 || !balanced;
+  $('addEnd').disabled = openDepth()===0;
+}
+function openDepth(){
+  let d=0; for(const tk of program){ if(tk.t==='REPEAT'||tk.t==='WHILE') d++; else if(tk.t==='END') d--; }
+  return Math.max(0,d);
+}
+
+/* ---- Editing ------------------------------------------------------------ */
+function canAdd(){
+  if(program.length>=LEVELS[levelIx].budget){
+    setStatus('err','Out of budget! Use a loop to do more with fewer commands.');
+    return false;
+  }
+  return true;
+}
+function addToken(tk){ if(!canAdd())return; program.push(tk); resetRun(); renderProgram(); }
+
+document.querySelectorAll('button.cmd').forEach(btn=>
+  btn.onclick=()=>addToken({t:btn.dataset.cmd}));
+$('addRepeat').onclick=()=>{
+  const n=Math.max(1,Math.min(50,parseInt($('repeatN').value)||1));
+  addToken({t:'REPEAT',n});
+};
+$('addWhile').onclick=()=>addToken({t:'WHILE',cond:$('whileCond').value});
+$('addEnd').onclick=()=>{ if(openDepth()>0) addToken({t:'END'}); };
+$('undo').onclick=()=>{ program.pop(); resetRun(); renderProgram(); };
+$('clear').onclick=()=>{ program=[]; resetRun(); renderProgram(); };
+
+/* ---- Loop matching / validation ---------------------------------------- */
+function matchEnds(){
+  const map={}, stack=[];
+  program.forEach((tk,i)=>{
+    if(tk.t==='REPEAT'||tk.t==='WHILE') stack.push(i);
+    else if(tk.t==='END'){ const o=stack.pop(); map[o]=i; map[i]=o; }
+  });
+  return map;
+}
+function condTrue(w,cond){
+  if(cond==='clear'){ const a=ahead(w); return walkable(w,a.r,a.c); }
+  if(cond==='cells'){ return w.collected < w.totalCells; }
+  return false;
+}
+
+/* ---- Interpreter (one primitive per step) ------------------------------- */
+let interp=null;
+function startInterp(){
+  world=freshWorld();
+  interp={
+    ip:0, stack:[], match:matchEnds(), done:false, crashed:false, won:false,
+  };
+  activeLine=-1;
+}
+// returns: 'action' | 'win' | 'done' | 'crash' | 'confirm'
+function stepInterp(){
+  const w=world, S=interp;
+  while(true){
+    if(S.ip>=program.length){ S.done=true; return checkWin()?'win':'done'; }
+    activeLine=S.ip;
+    const tk=program[S.ip];
+    switch(tk.t){
+      case 'FWD':{
+        const a=ahead(w);
+        if(!walkable(w,a.r,a.c)){ S.crashed=true; return 'crash'; }
+        w.pos={r:a.r,c:a.c}; w.steps++; S.ip++;
+        if(checkWin()){ S.won=true; return 'win'; }
+        return 'action';
+      }
+      case 'LEFT':  w.dir=(w.dir+3)%4; S.ip++; return 'action';
+      case 'RIGHT': w.dir=(w.dir+1)%4; S.ip++; return 'action';
+      case 'COLLECT':{
+        const k=w.pos.r+','+w.pos.c;
+        if(w.cells.has(k)){ w.cells.delete(k); w.collected++; }
+        S.ip++;
+        if(checkWin()){ S.won=true; return 'win'; }
+        return 'action';
+      }
+      case 'REPEAT':{
+        if(tk.n<=0){ S.ip=S.match[S.ip]+1; break; }
+        S.stack.push({type:'repeat',start:S.ip,iter:1,count:tk.n,limit:MAX_LOOP_BEFORE_ASK});
+        S.ip++; break;
+      }
+      case 'WHILE':{
+        if(condTrue(w,tk.cond)){
+          S.stack.push({type:'while',start:S.ip,iter:1,cond:tk.cond,limit:MAX_LOOP_BEFORE_ASK});
+          S.ip++;
+        } else { S.ip=S.match[S.ip]+1; }
+        break;
+      }
+      case 'END':{
+        const f=S.stack[S.stack.length-1];
+        let again=false;
+        if(f.type==='repeat') again = f.iter < f.count;
+        else again = condTrue(w,f.cond);
+        if(again){
+          f.iter++;
+          if(f.iter > f.limit){ S.pending=f; return 'confirm'; }  // LOOP GUARD
+          S.ip=f.start+1;
+        } else { S.stack.pop(); S.ip++; }
+        break;
+      }
+    }
+  }
+}
+function checkWin(){
+  const w=world;
+  return w.goal && w.pos.r===w.goal.r && w.pos.c===w.goal.c && w.collected===w.totalCells;
+}
+
+/* ---- Run / Step / Reset ------------------------------------------------- */
+function setStatus(kind,msg){ const s=$('status'); s.className='status '+kind; s.textContent=msg; }
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+
+function resetRun(){
+  runToken++; interp=null; activeLine=-1;
+  world=freshWorld(); draw(world);
+  setStatus('info','Build a program, then press Run ▶');
+  renderProgram();
+}
+
+async function afterStep(code){
+  draw(world); renderProgram();
+  if(code==='win'){ onWin(); return true; }
+  if(code==='done'){ setStatus('err','Program ended but the goal isn’t solved. Adjust your workflow.'); return true; }
+  if(code==='crash'){ setStatus('err','💥 The robot bumped into a wall! Check your loop counts.'); return true; }
+  return false;
+}
+
+async function run(){
+  const my=++runToken;
+  startInterp();
+  setStatus('info','Running…');
+  const speed=()=>parseInt($('speed').value);
+  let guard=0;
+  while(true){
+    if(my!==runToken) return;            // cancelled
+    if(guard++>5000){ setStatus('err','Stopped: too many steps.'); return; }
+    const code=stepInterp();
+    if(code==='confirm'){
+      draw(world); renderProgram();
+      const cont=await askLoopGuard(interp.pending);
+      if(my!==runToken) return;
+      if(cont){ interp.pending.limit+=MAX_LOOP_BEFORE_ASK; interp.ip=interp.pending.start+1; }
+      else{ const f=interp.pending; interp.stack.pop(); interp.ip=interp.match[f.start]+1; }
+      interp.pending=null;
+      continue;
+    }
+    const ended=await afterStep(code);
+    if(ended) return;
+    await sleep(speed());
+    if(my!==runToken) return;
+  }
+}
+
+async function stepOnce(){
+  if(!interp || interp.done || interp.crashed || interp.won){ startInterp(); setStatus('info','Stepping…'); }
+  const code=stepInterp();
+  if(code==='confirm'){
+    draw(world); renderProgram();
+    const cont=await askLoopGuard(interp.pending);
+    if(cont){ interp.pending.limit+=MAX_LOOP_BEFORE_ASK; interp.ip=interp.pending.start+1; }
+    else{ const f=interp.pending; interp.stack.pop(); interp.ip=interp.match[f.start]+1; }
+    interp.pending=null;
+    return;
+  }
+  await afterStep(code);
+}
+
+/* ---- Loop Guard modal --------------------------------------------------- */
+function askLoopGuard(frame){
+  const kind = frame.type==='while' ? 'while-loop' : 'repeat-loop';
+  $('guardMsg').innerHTML =
+    `This <b>${kind}</b> has repeated <b>${frame.iter-1}</b> times — reaching the limit of `+
+    `<b>${MAX_LOOP_BEFORE_ASK}</b>. Keep looping, or stop it here?`;
+  $('overlay').classList.add('show');
+  return new Promise(resolve=>{
+    const done=v=>{ $('overlay').classList.remove('show'); $('contLoop').onclick=null; $('stopLoop').onclick=null; resolve(v); };
+    $('contLoop').onclick=()=>done(true);
+    $('stopLoop').onclick=()=>done(false);
+  });
+}
+
+function onWin(){
+  const last = levelIx===LEVELS.length-1;
+  setStatus('ok', last
+    ? '🏆 You solved every level! You’ve mastered sequences, Repeat, While, and the Loop Guard.'
+    : `✅ Solved with ${program.length} token(s)! Press “Next ▶” for a tougher loop.`);
+}
+
+/* ---- Level navigation --------------------------------------------------- */
+function loadLevel(ix){
+  levelIx=(ix+LEVELS.length)%LEVELS.length;
+  program=[]; runToken++; interp=null; activeLine=-1;
+  const L=LEVELS[levelIx];
+  $('lvlName').textContent=L.name;
+  $('lvlPill').textContent=`${levelIx+1} / ${LEVELS.length}`;
+  $('lvlLesson').innerHTML=L.lesson;
+  world=freshWorld(); draw(world);
+  setStatus('info','Build a program, then press Run ▶');
+  renderProgram();
+}
+$('prevLvl').onclick=()=>loadLevel(levelIx-1);
+$('nextLvl').onclick=()=>loadLevel(levelIx+1);
+$('run').onclick=run;
+$('step').onclick=stepOnce;
+$('reset').onclick=resetRun;
+
+/* ---- Boot --------------------------------------------------------------- */
+loadLevel(0);
+</script>
+</body>
+</html>
