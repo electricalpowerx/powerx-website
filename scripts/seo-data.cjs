@@ -34,7 +34,7 @@ const SITE = {
   jobsCompleted: "1000+",
   // Optional: add your Technical Safety BC contractor licence number to display it
   // site-wide for E-E-A-T (leave "" to hide the line). e.g. "LEC0201234".
-  licenseNumber: "",
+  licenseNumber: "LEL0212609",
 };
 
 /* Services that get a programmatic page for every city (service × city matrix).

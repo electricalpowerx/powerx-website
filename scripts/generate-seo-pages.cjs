@@ -160,7 +160,7 @@ function footer() {
       </div>
 
       <div class="mt-12 pt-8 border-t border-white/10 text-xs flex flex-col md:flex-row gap-y-2 md:items-center justify-between">
-        <div>© 2026 ${esc(SITE.name)}. All rights reserved. Licensed Electrical Contractor in British Columbia.</div>
+        <div>© 2026 ${esc(SITE.name)}. All rights reserved. Licensed electrical contractor — TSBC ${esc(SITE.licenseNumber)}.</div>
         <div>${esc(SITE.address.street)}, ${esc(SITE.address.city)}, ${esc(SITE.address.region)} ${esc(SITE.address.postal)}</div>
       </div>
     </div>
@@ -218,6 +218,21 @@ function localBusinessSchema(extra = {}) {
       },
       geo: { "@type": "GeoCoordinates", latitude: SITE.geo.lat, longitude: SITE.geo.lng },
       sameAs: SITE.sameAs,
+      ...(SITE.licenseNumber
+        ? {
+            hasCredential: {
+              "@type": "EducationalOccupationalCredential",
+              name: "Licensed Electrical Contractor — Technical Safety BC",
+              credentialCategory: "license",
+              identifier: SITE.licenseNumber,
+              recognizedBy: {
+                "@type": "Organization",
+                name: "Technical Safety BC",
+                url: "https://www.technicalsafetybc.ca/",
+              },
+            },
+          }
+        : {}),
       areaServed: LOCATIONS.map((l) => ({ "@type": "City", name: l.city + ", BC" })),
       aggregateRating: {
         "@type": "AggregateRating",
@@ -1146,7 +1161,7 @@ function aboutPage() {
     "BC Licensed Electricians",
     "Comprehensive Liability Insurance",
     "WorkSafeBC (WCB) Registered",
-    "Technical Safety BC Compliant",
+    SITE.licenseNumber ? `Technical Safety BC — TSBC ${SITE.licenseNumber}` : "Technical Safety BC Compliant",
     "BC Electrical Code on every job",
     "Google Guaranteed Business",
   ];
