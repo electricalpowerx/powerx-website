@@ -1163,7 +1163,6 @@ function aboutPage() {
     "WorkSafeBC (WCB) Registered",
     SITE.licenseNumber ? `Technical Safety BC — TSBC ${SITE.licenseNumber}` : "Technical Safety BC Compliant",
     "BC Electrical Code on every job",
-    "Google Guaranteed Business",
   ];
   const licenceLine = SITE.licenseNumber
     ? `<div class="font-semibold text-[var(--px-navy)]">✓ Technical Safety BC Licence&nbsp;#${esc(SITE.licenseNumber)}</div>`
