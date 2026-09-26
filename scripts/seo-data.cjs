@@ -115,6 +115,9 @@ const SERVICES = [
   },
   {
     slug: "electrical-panel-upgrades",
+    // Canonical owner-set price (hero line + cost FAQs on service & city pages)
+    priceLine: "Starting at $4,299 • Final price confirmed after an on-site assessment",
+    priceNote: "Panel upgrades start at $4,299. The final price is confirmed after an on-site assessment.",
     category: "residential",
     nav: "Electrical Panel Upgrades",
     h1: "Electrical Panel Upgrades & Replacements",
@@ -148,7 +151,7 @@ const SERVICES = [
       ["Inspection & sign-off", "A Technical Safety BC inspection confirms the work, and we hand you the paperwork."],
     ],
     faqs: [
-      ["How much does a panel upgrade cost?", "Most residential 200A upgrades fall in a predictable range depending on your meter base, service mast and BC Hydro requirements. We give you a fixed written quote after a quick assessment — no guesswork."],
+      ["How much does a panel upgrade cost?", "Panel upgrades start at $4,299. The final price is confirmed after an on-site assessment."],
       ["Do I need a 200A panel for an EV charger?", "Not always — it depends on your current load. We run a calculation first. Many homes can add a Level 2 charger on a 100A service, but a 200A upgrade future-proofs you for heat pumps and more."],
       ["Will my power be out during the upgrade?", "Power is off only for part of the day while we swap the panel. We schedule efficiently and coordinate with BC Hydro to keep the outage as short as possible."],
     ],
@@ -156,6 +159,8 @@ const SERVICES = [
   },
   {
     slug: "electrical-service-upgrades",
+    priceLine: "Starting at $4,299 • Final price confirmed after an on-site assessment",
+    priceNote: "200A service upgrades start at $4,299. The final price is confirmed after an on-site assessment.",
     category: "residential",
     nav: "200A Service Upgrades",
     h1: "200A Electrical Service Upgrades",
@@ -192,11 +197,14 @@ const SERVICES = [
       ["What's the difference between a panel upgrade and a service upgrade?", "A panel upgrade replaces the breaker box. A service upgrade increases the actual capacity feeding your home — mast, meter base, disconnect and panel. We'll tell you which one you actually need."],
       ["Do I need a service upgrade for a secondary suite?", "Often yes. Suites add significant load and may require a larger service plus separate metering or sub-panels. We design it to meet code and your municipality's requirements."],
       ["How long does a service upgrade take?", "Most residential service upgrades are completed in a day, with a portion of that day on a planned power outage. Larger or 400A jobs may take longer."],
+      ["How much does a 200A service upgrade cost?", "200A service upgrades start at $4,299. The final price is confirmed after an on-site assessment."],
     ],
     related: ["electrical-panel-upgrades", "ev-charger-installation", "home-rewiring"],
   },
   {
     slug: "ev-charger-installation",
+    priceLine: "Starting at $599 • Final price depends on your panel capacity and the distance to the charger location",
+    priceNote: "Level 2 EV charger installation starts at $599. The final price depends on your panel capacity and the distance to the charger location.",
     category: "residential",
     nav: "EV Charger Installation",
     h1: "EV Charger Installation (Level 2)",
@@ -225,7 +233,7 @@ const SERVICES = [
     stepsTitle: "From quote to charging",
     steps: [
       ["Panel assessment", "We check your panel capacity and the best route from panel to parking spot."],
-      ["Fixed quote", "You get a clear price including the charger, circuit, permit and any load management."],
+      ["Fixed quote", "You get a clear, fixed price for your installation before any work begins."],
       ["Clean install", "We mount the charger, run the circuit neatly and energize it with a permit on file."],
       ["Tested & ready", "We test a real charge session and walk you through the app and settings."],
     ],
@@ -233,6 +241,7 @@ const SERVICES = [
       ["Can my home handle a Level 2 charger?", "Most can. We run a load calculation first. If your panel is tight, load-management devices or a panel upgrade let you charge safely — we'll lay out the options."],
       ["Are there rebates for EV chargers?", "Yes — BC and federal programs periodically offer EV charger rebates for homes, stratas and businesses. We install to the standard these programs require and help with the paperwork."],
       ["Do I need a permit to install an EV charger?", "Yes. A Level 2 charger is a permitted electrical installation in BC. We pull the permit and arrange inspection so your install is legal and insurable."],
+      ["How much does EV charger installation cost?", "Level 2 EV charger installation starts at $599. The final price depends on your panel capacity and the distance to the charger location."],
     ],
     related: ["electrical-panel-upgrades", "electrical-service-upgrades", "emergency-electrician"],
   },
@@ -319,6 +328,8 @@ const SERVICES = [
   },
   {
     slug: "lighting-installation",
+    priceLine: "Pot lights from $150 per light (6-light minimum)",
+    priceNote: "Pot light installation starts from $150 per light (6-light minimum).",
     category: "residential",
     nav: "Lighting & Pot Lights",
     h1: "Lighting Installation, Pot Lights & Smart Controls",
@@ -355,6 +366,7 @@ const SERVICES = [
       ["How many pot lights do I need in a room?", "It depends on ceiling height, room size and purpose. As a rough guide we space them for even, shadow-free light — we'll lay out a plan for your specific room during the quote."],
       ["Can you install pot lights without major drywall damage?", "In most ceilings yes — we cut clean openings and fish wiring through the cavity. Some patching may be needed where access is tight, and we'll tell you up front."],
       ["Are smart lighting systems worth it?", "If you want scenes, scheduling and app/voice control, yes. Systems like Lutron are reliable and add real convenience. We'll match the system to your goals and budget."],
+      ["How much does pot light installation cost?", "Pot light installation starts from $150 per light (6-light minimum)."],
     ],
     related: ["home-rewiring", "ev-charger-installation", "led-lighting-retrofits"],
   },
@@ -401,6 +413,8 @@ const SERVICES = [
   },
   {
     slug: "hot-tub-pool-wiring",
+    priceLine: "Hot tub wiring from $1,500 • Pool wiring quoted per job",
+    priceNote: "Hot tub wiring starts from $1,500. The final price depends on your panel capacity and the distance to the hot tub. Pool wiring is quoted per job.",
     category: "residential",
     nav: "Hot Tub & Pool Wiring",
     h1: "Hot Tub & Pool Electrical Wiring",
@@ -436,6 +450,7 @@ const SERVICES = [
       ["Why does a hot tub need special wiring?", "Hot tubs combine water and 240V power, so code requires GFCI protection, a disconnect within reach, and bonding to prevent shock. A standard outlet is not safe or legal for a spa."],
       ["Do I need a permit for hot tub wiring?", "Yes. Spa and pool circuits are permitted electrical work in BC. We pull the permit and arrange inspection so it's safe and insurable."],
       ["Will my panel handle a hot tub?", "Many do, but spas draw significant load. We run a calculation first and, if needed, recommend a panel or service upgrade in the same visit."],
+      ["How much does hot tub wiring cost?", "Hot tub wiring starts from $1,500. The final price depends on your panel capacity and the distance to the hot tub. Pool wiring is quoted per job."],
     ],
     related: ["electrical-panel-upgrades", "electrical-service-upgrades", "emergency-electrician"],
   },

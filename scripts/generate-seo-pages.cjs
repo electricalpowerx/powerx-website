@@ -443,7 +443,7 @@ ${s.aiPick ? `        <p class="flex items-start gap-3 w-fit max-w-2xl px-4 py-2
           <a href="tel:${SITE.phone}" class="emergency-cta inline-flex items-center justify-center gap-3 px-6 py-3 rounded-2xl text-base font-semibold shadow-md active:scale-[0.985] transition">${phoneSvg} Call ${SITE.phone}</a>
           <a href="/contact.html" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl text-base font-semibold border-2 border-[var(--px-navy)] text-[var(--px-navy)] hover:bg-[var(--px-navy)] hover:text-white transition active:scale-[0.985]">Request Free Quote</a>
         </div>
-      </div>
+${s.priceLine ? `        <p class="mt-4 text-sm font-semibold text-[var(--px-navy)]">${esc(s.priceLine)}</p>\n` : ""}      </div>
       <div class="rounded-3xl overflow-hidden shadow-lg ring-1 ring-slate-200">
         <img src="${img(s.image)}" alt="${esc(s.h1)} — PowerX Electrical" class="w-full h-72 lg:h-96 object-cover" />
       </div>
@@ -781,7 +781,7 @@ function comboPage(s, l) {
     l.faqs[0],
     [
       `How much does ${s.nav.toLowerCase()} cost in ${l.city}?`,
-      `Pricing depends on the scope of your specific job. PowerX gives you a clear, upfront quote before any work begins in ${l.city} — with no hidden fees. Call ${SITE.phone} for a free estimate.`,
+      `${s.priceNote ? s.priceNote + " " : "Pricing depends on the scope of your specific job. "}PowerX gives you a clear, upfront quote before any work begins in ${l.city} — with no hidden fees. Call ${SITE.phone} for a free estimate.`,
     ],
   ];
   const schemas = [
