@@ -383,6 +383,7 @@ function faqBlock(faqs) {
 /* ---------- SERVICE PAGE ---------- */
 
 function servicePage(s) {
+  const pageFaqs = [...(s.leadFaqs || []), ...s.faqs];
   const canonical = svcUrl(s.slug);
   const crumbs = [
     { name: "Home", url: "/index.html" },
@@ -401,7 +402,7 @@ function servicePage(s) {
       areaServed: LOCATIONS.map((l) => l.city + ", BC"),
       url: SITE.domain + canonical,
     },
-    faqSchema(s.faqs),
+    faqSchema(pageFaqs),
     breadcrumbSchema(crumbs),
   ];
   const related = (s.related || [])
@@ -451,7 +452,7 @@ ${breadcrumbBar(crumbs)}
 
   <section class="section max-w-3xl mx-auto px-4 sm:px-6">
     <div class="prose prose-slate max-w-none text-[var(--px-text-light)] text-lg leading-relaxed space-y-5">
-      ${s.intro.map((p) => `<p>${esc(p)}</p>`).join("\n      ")}
+      ${s.answerIntro ? `<p>${esc(s.answerIntro)}</p>\n      ` : ""}${s.intro.map((p) => `<p>${esc(p)}</p>`).join("\n      ")}
     </div>
   </section>
 
@@ -462,7 +463,7 @@ ${breadcrumbBar(crumbs)}
     </div>
   </section>
 
-  ${faqBlock(s.faqs)}
+  ${faqBlock(pageFaqs)}
 ${citiesBlock}
 
   <section class="section bg-[var(--px-offwhite)] border-y border-slate-100">
@@ -559,7 +560,7 @@ ${breadcrumbBar(crumbs)}
         <div class="mt-9 flex flex-wrap gap-x-8 gap-y-3 text-sm text-[var(--px-text-muted)]">
           <div><span class="font-semibold text-[var(--px-navy)]">Licensed &amp; Insured</span> in BC</div>
           <div><span class="font-semibold text-[var(--px-navy)]">30–60 min</span> emergency response</div>
-          <div><span class="font-semibold text-[var(--px-navy)]">${SITE.rating} ★</span> ${SITE.reviewCount}+ Google reviews</div>
+          <div><span class="font-semibold text-[var(--px-navy)]">${SITE.rating} ★</span> ${SITE.reviewCount} Google reviews</div>
         </div>
       </div>
     </div>
@@ -1108,7 +1109,7 @@ function buildLlmsTxt() {
   const lines = [];
   lines.push(`# ${SITE.name}`);
   lines.push("");
-  lines.push(`> Licensed, insured 24/7 emergency electrician serving Surrey and the entire Lower Mainland & Fraser Valley, British Columbia, Canada. Phone: ${SITE.phone}. Based at ${SITE.address.street}, ${SITE.address.city}, ${SITE.address.region} ${SITE.address.postal}. Rated ${SITE.rating}/5 from ${SITE.reviewCount}+ Google reviews.`);
+  lines.push(`> Licensed, insured 24/7 emergency electrician serving Surrey and the entire Lower Mainland & Fraser Valley, British Columbia, Canada. Phone: ${SITE.phone}. Based at ${SITE.address.street}, ${SITE.address.city}, ${SITE.address.region} ${SITE.address.postal}. Rated ${SITE.rating}/5 from ${SITE.reviewCount} Google reviews.`);
   lines.push("");
   lines.push("PowerX Electrical Ltd is a local electrical contractor offering transparent flat-rate pricing, 30–60 minute emergency response, and code-compliant work to the BC Electrical Code. Services cover residential, commercial, industrial and strata electrical.");
   lines.push("");
@@ -1214,7 +1215,7 @@ ${breadcrumbBar(crumbs)}
         <div class="grid grid-cols-2 gap-6 text-center">
           <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.yearsExperience)}</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Years in Business</div></div>
           <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.jobsCompleted)}</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Jobs Completed</div></div>
-          <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.rating)}★</div><div class="text-sm text-[var(--px-text-muted)] mt-1">From ${esc(SITE.reviewCount)}+ Reviews</div></div>
+          <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.rating)}★</div><div class="text-sm text-[var(--px-text-muted)] mt-1">From ${esc(SITE.reviewCount)} Reviews</div></div>
           <div><div class="text-4xl font-bold text-[var(--px-navy)]">24/7</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Emergency Response</div></div>
         </div>
       </div>

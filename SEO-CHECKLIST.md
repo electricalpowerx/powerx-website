@@ -102,7 +102,7 @@ This is your cross-check sheet. It maps what's been built against the factors **
 
 ## 7. Verify the trust claims (do before launch)
 
-The site states **4.9★ / 80+ reviews** and **8+ years**. Make sure these are accurate and match GBP exactly — schema `aggregateRating` should never overstate, or it can be flagged. Update the numbers in `scripts/seo-data.cjs` (`SITE.rating`, `SITE.reviewCount`) and re-run the generator if they change.
+The site states **5.0★ / 90 reviews** and **8+ years**. Make sure these are accurate and match GBP exactly — schema `aggregateRating` should never overstate, or it can be flagged. Update the numbers in `scripts/seo-data.cjs` (`SITE.rating`, `SITE.reviewCount`) and re-run the generator if they change.
 
 ---
 
