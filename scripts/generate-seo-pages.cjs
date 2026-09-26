@@ -1315,29 +1315,36 @@ function write(rel, content) {
   console.log("  ✓ " + rel);
 }
 
-console.log("Generating SEO silo pages…");
-write("about.html", aboutPage());
-write("services.html", servicesHub());
-write("service-areas.html", areasHub());
-SERVICES.forEach((s) => write(`services/${s.slug}.html`, servicePage(s)));
-LOCATIONS.forEach((l) => write(`locations/electrician-${l.slug}.html`, locationPage(l)));
+function main() {
+  console.log("Generating SEO silo pages…");
+  write("about.html", aboutPage());
+  write("services.html", servicesHub());
+  write("service-areas.html", areasHub());
+  SERVICES.forEach((s) => write(`services/${s.slug}.html`, servicePage(s)));
+  LOCATIONS.forEach((l) => write(`locations/electrician-${l.slug}.html`, locationPage(l)));
 
-let comboCount = 0;
-comboServices.forEach((s) =>
-  LOCATIONS.forEach((l) => {
-    write(`local/${s.slug}-${l.slug}.html`, comboPage(s, l));
-    comboCount++;
-  })
-);
+  let comboCount = 0;
+  comboServices.forEach((s) =>
+    LOCATIONS.forEach((l) => {
+      write(`local/${s.slug}-${l.slug}.html`, comboPage(s, l));
+      comboCount++;
+    })
+  );
 
-NEIGHBOURHOODS.forEach((n) => write(`locations/electrician-${n.slug}.html`, neighbourhoodPage(n)));
+  NEIGHBOURHOODS.forEach((n) => write(`locations/electrician-${n.slug}.html`, neighbourhoodPage(n)));
 
-write("blog.html", blogHub());
-BLOG.forEach((p) => write(`blog/${p.slug}.html`, blogPostPage(p)));
+  write("blog.html", blogHub());
+  BLOG.forEach((p) => write(`blog/${p.slug}.html`, blogPostPage(p)));
 
-write("public/sitemap.xml", buildSitemap());
-write("public/llms.txt", buildLlmsTxt());
+  write("public/sitemap.xml", buildSitemap());
+  write("public/llms.txt", buildLlmsTxt());
 
-console.log(
-  `\nDone: ${SERVICES.length} services, ${LOCATIONS.length} cities, ${NEIGHBOURHOODS.length} neighbourhoods, ${comboCount} combo pages, ${BLOG.length} blog posts, 3 hubs, sitemap.xml, llms.txt.`
-);
+  console.log(
+    `\nDone: ${SERVICES.length} services, ${LOCATIONS.length} cities, ${NEIGHBOURHOODS.length} neighbourhoods, ${comboCount} combo pages, ${BLOG.length} blog posts, 3 hubs, sitemap.xml, llms.txt.`
+  );
+  // Keep hand-built (legacy) pages on the shared stylesheet + nav/footer chrome.
+  require("./fix-legacy-pages.cjs").run();
+}
+
+module.exports = { nav, footer, floatingButtons, mobileScript, phoneSvg, locUrl, LOCATIONS, NEIGHBOURHOODS };
+if (require.main === module) main();

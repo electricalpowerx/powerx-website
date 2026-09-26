@@ -1,0 +1,21 @@
+# Netlify redirects (copied to dist/ by Vite from public/).
+# Retired root-level city stubs -> generated city pages. Keep in sync with
+# RETIRED_CITY_STUBS / SLUG_FIXES in scripts/fix-legacy-pages.cjs.
+/electrician-abbotsford.html  /locations/electrician-abbotsford.html  301
+/electrician-abbotsford  /locations/electrician-abbotsford.html  301
+/electrician-coquitlam.html  /locations/electrician-coquitlam.html  301
+/electrician-coquitlam  /locations/electrician-coquitlam.html  301
+/electrician-delta.html  /locations/electrician-delta.html  301
+/electrician-delta  /locations/electrician-delta.html  301
+/electrician-langley.html  /locations/electrician-langley.html  301
+/electrician-langley  /locations/electrician-langley.html  301
+/electrician-maple-ridge.html  /locations/electrician-maple-ridge.html  301
+/electrician-maple-ridge  /locations/electrician-maple-ridge.html  301
+/electrician-surrey.html  /locations/electrician-surrey.html  301
+/electrician-surrey  /locations/electrician-surrey.html  301
+/electrician-white-rock.html  /locations/electrician-white-rock.html  301
+/electrician-white-rock  /locations/electrician-white-rock.html  301
+/electrician-cloverdale.html  /locations/electrician-cloverdale-surrey.html  301
+/electrician-cloverdale  /locations/electrician-cloverdale-surrey.html  301
+/electrician-south-surrey.html  /locations/electrician-south-surrey.html  301
+/electrician-south-surrey  /locations/electrician-south-surrey.html  301
