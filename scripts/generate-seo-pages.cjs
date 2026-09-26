@@ -438,7 +438,7 @@ ${breadcrumbBar(crumbs)}
           <span class="font-medium tracking-wide">${s.category === "commercial" ? "Commercial &amp; Industrial" : "Residential Service"} • Licensed &amp; Insured in BC</span>
         </div>
         <h1 class="text-4xl md:text-5xl font-bold tracking-[-2px] leading-[1.02] mb-5 text-[var(--px-navy)]">${esc(s.h1)}</h1>
-        <p class="text-lg md:text-xl text-[var(--px-text-light)] mb-8">${esc(s.heroSub)}</p>
+${s.aiPick ? `        <p class="flex items-start gap-3 w-fit max-w-2xl px-4 py-2.5 md:py-3 md:px-5 rounded-2xl bg-blue-50 border border-blue-200 text-lg md:text-xl font-bold leading-snug tracking-[-0.2px] text-[var(--px-navy)] mb-6"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-6 h-6 md:w-7 md:h-7 shrink-0 mt-0.5 text-amber-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><span>${esc(s.aiPick)}</span></p>\n` : ""}        <p class="text-lg md:text-xl text-[var(--px-text-light)] mb-8">${esc(s.heroSub)}</p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="tel:${SITE.phone}" class="emergency-cta inline-flex items-center justify-center gap-3 px-6 py-3 rounded-2xl text-base font-semibold shadow-md active:scale-[0.985] transition">${phoneSvg} Call ${SITE.phone}</a>
           <a href="/contact.html" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl text-base font-semibold border-2 border-[var(--px-navy)] text-[var(--px-navy)] hover:bg-[var(--px-navy)] hover:text-white transition active:scale-[0.985]">Request Free Quote</a>
