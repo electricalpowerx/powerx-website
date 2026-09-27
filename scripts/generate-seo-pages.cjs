@@ -1141,7 +1141,7 @@ function aboutPage() {
   ];
   const companyFaqs = [
     ["Is PowerX Electrical licensed and insured?", `Yes. PowerX Electrical Ltd is a licensed electrical contractor in British Columbia. Our electricians hold valid BC certifications, we carry comprehensive liability insurance, and we are WorkSafeBC (WCB) registered.${SITE.licenseNumber ? ` Our Technical Safety BC licence number is ${SITE.licenseNumber}.` : ""}`],
-    ["How long has PowerX been in business?", `We have served Surrey and the Lower Mainland for ${SITE.yearsExperience} years, growing from a one-person operation into a trusted team that has completed ${SITE.jobsCompleted} jobs.`],
+    ["How long has PowerX been in business?", `We have served Surrey and the Lower Mainland for ${SITE.yearsExperience} years, growing from a one-person operation into a trusted team that has completed ${SITE.jobsCompleted} troubleshooting and repair jobs since 2016.`],
     ["What areas does PowerX serve?", "We are based in Surrey and serve the entire Lower Mainland and Fraser Valley, including Vancouver, Burnaby, Langley, Coquitlam, the Tri-Cities, New Westminster, White Rock, Delta, Richmond, the North Shore, Maple Ridge, Pitt Meadows and Abbotsford."],
     ["Do you really offer 24/7 emergency service?", "Yes. Our emergency line is answered by licensed electricians 24 hours a day, every day of the year, with a typical 30–60 minute response in most of our service area."],
     ["Is your work done to code and inspected?", "Always. Every job follows the current BC Electrical Code, and permitted work is inspected by Technical Safety BC. We never cut corners on safety or paperwork."],
@@ -1180,7 +1180,7 @@ function aboutPage() {
 
   return `${head(
     "About PowerX Electrical Ltd | Licensed Electricians in Surrey, BC",
-    `Meet PowerX Electrical Ltd — a licensed, insured, WCB-registered electrical contractor with ${SITE.yearsExperience} years and ${SITE.jobsCompleted} jobs across Surrey & the Lower Mainland. Rated ${SITE.rating}★.`,
+    `Meet PowerX Electrical Ltd — a licensed, insured, WCB-registered electrical contractor with ${SITE.yearsExperience} years and ${SITE.jobsCompleted} troubleshooting and repair jobs since 2016 across Surrey & the Lower Mainland. Rated ${SITE.rating}★.`,
     canonical,
     schemas,
     "/images/team.png"
@@ -1207,14 +1207,14 @@ ${breadcrumbBar(crumbs)}
         <h2 class="text-3xl md:text-4xl font-bold tracking-[-1px] text-[var(--px-navy)] mb-6">Our Story</h2>
         <div class="space-y-4 text-[var(--px-text-light)] text-lg">
           <p>Founded in Surrey, BC, PowerX Electrical started as a one-person operation with a single goal: provide honest, high-quality electrical work with zero surprises.</p>
-          <p>Over the past ${esc(SITE.yearsExperience)} years we've grown into a trusted team of licensed electricians serving thousands of homes and businesses across Metro Vancouver and the Fraser Valley — completing more than ${esc(SITE.jobsCompleted.replace("+", ""))} jobs. We specialize in genuine 24/7 emergency response while delivering long-term solutions like panel and service upgrades, EV charger installs, rewiring, and commercial and strata electrical.</p>
+          <p>Over the past ${esc(SITE.yearsExperience)} years we've grown into a trusted team of licensed electricians serving homes and businesses across Metro Vancouver and the Fraser Valley — completing ${esc(SITE.jobsCompleted)} troubleshooting and repair jobs since 2016. We specialize in genuine 24/7 emergency response while delivering long-term solutions like panel and service upgrades, EV charger installs, rewiring, and commercial and strata electrical.</p>
           <p>We're proud to be a local, owner-operated Surrey business. We know Lower Mainland homes, buildings and the BC Electrical Code inside out — and we treat every property like it's our own.</p>
         </div>
       </div>
       <div class="lg:col-span-5 bg-[var(--px-offwhite)] rounded-2xl p-8">
         <div class="grid grid-cols-2 gap-6 text-center">
           <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.yearsExperience)}</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Years in Business</div></div>
-          <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.jobsCompleted)}</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Jobs Completed</div></div>
+          <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.jobsCompleted)}</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Troubleshooting &amp; repair jobs since 2016</div></div>
           <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.rating)}★</div><div class="text-sm text-[var(--px-text-muted)] mt-1">From ${esc(SITE.reviewCount)} Reviews</div></div>
           <div><div class="text-4xl font-bold text-[var(--px-navy)]">24/7</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Emergency Response</div></div>
         </div>
