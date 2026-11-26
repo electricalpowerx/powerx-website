@@ -11,6 +11,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { execFileSync } = require("child_process");
 const { SITE, SERVICES, LOCATIONS, COMBO_SERVICE_SLUGS, NEIGHBOURHOODS, BLOG, EXISTING_BLOG } = require("./seo-data.cjs");
 
 const ROOT = path.resolve(__dirname, "..");
@@ -1279,11 +1280,67 @@ ${mobileScript}
 
 /* ---------- sitemap ---------- */
 
+/* lastmod = git last-commit date of the page's source file, in America/Los_Angeles. */
+function todayInLosAngeles() {
+  return new Date().toLocaleDateString("en-CA", { timeZone: "America/Los_Angeles" });
+}
+
+function loadGitLastmodMap() {
+  const map = new Map();
+  let out = "";
+  try {
+    out = execFileSync(
+      "git",
+      ["log", "--name-only", "--pretty=format:%cd", "--date=format-local:%Y-%m-%d"],
+      { cwd: ROOT, env: { ...process.env, TZ: "America/Los_Angeles" }, encoding: "utf8", maxBuffer: 50 * 1024 * 1024 }
+    );
+  } catch (err) {
+    console.warn("  ! git log failed; sitemap lastmod will fall back to today:", err.message);
+    return map;
+  }
+  let currentDate = null;
+  for (const line of out.split("\n")) {
+    if (/^\d{4}-\d{2}-\d{2}$/.test(line)) {
+      currentDate = line;
+    } else if (currentDate && line && !map.has(line)) {
+      map.set(line, currentDate);
+    }
+  }
+  return map;
+}
+
+function sourceFileFor(loc) {
+  if (loc === "/") return "index.html";
+  return loc.replace(/^\//, "");
+}
+
+function lastmodFor(loc, gitDates) {
+  const rel = sourceFileFor(loc);
+  if (gitDates.has(rel)) return gitDates.get(rel);
+  try {
+    const date = execFileSync(
+      "git",
+      ["log", "-1", "--format=%cd", "--date=format-local:%Y-%m-%d", "--", rel],
+      { cwd: ROOT, env: { ...process.env, TZ: "America/Los_Angeles" }, encoding: "utf8" }
+    ).trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+      gitDates.set(rel, date);
+      return date;
+    }
+  } catch (_) {
+    /* untracked or not a git checkout */
+  }
+  if (!fs.existsSync(path.join(ROOT, rel))) {
+    console.warn("  ! sitemap source missing for " + loc + " (" + rel + ")");
+  }
+  return todayInLosAngeles();
+}
+
 function buildSitemap() {
-  const today = "2026-05-30";
+  const gitDates = loadGitLastmodMap();
   const urls = [];
   const add = (loc, priority, changefreq) =>
-    urls.push(`  <url>\n    <loc>${SITE.domain}${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`);
+    urls.push(`  <url>\n    <loc>${SITE.domain}${loc}</loc>\n    <lastmod>${lastmodFor(loc, gitDates)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`);
 
   add("/", "1.0", "weekly");
   add("/services.html", "0.9", "weekly");
