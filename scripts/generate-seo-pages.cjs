@@ -11,6 +11,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { execFileSync } = require("child_process");
 const { SITE, SERVICES, LOCATIONS, COMBO_SERVICE_SLUGS, NEIGHBOURHOODS, BLOG, EXISTING_BLOG } = require("./seo-data.cjs");
 
 const ROOT = path.resolve(__dirname, "..");
@@ -1141,7 +1142,7 @@ function aboutPage() {
   ];
   const companyFaqs = [
     ["Is PowerX Electrical licensed and insured?", `Yes. PowerX Electrical Ltd is a licensed electrical contractor in British Columbia. Our electricians hold valid BC certifications, we carry comprehensive liability insurance, and we are WorkSafeBC (WCB) registered.${SITE.licenseNumber ? ` Our Technical Safety BC licence number is ${SITE.licenseNumber}.` : ""}`],
-    ["How long has PowerX been in business?", `We have served Surrey and the Lower Mainland for ${SITE.yearsExperience} years, growing from a one-person operation into a trusted team that has completed ${SITE.jobsCompleted} troubleshooting and repair jobs since 2016.`],
+    ["How long has PowerX been in business?", `We have served Surrey and the Lower Mainland for ${SITE.yearsExperience} years, growing from a one-person operation into a trusted team that has completed ${SITE.jobsCompleted} troubleshooting and repair jobs.`],
     ["What areas does PowerX serve?", "We are based in Surrey and serve the entire Lower Mainland and Fraser Valley, including Vancouver, Burnaby, Langley, Coquitlam, the Tri-Cities, New Westminster, White Rock, Delta, Richmond, the North Shore, Maple Ridge, Pitt Meadows and Abbotsford."],
     ["Do you really offer 24/7 emergency service?", "Yes. Our emergency line is answered by licensed electricians 24 hours a day, every day of the year, with a typical 30–60 minute response in most of our service area."],
     ["Is your work done to code and inspected?", "Always. Every job follows the current BC Electrical Code, and permitted work is inspected by Technical Safety BC. We never cut corners on safety or paperwork."],
@@ -1180,7 +1181,7 @@ function aboutPage() {
 
   return `${head(
     "About PowerX Electrical Ltd | Licensed Electricians in Surrey, BC",
-    `Meet PowerX Electrical Ltd — a licensed, insured, WCB-registered electrical contractor with ${SITE.yearsExperience} years and ${SITE.jobsCompleted} troubleshooting and repair jobs since 2016 across Surrey & the Lower Mainland. Rated ${SITE.rating}★.`,
+    `Meet PowerX Electrical Ltd — a licensed, insured, WCB-registered electrical contractor with ${SITE.yearsExperience} years and ${SITE.jobsCompleted} troubleshooting and repair jobs across Surrey & the Lower Mainland. Rated ${SITE.rating}★.`,
     canonical,
     schemas,
     "/images/team.png"
@@ -1206,15 +1207,15 @@ ${breadcrumbBar(crumbs)}
       <div class="lg:col-span-7">
         <h2 class="text-3xl md:text-4xl font-bold tracking-[-1px] text-[var(--px-navy)] mb-6">Our Story</h2>
         <div class="space-y-4 text-[var(--px-text-light)] text-lg">
-          <p>Founded in Surrey, BC, PowerX Electrical started as a one-person operation with a single goal: provide honest, high-quality electrical work with zero surprises.</p>
-          <p>Over the past ${esc(SITE.yearsExperience)} years we've grown into a trusted team of licensed electricians serving homes and businesses across Metro Vancouver and the Fraser Valley — completing ${esc(SITE.jobsCompleted)} troubleshooting and repair jobs since 2016. We specialize in genuine 24/7 emergency response while delivering long-term solutions like panel and service upgrades, EV charger installs, rewiring, and commercial and strata electrical.</p>
+          <p>Founded in Surrey, BC, in 2022, PowerX Electrical started as a one-person operation with a single goal: provide honest, high-quality electrical work with zero surprises.</p>
+          <p>Over the past ${esc(SITE.yearsExperience)} years we've grown into a trusted team of licensed electricians serving homes and businesses across Metro Vancouver and the Fraser Valley — completing ${esc(SITE.jobsCompleted)} troubleshooting and repair jobs. We specialize in genuine 24/7 emergency response while delivering long-term solutions like panel and service upgrades, EV charger installs, rewiring, and commercial and strata electrical.</p>
           <p>We're proud to be a local, owner-operated Surrey business. We know Lower Mainland homes, buildings and the BC Electrical Code inside out — and we treat every property like it's our own.</p>
         </div>
       </div>
       <div class="lg:col-span-5 bg-[var(--px-offwhite)] rounded-2xl p-8">
         <div class="grid grid-cols-2 gap-6 text-center">
           <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.yearsExperience)}</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Years in Business</div></div>
-          <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.jobsCompleted)}</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Troubleshooting &amp; repair jobs since 2016</div></div>
+          <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.jobsCompleted)}</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Troubleshooting &amp; repair jobs</div></div>
           <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.rating)}★</div><div class="text-sm text-[var(--px-text-muted)] mt-1">From ${esc(SITE.reviewCount)} Reviews</div></div>
           <div><div class="text-4xl font-bold text-[var(--px-navy)]">24/7</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Emergency Response</div></div>
         </div>
@@ -1279,11 +1280,67 @@ ${mobileScript}
 
 /* ---------- sitemap ---------- */
 
+/* lastmod = git last-commit date of the page's source file, in America/Los_Angeles. */
+function todayInLosAngeles() {
+  return new Date().toLocaleDateString("en-CA", { timeZone: "America/Los_Angeles" });
+}
+
+function loadGitLastmodMap() {
+  const map = new Map();
+  let out = "";
+  try {
+    out = execFileSync(
+      "git",
+      ["log", "--name-only", "--pretty=format:%cd", "--date=format-local:%Y-%m-%d"],
+      { cwd: ROOT, env: { ...process.env, TZ: "America/Los_Angeles" }, encoding: "utf8", maxBuffer: 50 * 1024 * 1024 }
+    );
+  } catch (err) {
+    console.warn("  ! git log failed; sitemap lastmod will fall back to today:", err.message);
+    return map;
+  }
+  let currentDate = null;
+  for (const line of out.split("\n")) {
+    if (/^\d{4}-\d{2}-\d{2}$/.test(line)) {
+      currentDate = line;
+    } else if (currentDate && line && !map.has(line)) {
+      map.set(line, currentDate);
+    }
+  }
+  return map;
+}
+
+function sourceFileFor(loc) {
+  if (loc === "/") return "index.html";
+  return loc.replace(/^\//, "");
+}
+
+function lastmodFor(loc, gitDates) {
+  const rel = sourceFileFor(loc);
+  if (gitDates.has(rel)) return gitDates.get(rel);
+  try {
+    const date = execFileSync(
+      "git",
+      ["log", "-1", "--format=%cd", "--date=format-local:%Y-%m-%d", "--", rel],
+      { cwd: ROOT, env: { ...process.env, TZ: "America/Los_Angeles" }, encoding: "utf8" }
+    ).trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+      gitDates.set(rel, date);
+      return date;
+    }
+  } catch (_) {
+    /* untracked or not a git checkout */
+  }
+  if (!fs.existsSync(path.join(ROOT, rel))) {
+    console.warn("  ! sitemap source missing for " + loc + " (" + rel + ")");
+  }
+  return todayInLosAngeles();
+}
+
 function buildSitemap() {
-  const today = "2026-05-30";
+  const gitDates = loadGitLastmodMap();
   const urls = [];
   const add = (loc, priority, changefreq) =>
-    urls.push(`  <url>\n    <loc>${SITE.domain}${loc}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`);
+    urls.push(`  <url>\n    <loc>${SITE.domain}${loc}</loc>\n    <lastmod>${lastmodFor(loc, gitDates)}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>`);
 
   add("/", "1.0", "weekly");
   add("/services.html", "0.9", "weekly");
