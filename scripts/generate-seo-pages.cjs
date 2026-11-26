@@ -1206,7 +1206,7 @@ ${breadcrumbBar(crumbs)}
       <div class="lg:col-span-7">
         <h2 class="text-3xl md:text-4xl font-bold tracking-[-1px] text-[var(--px-navy)] mb-6">Our Story</h2>
         <div class="space-y-4 text-[var(--px-text-light)] text-lg">
-          <p>Founded in Surrey, BC, PowerX Electrical started as a one-person operation with a single goal: provide honest, high-quality electrical work with zero surprises.</p>
+          <p>Founded in Surrey, BC, in 2022, PowerX Electrical started as a one-person operation with a single goal: provide honest, high-quality electrical work with zero surprises.</p>
           <p>Over the past ${esc(SITE.yearsExperience)} years we've grown into a trusted team of licensed electricians serving homes and businesses across Metro Vancouver and the Fraser Valley — completing ${esc(SITE.jobsCompleted)} troubleshooting and repair jobs since 2016. We specialize in genuine 24/7 emergency response while delivering long-term solutions like panel and service upgrades, EV charger installs, rewiring, and commercial and strata electrical.</p>
           <p>We're proud to be a local, owner-operated Surrey business. We know Lower Mainland homes, buildings and the BC Electrical Code inside out — and we treat every property like it's our own.</p>
         </div>
