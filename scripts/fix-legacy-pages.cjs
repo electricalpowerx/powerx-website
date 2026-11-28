@@ -10,7 +10,7 @@
         re-runs refresh them from the generator).
      2. Repoints links to retired root city stubs (e.g.
         /electrician-maple-ridge.html) and wrong slugs
-        (electrician-cloverdale.html, electrician-south-surrey.html)
+        (electrician-cloverdale.html, electrician-south-surrey.html), now the Surrey city page
         to the generated /locations/ pages. The retired URLs 301 via
         public/_redirects.
    Run: node scripts/fix-legacy-pages.cjs   (also run by generate-seo-pages.cjs)
@@ -24,10 +24,11 @@ const DOMAIN = "https://powerxelectrical.ca";
 const RETIRED_CITY_STUBS = ["abbotsford", "coquitlam", "delta", "langley", "maple-ridge", "surrey", "white-rock"];
 // Wrong slugs used by old hand-built pages -> correct generated page.
 const SLUG_FIXES = {
-  "electrician-cloverdale": "/locations/electrician-cloverdale-surrey.html",
-  "electrician-south-surrey": "/locations/electrician-south-surrey.html",
+  "electrician-cloverdale": "/locations/electrician-surrey.html",
+  "electrician-south-surrey": "/locations/electrician-surrey.html",
 };
 // Pages written by generate-seo-pages.cjs (never touched here).
+const { REDIRECT_MAP } = require("./retired-pages.cjs");
 const MERGED_EMERGENCY_TARGET = "/services/emergency-electrician.html";
 const GENERATED_DIRS = ["services", "locations", "local"];
 const SKIP = new Set(["googledebbbf9ea2128906.html"]);
@@ -64,6 +65,11 @@ function fixLinks(html) {
     new RegExp(`href="(?:(?:\\.\\./|/|${dom}/)?emergency-electrician(?:-surrey)?|(?:\\.\\./|/|${dom}/)local/emergency-electrician-surrey)(?:\\.html|/)?(?=[#"])`, "g"),
     `href="${MERGED_EMERGENCY_TARGET}`
   );
+  // City-page cutback: repoint links to retired pages at their 301 target (see retired-pages.cjs).
+  html = html.replace(/href="((?:\.\.\/|\/|https:\/\/powerxelectrical\.ca\/)?)([^"#?]+?)(\.html|\/)?([#?][^"]*)?"/g, (m, _pre, p, _ext, frag) => {
+    const to = REDIRECT_MAP.get("/" + p + ".html");
+    return to ? `href="${to}${frag || ""}"` : m;
+  });
   for (const [bad, good] of Object.entries(SLUG_FIXES)) {
     html = html.replace(new RegExp(`href="(?:\\.\\./|/|${DOMAIN.replace(/\./g, "\\.")}/)?${bad}(?:\\.html|/)?"`, "g"), `href="${good}"`);
   }
