@@ -1239,6 +1239,8 @@ function buildSitemap() {
   add("/contact.html", "0.8", "monthly");
   SERVICES.forEach((s) => add(svcUrl(s.slug), "0.8", "monthly"));
   LOCATIONS.forEach((l) => add(locUrl(l.slug), "0.8", "monthly"));
+  // Hand-built city pages Lovepreet asked to keep live (not in LOCATIONS / areaServed).
+  ["/electrician-chilliwack.html", "/electrician-mission.html"].forEach((loc) => add(loc, "0.7", "monthly"));
   comboServices.forEach((s) => LOCATIONS.forEach((l) => { if (!isMergedCombo(s.slug, l.slug)) add(comboUrl(s.slug, l.slug), "0.7", "monthly"); }));
   BLOG.forEach((p) => add(`/blog/${p.slug}.html`, "0.6", "monthly"));
   EXISTING_BLOG.forEach((p) => add(`/blog/${p.slug}.html`, "0.6", "monthly"));
