@@ -39,23 +39,9 @@ const SITE = {
 };
 
 /* Services that get a programmatic page for every city (service × city matrix).
-   All 14 services now produce a page per city (14 × 16 = 224 combo pages). */
-const COMBO_SERVICE_SLUGS = [
-  "emergency-electrician",
-  "electrical-panel-upgrades",
-  "electrical-service-upgrades",
-  "ev-charger-installation",
-  "home-rewiring",
-  "aluminum-wiring-replacement",
-  "lighting-installation",
-  "generator-installation",
-  "hot-tub-pool-wiring",
-  "commercial-electrical",
-  "tenant-improvements",
-  "strata-electrical",
-  "led-lighting-retrofits",
-  "fire-alarm-systems",
-];
+   After the city-page cutback only the 24/7 emergency page is kept per city; the
+   other service × city pages 301 to the city page (see retired-pages.cjs). */
+const COMBO_SERVICE_SLUGS = ["emergency-electrician"];
 
 /* ---------------------------------------------------------------
    SERVICES — each becomes /services/<slug>.html

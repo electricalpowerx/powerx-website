@@ -14,6 +14,7 @@ const path = require("path");
 const { execFileSync } = require("child_process");
 const { SITE, SERVICES, LOCATIONS, COMBO_SERVICE_SLUGS, NEIGHBOURHOODS, BLOG, EXISTING_BLOG } = require("./seo-data.cjs");
 const { buildBusinessSchema } = require("./business-schema.cjs");
+const { REDIRECTS } = require("./retired-pages.cjs");
 
 const ROOT = path.resolve(__dirname, "..");
 const img = (file) => "/images/" + encodeURIComponent(file).replace(/%2F/g, "/");
@@ -528,19 +529,6 @@ function locationPage(l) {
     )
     .join("\n        ");
 
-  const hoods = neighboursOf(l.slug);
-  const hoodsBlock = hoods.length
-    ? `
-  <section class="section max-w-5xl mx-auto px-4 sm:px-6">
-    <h2 class="text-2xl md:text-3xl font-bold tracking-[-1px] text-[var(--px-navy)] mb-6">${esc(l.city)} Neighbourhoods We Serve</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      ${hoods.map((n) => `<a href="${locUrl(n.slug)}" class="card p-5 group">
-        <h3 class="font-semibold text-[var(--px-navy)] group-hover:text-[var(--px-blue)] transition">Electrician in ${esc(n.name)} →</h3>
-      </a>`).join("\n      ")}
-    </div>
-  </section>`
-    : "";
-
   return `${head(l.metaTitle, l.metaDesc, canonical, schemas, "/images/van.jpg")}
 ${nav()}
 ${breadcrumbBar(crumbs)}
@@ -597,7 +585,7 @@ ${breadcrumbBar(crumbs)}
     </div>
   </section>
 
-  ${hoodsBlock}
+  
 
   ${faqBlock(l.faqs)}
 
@@ -738,25 +726,6 @@ ${breadcrumbBar(crumbs)}
     </div>
   </section>
 
-  <section class="section bg-[var(--px-offwhite)] border-y border-slate-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl md:text-3xl font-bold tracking-[-1px] text-[var(--px-navy)] mb-2 text-center">Neighbourhoods We Serve</h2>
-      <p class="text-center text-[var(--px-gray)] mb-8">Hyper-local electrical service across the region's busiest communities.</p>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-        ${LOCATIONS.filter((l) => neighboursOf(l.slug).length)
-          .map(
-            (l) => `<div>
-          <div class="font-semibold text-[var(--px-navy)] mb-2">${esc(l.city)}</div>
-          <div class="space-y-1.5 text-sm">
-            ${neighboursOf(l.slug).map((n) => `<a href="${locUrl(n.slug)}" class="block text-[var(--px-text-light)] hover:text-[var(--px-blue)]">Electrician in ${esc(n.name)}</a>`).join("\n            ")}
-          </div>
-        </div>`
-          )
-          .join("\n        ")}
-      </div>
-    </div>
-  </section>
-
 ${ctaBand()}
 ${footer()}
 ${floatingButtons()}
@@ -805,10 +774,9 @@ function comboPage(s, l) {
     .slice(0, 6)
     .map((x) => `<a href="${comboUrl(s.slug, x.slug)}" class="inline-block px-3 py-1.5 rounded-full bg-[var(--px-light-gray)] text-sm text-[var(--px-text)] hover:bg-[var(--px-navy)] hover:text-white transition">${esc(s.nav)} in ${esc(x.city)}</a>`)
     .join("\n        ");
-  const otherServices = comboServices
-    .filter((x) => x.slug !== s.slug)
-    .slice(0, 5)
-    .map((x) => `<a href="${comboUrl(x.slug, l.slug)}" class="inline-block px-3 py-1.5 rounded-full bg-[var(--px-light-gray)] text-sm text-[var(--px-text)] hover:bg-[var(--px-navy)] hover:text-white transition">${esc(x.nav)} in ${esc(l.city)}</a>`)
+  const otherServices = SERVICES.filter((x) => x.slug !== s.slug)
+    .slice(0, 6)
+    .map((x) => `<a href="${svcUrl(x.slug)}" class="inline-block px-3 py-1.5 rounded-full bg-[var(--px-light-gray)] text-sm text-[var(--px-text)] hover:bg-[var(--px-navy)] hover:text-white transition">${esc(x.nav)}</a>`)
     .join("\n        ");
 
   const intro1 = `Need ${s.nav.toLowerCase()} in ${l.city}? PowerX is a licensed, insured electrical contractor serving ${l.city} and its neighbourhoods — ${l.neighbourhoods.slice(0, 4).join(", ")} and more. ${s.heroSub}`;
@@ -878,93 +846,6 @@ ${breadcrumbBar(crumbs)}
           <a href="${svcUrl(s.slug)}" class="text-[var(--px-blue)] font-medium hover:underline">More about ${esc(s.nav.toLowerCase())} →</a>
           <a href="${locUrl(l.slug)}" class="text-[var(--px-blue)] font-medium hover:underline">All electrical services in ${esc(l.city)} →</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-${ctaBand()}
-${footer()}
-${floatingButtons()}
-${mobileScript}
-</body>
-</html>`;
-}
-
-/* ---------- NEIGHBOURHOOD PAGE ---------- */
-
-function neighbourhoodPage(n) {
-  const parent = locBy(n.parent);
-  const canonical = locUrl(n.slug);
-  const title = `Electrician in ${n.name}, ${parent.city} | PowerX Electrical`;
-  const metaDesc = `Licensed electrician in ${n.name}, ${parent.city}. 24/7 emergency repairs, panel upgrades, EV chargers & rewiring. Fast local response. Call ${SITE.phone}.`;
-  const crumbs = [
-    { name: "Home", url: "/index.html" },
-    { name: "Service Areas", url: "/service-areas.html" },
-    { name: parent.city, url: locUrl(parent.slug) },
-    { name: n.name, url: canonical },
-  ];
-  const faqs = [
-    [`Do you serve ${n.name} in ${parent.city}?`, `Yes — ${n.name} is within our ${parent.city} service area. We provide 24/7 emergency electrical service, panel upgrades, EV chargers, rewiring and more throughout ${n.name}.`],
-    [`How fast can you reach ${n.name}?`, `We target a prompt response across ${parent.city}, and we'll always give you an honest ETA when you call ${SITE.phone}.`],
-  ];
-  const schemas = [
-    localBusinessSchema({ areaServed: { "@type": "City", name: parent.city + ", BC" } }),
-    faqSchema(faqs),
-    breadcrumbSchema(crumbs),
-  ];
-  const serviceCards = ["emergency-electrician", "electrical-panel-upgrades", "ev-charger-installation", "home-rewiring", "lighting-installation", "commercial-electrical"]
-    .map(svcBy)
-    .filter(Boolean)
-    .map((s) => `<a href="${hasCombo(s.slug) ? comboUrl(s.slug, parent.slug) : svcUrl(s.slug)}" class="card p-6 group">
-          <h3 class="font-semibold text-lg mb-1.5 text-[var(--px-navy)] group-hover:text-[var(--px-blue)] transition">${esc(s.nav)}</h3>
-          <p class="text-sm text-[var(--px-gray)]">${esc(s.heroSub.split(".")[0])}.</p>
-        </a>`)
-    .join("\n        ");
-  const siblings = neighboursOf(n.parent)
-    .filter((x) => x.slug !== n.slug)
-    .map((x) => `<a href="${locUrl(x.slug)}" class="inline-block px-3 py-1.5 rounded-full bg-[var(--px-light-gray)] text-sm text-[var(--px-text)] hover:bg-[var(--px-navy)] hover:text-white transition">${esc(x.name)}</a>`)
-    .join("\n        ");
-
-  return `${head(title, metaDesc, canonical, schemas, "/images/van.jpg")}
-${nav()}
-${breadcrumbBar(crumbs)}
-
-  <header class="relative bg-white border-b border-[var(--px-border)]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
-      <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--px-light-gray)] text-sm mb-5 text-[var(--px-text-muted)]">
-          <div class="w-2 h-2 bg-[var(--px-success)] rounded-full animate-pulse"></div>
-          <span class="font-medium tracking-wide">Serving ${esc(n.name)}, ${esc(parent.city)} 24/7</span>
-        </div>
-        <h1 class="text-4xl md:text-6xl font-bold tracking-[-2.5px] leading-[0.98] mb-5 text-[var(--px-navy)]">Electrician in ${esc(n.name)}</h1>
-        <p class="text-lg md:text-2xl text-[var(--px-text-light)] mb-8">${esc(n.blurb)} PowerX brings licensed, code-compliant electrical service to ${esc(n.name)} and all of ${esc(parent.city)}.</p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="tel:${SITE.phone}" class="emergency-cta inline-flex items-center justify-center gap-3 px-6 py-3 rounded-2xl text-base font-semibold shadow-md active:scale-[0.985] transition">${phoneSvg} Call ${SITE.phone}</a>
-          <a href="/contact.html" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl text-base font-semibold border-2 border-[var(--px-navy)] text-[var(--px-navy)] hover:bg-[var(--px-navy)] hover:text-white transition active:scale-[0.985]">Request Free Quote</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <section class="bg-white">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-14">
-      <h2 class="text-2xl md:text-3xl font-bold tracking-[-1px] text-[var(--px-navy)] mb-6">Electrical Services in ${esc(n.name)}</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        ${serviceCards}
-      </div>
-    </div>
-  </section>
-
-  ${faqBlock(faqs)}
-
-  <section class="section bg-[var(--px-offwhite)] border-y border-slate-100">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      <h2 class="text-xl md:text-2xl font-bold tracking-[-1px] text-[var(--px-navy)] mb-4">Other ${esc(parent.city)} neighbourhoods we serve</h2>
-      <div class="flex flex-wrap gap-2">
-        ${siblings}
-      </div>
-      <div class="mt-5">
-        <a href="${locUrl(parent.slug)}" class="text-[var(--px-blue)] font-medium hover:underline">All electrical services in ${esc(parent.city)} →</a>
       </div>
     </div>
   </section>
@@ -1358,7 +1239,6 @@ function buildSitemap() {
   add("/contact.html", "0.8", "monthly");
   SERVICES.forEach((s) => add(svcUrl(s.slug), "0.8", "monthly"));
   LOCATIONS.forEach((l) => add(locUrl(l.slug), "0.8", "monthly"));
-  NEIGHBOURHOODS.forEach((n) => add(locUrl(n.slug), "0.6", "monthly"));
   comboServices.forEach((s) => LOCATIONS.forEach((l) => { if (!isMergedCombo(s.slug, l.slug)) add(comboUrl(s.slug, l.slug), "0.7", "monthly"); }));
   BLOG.forEach((p) => add(`/blog/${p.slug}.html`, "0.6", "monthly"));
   EXISTING_BLOG.forEach((p) => add(`/blog/${p.slug}.html`, "0.6", "monthly"));
@@ -1378,6 +1258,35 @@ function write(rel, content) {
   console.log("  ✓ " + rel);
 }
 
+/* ---------- city-page cutback: delete retired files + generated 301 block ---------- */
+
+function removeRetiredPages() {
+  let removed = 0;
+  for (const [from, to] of REDIRECTS) {
+    if (from === to) throw new Error("redirect loop: " + from);
+    const file = path.join(ROOT, from.replace(/^\//, ""));
+    if (fs.existsSync(file)) { fs.unlinkSync(file); removed++; }
+  }
+  if (removed) console.log(`  ✗ removed ${removed} retired pages`);
+}
+
+function writeRetiredRedirects() {
+  const file = path.join(ROOT, "public/_redirects");
+  const BEGIN = "# BEGIN generated: city-page cutback (scripts/retired-pages.cjs)";
+  const END = "# END generated: city-page cutback";
+  const lines = [BEGIN];
+  for (const [from, to] of REDIRECTS) {
+    lines.push(`${from}  ${to}  301!`);
+    lines.push(`${from.replace(/\.html$/, "")}  ${to}  301!`);
+  }
+  lines.push(END);
+  let cur = fs.readFileSync(file, "utf8");
+  const re = new RegExp(`${BEGIN.replace(/[()]/g, "\\$&")}[\\s\\S]*?${END}`);
+  cur = re.test(cur) ? cur.replace(re, () => lines.join("\n")) : cur.replace(/\s*$/, "\n\n") + lines.join("\n") + "\n";
+  fs.writeFileSync(file, cur, "utf8");
+  console.log(`  ✓ public/_redirects (${REDIRECTS.length} retired pages)`);
+}
+
 function main() {
   console.log("Generating SEO silo pages…");
   write("about.html", aboutPage());
@@ -1395,7 +1304,8 @@ function main() {
     })
   );
 
-  NEIGHBOURHOODS.forEach((n) => write(`locations/electrician-${n.slug}.html`, neighbourhoodPage(n)));
+  removeRetiredPages();
+  writeRetiredRedirects();
 
   write("blog.html", blogHub());
   BLOG.forEach((p) => write(`blog/${p.slug}.html`, blogPostPage(p)));
@@ -1405,7 +1315,7 @@ function main() {
   write("llms.txt", buildLlmsTxt()); // root copy kept identical to the deployed one
 
   console.log(
-    `\nDone: ${SERVICES.length} services, ${LOCATIONS.length} cities, ${NEIGHBOURHOODS.length} neighbourhoods, ${comboCount} combo pages, ${BLOG.length} blog posts, 3 hubs, sitemap.xml, llms.txt.`
+    `\nDone: ${SERVICES.length} services, ${LOCATIONS.length} cities, ${comboCount} city emergency pages (neighbourhood + other service x city pages retired), ${BLOG.length} blog posts, 3 hubs, sitemap.xml, llms.txt.`
   );
   // Keep hand-built (legacy) pages on the shared stylesheet + nav/footer chrome.
   require("./fix-legacy-pages.cjs").run();
