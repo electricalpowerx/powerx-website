@@ -19,8 +19,8 @@ const SITE = {
     postal: "V3W 2C9",
     country: "CA",
   },
-  rating: "5.0",
-  reviewCount: "94",
+  rating: "5",
+  reviewCount: "95",
   reviewsUrl:
     "https://www.google.com/maps/place/PowerX+Electrical+Ltd./@49.126866,-122.8789452,17z/data=!4m8!3m7!1s0x5485dbcbb0eed05b:0xe3d33cf79f989583!8m2!3d49.126866!4d-122.8763703!9m1!1b1!16s%2Fg%2F11xn_1zwbc",
   whatsapp:
