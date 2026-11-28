@@ -28,6 +28,7 @@ const SLUG_FIXES = {
   "electrician-south-surrey": "/locations/electrician-south-surrey.html",
 };
 // Pages written by generate-seo-pages.cjs (never touched here).
+const MERGED_EMERGENCY_TARGET = "/services/emergency-electrician.html";
 const GENERATED_DIRS = ["services", "locations", "local"];
 const SKIP = new Set(["googledebbbf9ea2128906.html"]);
 
@@ -56,6 +57,12 @@ function fixLinks(html) {
   html = html.replace(
     new RegExp(`href="(?:\\.\\./|/|${DOMAIN.replace(/\./g, "\\.")}/)?electrician-(${city})(?:\\.html|/)?"`, "g"),
     (_, c) => `href="/locations/electrician-${c}.html"`
+  );
+  // Merged Surrey emergency pages -> the one kept page (also 301 via public/_redirects).
+  const dom = DOMAIN.replace(/\./g, "\\.");
+  html = html.replace(
+    new RegExp(`href="(?:(?:\\.\\./|/|${dom}/)?emergency-electrician(?:-surrey)?|(?:\\.\\./|/|${dom}/)local/emergency-electrician-surrey)(?:\\.html|/)?(?=[#"])`, "g"),
+    `href="${MERGED_EMERGENCY_TARGET}`
   );
   for (const [bad, good] of Object.entries(SLUG_FIXES)) {
     html = html.replace(new RegExp(`href="(?:\\.\\./|/|${DOMAIN.replace(/\./g, "\\.")}/)?${bad}(?:\\.html|/)?"`, "g"), `href="${good}"`);
