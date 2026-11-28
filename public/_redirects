@@ -19,3 +19,12 @@
 /electrician-cloverdale  /locations/electrician-cloverdale-surrey.html  301
 /electrician-south-surrey.html  /locations/electrician-south-surrey.html  301
 /electrician-south-surrey  /locations/electrician-south-surrey.html  301
+
+# Surrey emergency pages merged into one page (force=true so the redirect wins
+# even if a static file with the old name ever reappears).
+/emergency-electrician-surrey.html        /services/emergency-electrician.html  301!
+/emergency-electrician-surrey             /services/emergency-electrician.html  301!
+/emergency-electrician.html               /services/emergency-electrician.html  301!
+/emergency-electrician                    /services/emergency-electrician.html  301!
+/local/emergency-electrician-surrey.html  /services/emergency-electrician.html  301!
+/local/emergency-electrician-surrey       /services/emergency-electrician.html  301!

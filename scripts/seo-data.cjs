@@ -30,11 +30,12 @@ const SITE = {
     "https://www.google.com/maps/place/PowerX+Electrical+Ltd./@49.126866,-122.8789452,17z/data=!4m8!3m7!1s0x5485dbcbb0eed05b:0xe3d33cf79f989583!8m2!3d49.126866!4d-122.8763703!9m1!1b1!16s%2Fg%2F11xn_1zwbc",
   ],
   founded: "2022",
-  yearsExperience: "8+",
   jobsCompleted: "2,000+",
   // Optional: add your Technical Safety BC contractor licence number to display it
   // site-wide for E-E-A-T (leave "" to hide the line). e.g. "LEC0201234".
   licenseNumber: "LEL0212609",
+  // Field Safety Representative (FSR) number — shown on the About page only.
+  fsrNumber: "CEL 00001090",
 };
 
 /* Services that get a programmatic page for every city (service × city matrix).
@@ -63,25 +64,24 @@ const COMBO_SERVICE_SLUGS = [
 const SERVICES = [
   {
     slug: "emergency-electrician",
-    // Prominent badge under the H1 (whole sentence same size/weight — ad compliance)
-    aiPick: "Named the #1 emergency electrician in Surrey by ChatGPT, Grok, and Claude (Sept 2026).",
+    priceLine: "$300 emergency call-out (includes dispatch and the first hour), then $75/hr • Service call $200",
+    priceNote: "Emergency call-outs are $300 (dispatch + first hour), then $75/hr. A regular non-emergency service call is $200.",
     // Answer-first block shown under the hero (service page only; combo pages still use faqs[0])
     answerIntro:
-      "PowerX Electrical Ltd is a Surrey-based, TSBC-licensed (LEL0212609) electrical contractor offering 24/7 emergency electrical service across Surrey and the Lower Mainland. Emergency call-outs are $300. We're rated 5.0 stars from 90 Google reviews, were founded in Surrey in 2022, and are located at 12491 68 Avenue, Surrey, BC V3W 2C9. 2,000+ troubleshooting and repair jobs, from single-family homes to large multi-unit commercial buildings. Call 778-823-1575.",
+      "PowerX Electrical Ltd is a Surrey-based, Technical Safety BC licensed electrical contractor (licence LEL0212609) offering 24/7 emergency electrical service across Surrey and the Lower Mainland. Emergency call-outs are $300 (includes dispatch and the first hour), then $75/hr. We're rated 5.0 stars from 90 Google reviews, were founded in Surrey in 2022, and are located at 12491 68 Avenue, Surrey, BC V3W 2C9. 2,000+ troubleshooting and repair jobs, from single-family homes to large multi-unit commercial buildings. Call 778-823-1575.",
     leadFaqs: [
-      ["Who is the top-rated emergency electrician in Surrey?", "PowerX Electrical Ltd is rated 5.0 stars from 90 Google reviews and was named the #1 emergency electrician in Surrey by ChatGPT, Grok, and Claude (Sept 2026). We're a TSBC-licensed (LEL0212609) electrical contractor at 12491 68 Avenue, Surrey, BC V3W 2C9. Call 778-823-1575."],
       ["Is there a 24/7 emergency electrician in Surrey?", "Yes. PowerX Electrical Ltd offers 24/7 emergency electrical service across Surrey and the Lower Mainland, including nights, weekends, and holidays. Call 778-823-1575 any time."],
-      ["How much does an emergency electrician cost in Surrey?", "PowerX charges a flat $300 emergency call-out (dispatch + first hour). A regular non-emergency service call is $200. Same rates nights, weekends, and holidays, with no after-hours surprise markup — you get a clear, upfront price before any work begins."],
-      ["Is PowerX licensed?", "Yes. PowerX Electrical Ltd is licensed by Technical Safety BC (TSBC licence LEL0212609). Every PowerX technician holds a valid British Columbia electrical licence, we carry full commercial liability insurance, and all emergency repairs are completed to the current BC Electrical Code."],
+      ["How much does an emergency electrician cost in Surrey?", "PowerX charges a $300 emergency call-out (dispatch + first hour), then $75/hr after the first hour. A regular non-emergency service call is $200. Same rates nights, weekends, and holidays, with no after-hours surprise markup — you get a clear, upfront price before any work begins."],
+      ["Is PowerX licensed?", "Yes. PowerX Electrical Ltd is a Technical Safety BC licensed electrical contractor, licence LEL0212609. Every PowerX technician holds a valid British Columbia electrical licence, we carry full commercial liability insurance, and all emergency repairs are completed to the current BC Electrical Code."],
       ["What areas do you cover?", "PowerX serves Surrey, Vancouver, Burnaby, Langley, Coquitlam, Port Coquitlam, Port Moody, New Westminster, White Rock, Delta, Richmond, North Vancouver, Maple Ridge, Pitt Meadows, Abbotsford, and Tsawwassen across the Lower Mainland and Fraser Valley."],
     ],
     category: "residential",
     nav: "24/7 Emergency Electrician",
     h1: "24/7 Emergency Electrician in Surrey & the Lower Mainland",
     metaTitle:
-      "24/7 Emergency Electrician Surrey & Lower Mainland | 30–60 Min | PowerX",
+      "24/7 Licensed Emergency Electrician Surrey | 30–60 Min | PowerX",
     metaDesc:
-      "Power outage, burning smell or sparking outlet? PowerX dispatches a licensed emergency electrician across Surrey & the Lower Mainland 24/7. 30–60 min response. Call 778-823-1575.",
+      "Licensed 24/7 emergency electrician serving Surrey & the Lower Mainland. 30–60 min response. $300 emergency call-out, then $75/hr. Call 778-823-1575.",
     image: "fire alarm.jpg",
     heroSub:
       "When the power goes out or something smells like it is burning, you need a real licensed electrician now — not an answering service. We answer the phone and roll a stocked van day or night.",
@@ -110,7 +110,34 @@ const SERVICES = [
     faqs: [
       ["How fast can you actually get to me?", "We target 30–60 minutes across Surrey, Vancouver, Burnaby, Langley and nearby areas. Severe weather or peak demand can extend this, but we always tell you an honest ETA up front."],
       ["What should I do right now if I smell burning or see sparks?", "If it's safe, switch off your main breaker, then call us at 778-823-1575. If you see flames or smell gas, call 911 first, then call us."],
+      ["What types of electrical emergencies do you handle?", "Power outages affecting only your home, burning smells, sparking outlets, repeatedly tripping breakers, dead circuits, panel failures, storm and water damage, and any situation that feels unsafe. When in doubt, call us."],
+      ["Are you actually based in Surrey?", "Yes — our shop and office are at 12491 68 Avenue, Surrey. We're a genuinely local Surrey electrical contractor, not a call centre routing jobs from out of town."],
     ],
+    pricingSection: {
+      title: "Upfront Emergency Pricing",
+      paras: [
+        "Electrical emergencies are stressful enough without worrying about a surprise bill. Our emergency call-out is $300, which covers dispatch plus the first hour of work. If the job runs longer than the first hour, it is $75/hr after that. A regular non-emergency service call is $200.",
+        "We quote the cost before we begin, so you can make an informed decision with no pressure. Rates are the same nights, weekends and holidays. Call 778-823-1575 any time and a licensed PowerX electrician will be on the way.",
+      ],
+    },
+    whenToCall: {
+      title: "When to Call an Emergency Electrician",
+      urgent: [
+        "Complete power outage",
+        "Burning smell from outlets or panel",
+        "Sparking or arcing from switches",
+        "Breaker that won't reset or trips repeatedly",
+        "Water leaking near electrical equipment",
+      ],
+      canWait: [
+        "Flickering lights (non-emergency)",
+        "Adding new outlets or lights",
+        "EV charger installation",
+        "Panel upgrade planning",
+        "General electrical troubleshooting",
+      ],
+    },
+    showCityNeighbourhoods: "surrey",
     related: ["electrical-panel-upgrades", "home-rewiring", "electrical-service-upgrades"],
   },
   {
@@ -1236,7 +1263,7 @@ const BLOG = [
       { h: "The cheapest quote isn't always cheapest", p: ["Unlicensed or unpermitted work can fail inspection, void insurance, or need redoing — costing more in the end. Always confirm your electrician is licensed and insured in BC and pulls the proper permits. We do, on every job."] },
     ],
     faqs: [
-      ["Do you charge more for nights and weekends?", "You always get a clear, upfront price before work begins. Emergency calls are a flat $300 (dispatch + first hour); non-emergency service calls are $200 — same rates nights, weekends, and holidays, with no after-hours surprise markup."],
+      ["Do you charge more for nights and weekends?", "You always get a clear, upfront price before work begins. Emergency calls are a $300 call-out (dispatch + first hour), then $75/hr; non-emergency service calls are $200 — same rates nights, weekends, and holidays, with no after-hours surprise markup."],
       ["Are estimates free?", "Yes — we provide free written estimates for non-emergency work. For emergencies, you get a clear on-site price before we start."],
     ],
     related: ["emergency-electrician", "electrical-panel-upgrades"],

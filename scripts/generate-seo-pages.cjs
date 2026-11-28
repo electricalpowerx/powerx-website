@@ -13,6 +13,7 @@ const fs = require("fs");
 const path = require("path");
 const { execFileSync } = require("child_process");
 const { SITE, SERVICES, LOCATIONS, COMBO_SERVICE_SLUGS, NEIGHBOURHOODS, BLOG, EXISTING_BLOG } = require("./seo-data.cjs");
+const { buildBusinessSchema } = require("./business-schema.cjs");
 
 const ROOT = path.resolve(__dirname, "..");
 const img = (file) => "/images/" + encodeURIComponent(file).replace(/%2F/g, "/");
@@ -22,7 +23,11 @@ const jsonLd = (obj) =>
 
 const svcUrl = (s) => `/services/${s}.html`;
 const locUrl = (s) => `/locations/electrician-${s}.html`;
-const comboUrl = (svcSlug, citySlug) => `/local/${svcSlug}-${citySlug}.html`;
+// Surrey emergency page was merged into /services/emergency-electrician.html (301 in public/_redirects).
+const MERGED_COMBOS = new Set(["emergency-electrician-surrey"]);
+const isMergedCombo = (svcSlug, citySlug) => MERGED_COMBOS.has(`${svcSlug}-${citySlug}`);
+const comboUrl = (svcSlug, citySlug) =>
+  isMergedCombo(svcSlug, citySlug) ? `/services/${svcSlug}.html` : `/local/${svcSlug}-${citySlug}.html`;
 const svcBy = (slug) => SERVICES.find((s) => s.slug === slug);
 const locBy = (slug) => LOCATIONS.find((l) => l.slug === slug);
 const hasCombo = (svcSlug) => COMBO_SERVICE_SLUGS.includes(svcSlug);
@@ -161,7 +166,7 @@ function footer() {
       </div>
 
       <div class="mt-12 pt-8 border-t border-white/10 text-xs flex flex-col md:flex-row gap-y-2 md:items-center justify-between">
-        <div>© 2026 ${esc(SITE.name)}. All rights reserved. Licensed electrical contractor — TSBC ${esc(SITE.licenseNumber)}.</div>
+        <div>© 2026 ${esc(SITE.name)}. All rights reserved. Technical Safety BC licensed electrical contractor, licence ${esc(SITE.licenseNumber)}.</div>
         <div>${esc(SITE.address.street)}, ${esc(SITE.address.city)}, ${esc(SITE.address.region)} ${esc(SITE.address.postal)}</div>
       </div>
     </div>
@@ -198,57 +203,9 @@ const mobileScript = `
 
 /* ---------- schema builders ---------- */
 
-function localBusinessSchema(extra = {}) {
-  return Object.assign(
-    {
-      "@context": "https://schema.org",
-      "@type": "Electrician",
-      name: SITE.name,
-      image: SITE.domain + "/images/powerx-logo.png",
-      url: SITE.domain,
-      telephone: SITE.phoneIntl,
-      email: SITE.email,
-      priceRange: "$$",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: SITE.address.street,
-        addressLocality: SITE.address.city,
-        addressRegion: SITE.address.region,
-        postalCode: SITE.address.postal,
-        addressCountry: SITE.address.country,
-      },
-      geo: { "@type": "GeoCoordinates", latitude: SITE.geo.lat, longitude: SITE.geo.lng },
-      sameAs: SITE.sameAs,
-      ...(SITE.licenseNumber
-        ? {
-            hasCredential: {
-              "@type": "EducationalOccupationalCredential",
-              name: "Licensed Electrical Contractor — Technical Safety BC",
-              credentialCategory: "license",
-              identifier: SITE.licenseNumber,
-              recognizedBy: {
-                "@type": "Organization",
-                name: "Technical Safety BC",
-                url: "https://www.technicalsafetybc.ca/",
-              },
-            },
-          }
-        : {}),
-      areaServed: LOCATIONS.map((l) => ({ "@type": "City", name: l.city + ", BC" })),
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: SITE.rating,
-        reviewCount: SITE.reviewCount,
-      },
-      openingHoursSpecification: {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        opens: "00:00",
-        closes: "23:59",
-      },
-    },
-    extra
-  );
+// One canonical business block (see business-schema.cjs); per-page extras are intentionally ignored.
+function localBusinessSchema() {
+  return buildBusinessSchema();
 }
 
 function faqSchema(faqs) {
@@ -422,8 +379,48 @@ function servicePage(s) {
     <h2 class="text-2xl md:text-3xl font-bold tracking-[-1px] text-[var(--px-navy)] mb-2 text-center">${esc(s.nav)} Across the Lower Mainland</h2>
     <p class="text-center text-[var(--px-gray)] mb-6 max-w-2xl mx-auto">We provide ${esc(s.nav.toLowerCase())} in every community we serve. Find your city:</p>
     <div class="flex flex-wrap justify-center gap-2">
-      ${LOCATIONS.map((l) => `<a href="${comboUrl(s.slug, l.slug)}" class="inline-block px-4 py-2 rounded-full bg-[var(--px-light-gray)] text-sm font-medium text-[var(--px-text)] hover:bg-[var(--px-navy)] hover:text-white transition">${esc(s.nav)} in ${esc(l.city)}</a>`).join("\n      ")}
+      ${LOCATIONS.filter((l) => !isMergedCombo(s.slug, l.slug)).map((l) => `<a href="${comboUrl(s.slug, l.slug)}" class="inline-block px-4 py-2 rounded-full bg-[var(--px-light-gray)] text-sm font-medium text-[var(--px-text)] hover:bg-[var(--px-navy)] hover:text-white transition">${esc(s.nav)} in ${esc(l.city)}</a>`).join("\n      ")}
     </div>
+  </section>`
+    : "";
+
+  const pricingBlock = s.pricingSection
+    ? `
+  <section id="pricing" class="section max-w-3xl mx-auto px-4 sm:px-6">
+    <h2 class="text-2xl md:text-3xl font-bold tracking-[-1px] text-[var(--px-navy)] mb-5">${esc(s.pricingSection.title)}</h2>
+    <div class="space-y-4 text-[var(--px-text-light)] text-lg leading-relaxed">
+      ${s.pricingSection.paras.map((p) => `<p>${esc(p)}</p>`).join("\n      ")}
+    </div>
+  </section>`
+    : "";
+  const whenBlock = s.whenToCall
+    ? `
+  <section class="section max-w-4xl mx-auto px-4 sm:px-6">
+    <h2 class="text-2xl md:text-3xl font-bold tracking-[-1px] text-[var(--px-navy)] mb-6">${esc(s.whenToCall.title)}</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-white border border-red-200 rounded-2xl p-8">
+        <h3 class="font-semibold text-xl mb-4 text-red-700">Call Immediately</h3>
+        <ul class="space-y-3 text-[var(--px-gray)]">
+          ${s.whenToCall.urgent.map((i) => `<li>• ${esc(i)}</li>`).join("\n          ")}
+        </ul>
+      </div>
+      <div class="bg-white border border-[var(--px-border)] rounded-2xl p-8">
+        <h3 class="font-semibold text-xl mb-4">Can Usually Wait</h3>
+        <ul class="space-y-3 text-[var(--px-gray)]">
+          ${s.whenToCall.canWait.map((i) => `<li>• ${esc(i)}</li>`).join("\n          ")}
+        </ul>
+      </div>
+    </div>
+  </section>`
+    : "";
+  const cityHoodBlock = s.showCityNeighbourhoods && locBy(s.showCityNeighbourhoods)
+    ? `
+  <section class="section max-w-4xl mx-auto px-4 sm:px-6">
+    <h2 class="text-2xl md:text-3xl font-bold tracking-[-1px] text-[var(--px-navy)] mb-5">Neighbourhoods We Serve in ${esc(locBy(s.showCityNeighbourhoods).city)}</h2>
+    <div class="flex flex-wrap gap-2">
+      ${locBy(s.showCityNeighbourhoods).neighbourhoods.map((n) => `<span class="inline-block px-3 py-1.5 rounded-full bg-[var(--px-light-gray)] text-sm text-[var(--px-text)]">${esc(n)}</span>`).join("\n      ")}
+    </div>
+    <p class="mt-4 text-[var(--px-text-light)]"><a href="${locUrl(s.showCityNeighbourhoods)}" class="text-[var(--px-blue)] font-semibold hover:underline">Electrician in ${esc(locBy(s.showCityNeighbourhoods).city)} →</a></p>
   </section>`
     : "";
 
@@ -439,7 +436,6 @@ ${breadcrumbBar(crumbs)}
           <span class="font-medium tracking-wide">${s.category === "commercial" ? "Commercial &amp; Industrial" : "Residential Service"} • Licensed &amp; Insured in BC</span>
         </div>
         <h1 class="text-4xl md:text-5xl font-bold tracking-[-2px] leading-[1.02] mb-5 text-[var(--px-navy)]">${esc(s.h1)}</h1>
-${s.aiPick ? `        <p class="flex items-start gap-3 w-fit max-w-2xl px-4 py-2.5 md:py-3 md:px-5 rounded-2xl bg-blue-50 border border-blue-200 text-lg md:text-xl font-bold leading-snug tracking-[-0.2px] text-[var(--px-navy)] mb-6"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-6 h-6 md:w-7 md:h-7 shrink-0 mt-0.5 text-amber-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><span>${esc(s.aiPick)}</span></p>\n` : ""}        <p class="text-lg md:text-xl text-[var(--px-text-light)] mb-8">${esc(s.heroSub)}</p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="tel:${SITE.phone}" class="emergency-cta inline-flex items-center justify-center gap-3 px-6 py-3 rounded-2xl text-base font-semibold shadow-md active:scale-[0.985] transition">${phoneSvg} Call ${SITE.phone}</a>
           <a href="/contact.html" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl text-base font-semibold border-2 border-[var(--px-navy)] text-[var(--px-navy)] hover:bg-[var(--px-navy)] hover:text-white transition active:scale-[0.985]">Request Free Quote</a>
@@ -463,6 +459,10 @@ ${s.priceLine ? `        <p class="mt-4 text-sm font-semibold text-[var(--px-nav
       ${stepsBlock(s.stepsTitle, s.steps)}
     </div>
   </section>
+
+${whenBlock}
+${pricingBlock}
+${cityHoodBlock}
 
   ${faqBlock(pageFaqs)}
 ${citiesBlock}
@@ -1114,6 +1114,17 @@ function buildLlmsTxt() {
   lines.push("");
   lines.push("PowerX Electrical Ltd is a local electrical contractor offering transparent flat-rate pricing, 30–60 minute emergency response, and code-compliant work to the BC Electrical Code. Services cover residential, commercial, industrial and strata electrical.");
   lines.push("");
+  lines.push("## Key Facts");
+  lines.push(`- Founded in Surrey, BC, in ${SITE.founded}`);
+  lines.push(`- Technical Safety BC licensed electrical contractor, licence ${SITE.licenseNumber} (FSR: ${SITE.fsrNumber})`);
+  lines.push("- 24/7 emergency electrical service across Surrey and the Lower Mainland, typical response 30–60 minutes");
+  lines.push("- Emergency pricing: $300 emergency call-out (dispatch + first hour), then $75/hr. Regular service call: $200");
+  lines.push(`- Google rating: ${SITE.rating}/5 from ${SITE.reviewCount} reviews`);
+  lines.push(`- ${SITE.jobsCompleted} troubleshooting and repair jobs`);
+  lines.push(`- Phone (24/7): ${SITE.phone}`);
+  lines.push(`- Address: ${SITE.address.street}, ${SITE.address.city}, ${SITE.address.region} ${SITE.address.postal}, Canada`);
+  lines.push("- Emergency electrician page: " + SITE.domain + svcUrl("emergency-electrician"));
+  lines.push("");
   lines.push("## Services");
   SERVICES.forEach((s) => lines.push(`- [${s.nav}](${SITE.domain}${svcUrl(s.slug)}): ${s.heroSub.split(".")[0]}.`));
   lines.push("");
@@ -1127,7 +1138,7 @@ function buildLlmsTxt() {
   lines.push(`- Phone (24/7): ${SITE.phone}`);
   lines.push(`- Email: ${SITE.email}`);
   lines.push(`- Website: ${SITE.domain}`);
-  lines.push(`- Hours: Emergency 24/7/365; regular service Mon–Fri 7:00 AM – 6:00 PM`);
+  lines.push("- Hours: Open 24/7");
   lines.push("");
   return lines.join("\n");
 }
@@ -1141,19 +1152,14 @@ function aboutPage() {
     { name: "About", url: canonical },
   ];
   const companyFaqs = [
-    ["Is PowerX Electrical licensed and insured?", `Yes. PowerX Electrical Ltd is a licensed electrical contractor in British Columbia. Our electricians hold valid BC certifications, we carry comprehensive liability insurance, and we are WorkSafeBC (WCB) registered.${SITE.licenseNumber ? ` Our Technical Safety BC licence number is ${SITE.licenseNumber}.` : ""}`],
-    ["How long has PowerX been in business?", `We have served Surrey and the Lower Mainland for ${SITE.yearsExperience} years, growing from a one-person operation into a trusted team that has completed ${SITE.jobsCompleted} troubleshooting and repair jobs.`],
+    ["Is PowerX Electrical licensed and insured?", `Yes. PowerX Electrical Ltd is a licensed electrical contractor in British Columbia. Our electricians hold valid BC certifications, we carry comprehensive liability insurance, and we are WorkSafeBC (WCB) registered.${SITE.licenseNumber ? ` We are a Technical Safety BC licensed electrical contractor, licence ${SITE.licenseNumber} (FSR: ${SITE.fsrNumber}).` : ""}`],
+    ["When was PowerX founded?", `PowerX Electrical Ltd was founded in Surrey in ${SITE.founded}, growing from a one-person operation into a trusted team that has completed ${SITE.jobsCompleted} troubleshooting and repair jobs.`],
     ["What areas does PowerX serve?", "We are based in Surrey and serve the entire Lower Mainland and Fraser Valley, including Vancouver, Burnaby, Langley, Coquitlam, the Tri-Cities, New Westminster, White Rock, Delta, Richmond, the North Shore, Maple Ridge, Pitt Meadows and Abbotsford."],
     ["Do you really offer 24/7 emergency service?", "Yes. Our emergency line is answered by licensed electricians 24 hours a day, every day of the year, with a typical 30–60 minute response in most of our service area."],
     ["Is your work done to code and inspected?", "Always. Every job follows the current BC Electrical Code, and permitted work is inspected by Technical Safety BC. We never cut corners on safety or paperwork."],
   ];
   const schemas = [
-    localBusinessSchema({
-      foundingDate: SITE.founded,
-      slogan: "Professional, reliable, local electrical services you can trust — 24/7.",
-      knowsAbout: SERVICES.map((s) => s.nav),
-      numberOfEmployees: { "@type": "QuantitativeValue", minValue: 5 },
-    }),
+    localBusinessSchema(),
     { "@context": "https://schema.org", "@type": "AboutPage", name: "About PowerX Electrical Ltd", url: SITE.domain + canonical },
     faqSchema(companyFaqs),
     breadcrumbSchema(crumbs),
@@ -1163,11 +1169,11 @@ function aboutPage() {
     "BC Licensed Electricians",
     "Comprehensive Liability Insurance",
     "WorkSafeBC (WCB) Registered",
-    SITE.licenseNumber ? `Technical Safety BC — TSBC ${SITE.licenseNumber}` : "Technical Safety BC Compliant",
+    SITE.licenseNumber ? `Technical Safety BC licensed electrical contractor, licence ${SITE.licenseNumber}` : "Technical Safety BC Compliant",
     "BC Electrical Code on every job",
   ];
   const licenceLine = SITE.licenseNumber
-    ? `<div class="font-semibold text-[var(--px-navy)]">✓ Technical Safety BC Licence&nbsp;#${esc(SITE.licenseNumber)}</div>`
+    ? `<div class="font-semibold text-[var(--px-navy)]">✓ Technical Safety BC licence&nbsp;${esc(SITE.licenseNumber)}</div>\n          <div class="flex gap-2"><span class="text-[var(--px-success)] font-bold">✓</span><span>FSR: ${esc(SITE.fsrNumber)}</span></div>`
     : "";
 
   const values = [
@@ -1181,7 +1187,7 @@ function aboutPage() {
 
   return `${head(
     "About PowerX Electrical Ltd | Licensed Electricians in Surrey, BC",
-    `Meet PowerX Electrical Ltd — a licensed, insured, WCB-registered electrical contractor with ${SITE.yearsExperience} years and ${SITE.jobsCompleted} troubleshooting and repair jobs across Surrey & the Lower Mainland. Rated ${SITE.rating}★.`,
+    `Meet PowerX Electrical Ltd — a licensed, insured, WCB-registered electrical contractor founded in Surrey in ${SITE.founded}, with ${SITE.jobsCompleted} troubleshooting and repair jobs across Surrey & the Lower Mainland. Rated ${SITE.rating}★.`,
     canonical,
     schemas,
     "/images/team.png"
@@ -1194,7 +1200,7 @@ ${breadcrumbBar(crumbs)}
       <div class="max-w-3xl">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--px-light-gray)] text-sm mb-6 text-[var(--px-text-muted)]">
           <div class="w-2 h-2 bg-[var(--px-success)] rounded-full animate-pulse"></div>
-          <span class="font-medium tracking-wide">Serving Surrey &amp; the Lower Mainland for ${esc(SITE.yearsExperience)} years</span>
+          <span class="font-medium tracking-wide">Founded in Surrey in ${esc(SITE.founded)} &bull; Serving the Lower Mainland</span>
         </div>
         <h1 class="text-4xl md:text-6xl font-bold tracking-[-2px] text-[var(--px-navy)] mb-6">Licensed Local Electricians You Can Trust.</h1>
         <p class="text-xl text-[var(--px-text-light)]">PowerX Electrical Ltd was built on a simple belief: every homeowner and business deserves clear communication, fair pricing, and electrical work that lasts.</p>
@@ -1208,13 +1214,13 @@ ${breadcrumbBar(crumbs)}
         <h2 class="text-3xl md:text-4xl font-bold tracking-[-1px] text-[var(--px-navy)] mb-6">Our Story</h2>
         <div class="space-y-4 text-[var(--px-text-light)] text-lg">
           <p>Founded in Surrey, BC, in 2022, PowerX Electrical started as a one-person operation with a single goal: provide honest, high-quality electrical work with zero surprises.</p>
-          <p>Over the past ${esc(SITE.yearsExperience)} years we've grown into a trusted team of licensed electricians serving homes and businesses across Metro Vancouver and the Fraser Valley — completing ${esc(SITE.jobsCompleted)} troubleshooting and repair jobs. We specialize in genuine 24/7 emergency response while delivering long-term solutions like panel and service upgrades, EV charger installs, rewiring, and commercial and strata electrical.</p>
+          <p>Since our founding in ${esc(SITE.founded)} we've grown into a trusted team of licensed electricians serving homes and businesses across Metro Vancouver and the Fraser Valley — completing ${esc(SITE.jobsCompleted)} troubleshooting and repair jobs. We specialize in genuine 24/7 emergency response while delivering long-term solutions like panel and service upgrades, EV charger installs, rewiring, and commercial and strata electrical.</p>
           <p>We're proud to be a local, owner-operated Surrey business. We know Lower Mainland homes, buildings and the BC Electrical Code inside out — and we treat every property like it's our own.</p>
         </div>
       </div>
       <div class="lg:col-span-5 bg-[var(--px-offwhite)] rounded-2xl p-8">
         <div class="grid grid-cols-2 gap-6 text-center">
-          <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.yearsExperience)}</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Years in Business</div></div>
+          <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.founded)}</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Founded in Surrey</div></div>
           <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.jobsCompleted)}</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Troubleshooting &amp; repair jobs</div></div>
           <div><div class="text-4xl font-bold text-[var(--px-navy)]">${esc(SITE.rating)}★</div><div class="text-sm text-[var(--px-text-muted)] mt-1">From ${esc(SITE.reviewCount)} Reviews</div></div>
           <div><div class="text-4xl font-bold text-[var(--px-navy)]">24/7</div><div class="text-sm text-[var(--px-text-muted)] mt-1">Emergency Response</div></div>
@@ -1353,7 +1359,7 @@ function buildSitemap() {
   SERVICES.forEach((s) => add(svcUrl(s.slug), "0.8", "monthly"));
   LOCATIONS.forEach((l) => add(locUrl(l.slug), "0.8", "monthly"));
   NEIGHBOURHOODS.forEach((n) => add(locUrl(n.slug), "0.6", "monthly"));
-  comboServices.forEach((s) => LOCATIONS.forEach((l) => add(comboUrl(s.slug, l.slug), "0.7", "monthly")));
+  comboServices.forEach((s) => LOCATIONS.forEach((l) => { if (!isMergedCombo(s.slug, l.slug)) add(comboUrl(s.slug, l.slug), "0.7", "monthly"); }));
   BLOG.forEach((p) => add(`/blog/${p.slug}.html`, "0.6", "monthly"));
   EXISTING_BLOG.forEach((p) => add(`/blog/${p.slug}.html`, "0.6", "monthly"));
 
@@ -1383,6 +1389,7 @@ function main() {
   let comboCount = 0;
   comboServices.forEach((s) =>
     LOCATIONS.forEach((l) => {
+      if (isMergedCombo(s.slug, l.slug)) return;
       write(`local/${s.slug}-${l.slug}.html`, comboPage(s, l));
       comboCount++;
     })
@@ -1395,12 +1402,15 @@ function main() {
 
   write("public/sitemap.xml", buildSitemap());
   write("public/llms.txt", buildLlmsTxt());
+  write("llms.txt", buildLlmsTxt()); // root copy kept identical to the deployed one
 
   console.log(
     `\nDone: ${SERVICES.length} services, ${LOCATIONS.length} cities, ${NEIGHBOURHOODS.length} neighbourhoods, ${comboCount} combo pages, ${BLOG.length} blog posts, 3 hubs, sitemap.xml, llms.txt.`
   );
   // Keep hand-built (legacy) pages on the shared stylesheet + nav/footer chrome.
   require("./fix-legacy-pages.cjs").run();
+  // Exactly one clean LocalBusiness/Electrician block per page.
+  require("./normalize-structured-data.cjs").run();
 }
 
 module.exports = { nav, footer, floatingButtons, mobileScript, phoneSvg, locUrl, LOCATIONS, NEIGHBOURHOODS };

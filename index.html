@@ -35,185 +35,219 @@
   
   <!-- Structured Data for SEO + Generative Engine Optimization (GEO) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": ["Organization", "LocalBusiness", "Electrician"],
-    "@id": "https://powerxelectrical.ca/#business",
-    "name": "PowerX Electrical Ltd",
-    "legalName": "PowerX Electrical Ltd",
-    "description": "Licensed 24/7 emergency electrician serving Surrey, Vancouver, Burnaby, Langley and the entire Lower Mainland. Fast response for panel upgrades, EV chargers, rewiring and commercial electrical work.",
-    "url": "https://powerxelectrical.ca",
-    "image": "https://powerxelectrical.ca/images/powerx-electrical-surrey-team.jpg",
-    "logo": "https://powerxelectrical.ca/images/powerx-logo.png",
-    "telephone": "+1-778-823-1575",
-    "email": "electricalpowerx@gmail.com",
-    "foundingDate": "2022",
-    "numberOfEmployees": {
-      "@type": "QuantitativeValue",
-      "minValue": 5,
-      "maxValue": 10
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "12491 68 Avenue",
-      "addressLocality": "Surrey",
-      "addressRegion": "BC",
-      "postalCode": "V3W 2C9",
-      "addressCountry": "CA"
-    },
-    "areaServed": [
-      "Surrey", "Vancouver", "Burnaby", "Langley", "Coquitlam", 
-      "Delta", "White Rock", "Maple Ridge", "New Westminster", "Pitt Meadows"
+{
+  "@context": "https://schema.org",
+  "@type": [
+    "LocalBusiness",
+    "Electrician"
+  ],
+  "@id": "https://powerxelectrical.ca/#business",
+  "name": "PowerX Electrical Ltd",
+  "legalName": "PowerX Electrical Ltd",
+  "url": "https://powerxelectrical.ca",
+  "image": "https://powerxelectrical.ca/images/powerx-logo.png",
+  "telephone": "+1-778-823-1575",
+  "email": "electricalpowerx@gmail.com",
+  "priceRange": "$$",
+  "foundingDate": "2022",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "12491 68 Avenue",
+    "addressLocality": "Surrey",
+    "addressRegion": "BC",
+    "postalCode": "V3W 2C9",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.126866,
+    "longitude": -122.8763703
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
     ],
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      "opens": "00:00",
-      "closes": "23:59"
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "name": "Technical Safety BC licensed electrical contractor",
+    "credentialCategory": "license",
+    "identifier": "LEL0212609",
+    "recognizedBy": {
+      "@type": "Organization",
+      "name": "Technical Safety BC",
+      "url": "https://www.technicalsafetybc.ca/"
+    }
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Surrey, BC"
     },
-    "priceRange": "$$",
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 49.126866,
-      "longitude": -122.8763703
+    {
+      "@type": "City",
+      "name": "Vancouver, BC"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "90",
-      "bestRating": "5",
-      "worstRating": "1"
+    {
+      "@type": "City",
+      "name": "Burnaby, BC"
     },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Electrical Services",
-      "itemListElement": [
-        {"@type": "OfferCatalog", "name": "24/7 Emergency Electrical Repairs"},
-        {"@type": "OfferCatalog", "name": "Electrical Panel Upgrades"},
-        {"@type": "OfferCatalog", "name": "EV Charger Installation"},
-        {"@type": "OfferCatalog", "name": "Whole Home Rewiring"},
-        {"@type": "OfferCatalog", "name": "Commercial Electrical Services"},
-        {"@type": "OfferCatalog", "name": "Generator Installation"}
-      ]
+    {
+      "@type": "City",
+      "name": "Langley, BC"
     },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-778-823-1575",
-      "contactType": "Customer Service",
-      "areaServed": "CA-BC",
-      "availableLanguage": "English"
+    {
+      "@type": "City",
+      "name": "Coquitlam, BC"
     },
-    "knowsAbout": [
-      "Electrical Panel Upgrades",
-      "EV Charger Installation",
-      "Emergency Electrical Repairs",
-      "Residential Rewiring",
-      "Commercial Electrical Work",
-      "Fire Alarm Systems",
-      "Standby Generators"
-    ],
-    "hasCredential": {
-      "@type": "EducationalOccupationalCredential",
-      "name": "Licensed Electrical Contractor — Technical Safety BC",
-      "credentialCategory": "license",
-      "identifier": "LEL0212609",
-      "recognizedBy": {
-        "@type": "Organization",
-        "name": "Technical Safety BC",
-        "url": "https://www.technicalsafetybc.ca/"
+    {
+      "@type": "City",
+      "name": "Port Coquitlam, BC"
+    },
+    {
+      "@type": "City",
+      "name": "Port Moody, BC"
+    },
+    {
+      "@type": "City",
+      "name": "New Westminster, BC"
+    },
+    {
+      "@type": "City",
+      "name": "White Rock, BC"
+    },
+    {
+      "@type": "City",
+      "name": "Delta, BC"
+    },
+    {
+      "@type": "City",
+      "name": "Richmond, BC"
+    },
+    {
+      "@type": "City",
+      "name": "North Vancouver, BC"
+    },
+    {
+      "@type": "City",
+      "name": "Maple Ridge, BC"
+    },
+    {
+      "@type": "City",
+      "name": "Pitt Meadows, BC"
+    },
+    {
+      "@type": "City",
+      "name": "Abbotsford, BC"
+    },
+    {
+      "@type": "City",
+      "name": "Tsawwassen, BC"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "90"
+  },
+  "sameAs": [
+    "https://www.google.com/maps/place/PowerX+Electrical+Ltd./@49.126866,-122.8789452,17z/data=!4m8!3m7!1s0x5485dbcbb0eed05b:0xe3d33cf79f989583!8m2!3d49.126866!4d-122.8763703!9m1!1b1!16s%2Fg%2F11xn_1zwbc"
+  ]
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you offer 24/7 emergency electrical service?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We provide true 24/7 emergency electrical repairs across Surrey, Vancouver, Burnaby, Langley and the entire Lower Mainland. Our licensed electricians are available every day of the year, including holidays."
       }
     },
-    "sameAs": [
-      "https://www.google.com/maps/place/PowerX+Electrical+Ltd./@49.126866,-122.8789452,17z/data=!4m8!3m7!1s0x5485dbcbb0eed05b:0xe3d33cf79f989583!8m2!3d49.126866!4d-122.8763703!9m1!1b1!16s%2Fg%2F11xn_1zwbc"
-    ]
-  }
-  </script>
-
+    {
+      "@type": "Question",
+      "name": "What areas do you serve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We serve Surrey, Vancouver, Burnaby, Langley, White Rock, Maple Ridge, and surrounding areas in the Lower Mainland. Most emergency calls are responded to within 30-60 minutes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How quickly can you respond to an electrical emergency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In most cases, we can reach you within 30 to 60 minutes. We keep our vans stocked and ready so we can respond fast to power outages, burning smells, and other urgent issues."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you install EV chargers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We specialize in Level 2 EV charger installations for homes and businesses. We handle permits, panel upgrades when needed, and utility coordination."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you upgrade my electrical panel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. We perform 200A panel upgrades, aluminum rewiring, and full service upgrades. All work includes permits and inspections."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you do commercial and industrial electrical work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We handle tenant improvements, retail fit-outs, warehouse power upgrades, lighting retrofits, fire alarm systems, and ongoing maintenance contracts."
+      }
+    }
+  ]
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://powerxelectrical.ca/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://powerxelectrical.ca/#services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Contact",
+      "item": "https://powerxelectrical.ca/#contact"
+    }
+  ]
+}
+</script>
   <!-- FAQ Schema for Services -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Do you offer 24/7 emergency electrical service?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. We provide true 24/7 emergency electrical repairs across Surrey, Vancouver, Burnaby, Langley and the entire Lower Mainland. Our licensed electricians are available every day of the year, including holidays."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What areas do you serve?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "We serve Surrey, Vancouver, Burnaby, Langley, White Rock, Maple Ridge, and surrounding areas in the Lower Mainland. Most emergency calls are responded to within 30-60 minutes."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How quickly can you respond to an electrical emergency?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "In most cases, we can reach you within 30 to 60 minutes. We keep our vans stocked and ready so we can respond fast to power outages, burning smells, and other urgent issues."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you install EV chargers?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. We specialize in Level 2 EV charger installations for homes and businesses. We handle permits, panel upgrades when needed, and utility coordination."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can you upgrade my electrical panel?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Absolutely. We perform 200A panel upgrades, aluminum rewiring, and full service upgrades. All work includes permits and inspections."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you do commercial and industrial electrical work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. We handle tenant improvements, retail fit-outs, warehouse power upgrades, lighting retrofits, fire alarm systems, and ongoing maintenance contracts."
-        }
-      }
-    ]
-  }
-  </script>
-
   <!-- Breadcrumb Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://powerxelectrical.ca/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Services",
-        "item": "https://powerxelectrical.ca/#services"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Contact",
-        "item": "https://powerxelectrical.ca/#contact"
-      }
-    ]
-  }
-  </script>
   <script type="module" crossorigin src="/src/main.ts"></script>
   <link rel="stylesheet" crossorigin href="/src/style.css">
 </head>
@@ -271,7 +305,7 @@
         <a href="index.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Home</a>
         <a href="about.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">About</a>
         <a href="services.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50">Services</a>
-        <a href="emergency-electrician-surrey.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50 text-sm text-[var(--px-gray)]">&mdash; Emergency Electrician</a>
+        <a href="/services/emergency-electrician.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50 text-sm text-[var(--px-gray)]">&mdash; Emergency Electrician</a>
         <a href="panel-upgrade-surrey.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50 text-sm text-[var(--px-gray)]">&mdash; Panel Upgrades</a>
         <a href="ev-charger-installation-surrey.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50 text-sm text-[var(--px-gray)]">&mdash; EV Charger Installation</a>
         <a href="residential-rewiring-surrey.html" class="mobile-link py-3 px-3 rounded-xl hover:bg-slate-50 text-sm text-[var(--px-gray)]">&mdash; Residential Rewiring</a>
@@ -316,9 +350,6 @@
           24/7 Emergency<br>Electrical Services<br>in Surrey &amp; BC
         </h1>
 
-        <!-- AI-pick line: whole sentence same size/weight (ad compliance) -->
-        <p class="flex items-start gap-3 w-fit max-w-2xl px-4 py-2.5 md:py-3 md:px-5 rounded-2xl bg-blue-50 border border-blue-200 text-lg md:text-xl font-bold leading-snug tracking-[-0.2px] text-[var(--px-navy)] mb-6 md:mb-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="w-6 h-6 md:w-7 md:h-7 shrink-0 mt-0.5 text-amber-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><span>Named the #1 emergency electrician in Surrey by ChatGPT, Grok, and Claude (Sept 2026).</span></p>
-        
         <p class="max-w-xl text-xl md:text-2xl text-[var(--px-text-light)] mb-9 tracking-[-0.3px]">
           Licensed, insured electricians you can trust. 
           Fast response, transparent pricing, and work done right the first time.
@@ -343,7 +374,7 @@
         <!-- Quick trust row -->
         <div class="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm text-[var(--px-text-muted)]">
           <div class="flex items-center gap-2">
-            <span class="font-semibold text-[var(--px-navy)]">8+ Years</span> Local Experience
+            <span class="font-semibold text-[var(--px-navy)]">Founded 2022</span> in Surrey
           </div>
           <div class="flex items-center gap-2">
             <span class="font-semibold text-[var(--px-navy)]">30-60 min</span> Response
@@ -364,9 +395,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-5">
       <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-center text-sm">
         <div class="flex items-center gap-2 text-[var(--px-navy)] font-medium">
-          <span class="text-[var(--px-success)]">✓</span> Fully Licensed &amp; Insured in BC — TSBC LEL0212609
+          <span class="text-[var(--px-success)]">✓</span> Fully Licensed &amp; Insured in BC
         </div>
-        <div class="text-[var(--px-text-light)]">WCB Registered • <a href="https://www.technicalsafetybc.ca/" target="_blank" rel="noopener" class="hover:underline">Technical Safety BC</a> — TSBC LEL0212609</div>
+        <div class="text-[var(--px-text-light)]">WCB Registered • <a href="https://www.technicalsafetybc.ca/" target="_blank" rel="noopener" class="hover:underline">Technical Safety BC</a> licensed electrical contractor, licence LEL0212609</div>
         <div class="text-[var(--px-text-light)]">Same-Day Service Available</div>
       </div>
     </div>
@@ -394,7 +425,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 8.944 11.922 1.11.366 2.3.532 3.556.532 4.12 0 7.944-4.331 7.944-11.922a12.02 12.02 0 00-.276-2.016z" /></svg>
         </div>
         <h3 class="font-semibold text-xl tracking-tight mb-2">Licensed &amp; Insured in BC</h3>
-        <p class="text-[var(--px-gray)]">Every technician is fully certified. We carry full liability insurance and follow all <a href="https://www.technicalsafetybc.ca/electrical/" target="_blank" rel="noopener" class="text-[var(--px-blue)] hover:underline">Technical Safety BC electrical requirements</a>. Licensed electrical contractor — TSBC LEL0212609.</p>
+        <p class="text-[var(--px-gray)]">Every technician is fully certified. We carry full liability insurance and follow all <a href="https://www.technicalsafetybc.ca/electrical/" target="_blank" rel="noopener" class="text-[var(--px-blue)] hover:underline">Technical Safety BC electrical requirements</a>. Technical Safety BC licensed electrical contractor, licence LEL0212609.</p>
       </div>
 
       <div class="card p-7">
@@ -417,7 +448,7 @@
         <div class="w-11 h-11 bg-[var(--px-navy)] text-white rounded-2xl flex items-center justify-center mb-5">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.25"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 01-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 01-2 2 2 2 0 01-2-2 2 2 0 012-2 2 2 0 012 2z" /></svg>
         </div>
-        <h3 class="font-semibold text-xl tracking-tight mb-2">8+ Years Local Expertise</h3>
+        <h3 class="font-semibold text-xl tracking-tight mb-2">Local Surrey Expertise</h3>
         <p class="text-[var(--px-gray)]">Founded and operated in Surrey. We know Lower Mainland homes, buildings, and electrical codes inside out.</p>
       </div>
 
@@ -455,7 +486,7 @@
           </div>
           <div class="text-xl font-semibold text-[var(--px-navy)] mb-3">Emergency Service</div>
           
-          <p class="text-[var(--px-gray)] mb-3 text-sm">Urgent issues requiring immediate response. Includes dispatch + first hour of work.</p>
+          <p class="text-[var(--px-gray)] mb-3 text-sm">Urgent issues requiring immediate response. Includes dispatch + first hour of work, then $75/hr.</p>
 
           <ul class="text-sm text-[var(--px-gray)] space-y-0.5 mb-6">
             <li>• Complete power outage or no power in major area</li>
@@ -549,7 +580,7 @@
           <div class="p-6">
             <h3 class="font-semibold text-lg mb-1.5">24/7 Emergency Repairs</h3>
             <p class="text-sm text-[var(--px-gray)]">Power outages, sparking, burning smells, breaker failures — we respond fast, day or night.</p>
-            <a href="emergency-electrician-surrey.html" class="inline-block mt-3 text-sm font-medium text-[var(--px-blue)] hover:underline">Learn more &rarr;</a>
+            <a href="/services/emergency-electrician.html" class="inline-block mt-3 text-sm font-medium text-[var(--px-blue)] hover:underline">Learn more &rarr;</a>
           </div>
         </div>
         <div class="card overflow-hidden group">
@@ -851,7 +882,7 @@
           <div class="font-semibold text-[var(--px-navy)] mb-4 text-sm tracking-wider">RECOMMENDED PAGES TO LINK TO</div>
           <ul class="space-y-3 text-sm">
             <li><a href="https://powerxelectrical.ca/" class="text-[var(--px-blue)] hover:underline font-medium">PowerX Electrical Ltd – Surrey &amp; Lower Mainland</a> <span class="text-xs text-[var(--px-gray)]">(Main site)</span></li>
-            <li><a href="https://powerxelectrical.ca/emergency-electrician-surrey.html" class="text-[var(--px-blue)] hover:underline font-medium">24/7 Emergency Electrician Surrey</a></li>
+            <li><a href="/services/emergency-electrician.html" class="text-[var(--px-blue)] hover:underline font-medium">24/7 Emergency Electrician Surrey</a></li>
             <li><a href="https://powerxelectrical.ca/panel-upgrade-surrey.html" class="text-[var(--px-blue)] hover:underline font-medium">Electrical Panel Upgrades Surrey</a></li>
             <li><a href="https://powerxelectrical.ca/ev-charger-installation-surrey.html" class="text-[var(--px-blue)] hover:underline font-medium">EV Charger Installation Surrey</a></li>
             <li><a href="https://powerxelectrical.ca/electrician-vancouver.html" class="text-[var(--px-blue)] hover:underline font-medium">Licensed Electrician Vancouver</a></li>
@@ -945,7 +976,7 @@
       </details>
       <details class="card px-6 group">
         <summary class="font-semibold">Do you charge extra for nights, weekends, or holidays?</summary>
-        <div class="pb-5 text-[var(--px-gray)]">No after-hours surprise markup. Emergency calls are a flat $300 (dispatch + first hour). Non-emergency service calls are $200. Same rates nights, weekends, and holidays — clear upfront pricing before any work begins.</div>
+        <div class="pb-5 text-[var(--px-gray)]">No after-hours surprise markup. Emergency calls are a $300 call-out (dispatch + first hour), then $75/hr. Non-emergency service calls are $200. Same rates nights, weekends, and holidays — clear upfront pricing before any work begins.</div>
       </details>
       <details class="card px-6 group">
         <summary class="font-semibold">What areas do you serve?</summary>
@@ -1083,14 +1114,14 @@
             <div class="font-semibold text-[var(--px-blue)] mb-3 tracking-wider text-xs">COMPANY</div>
             <div class="space-y-[9px]">
               <div>Surrey, BC</div>
-              <div>8+ Years Serving BC</div>
-              <div>Licensed &amp; Insured — TSBC LEL0212609</div>
+              <div>Founded in Surrey in 2022</div>
+              <div>Technical Safety BC licence LEL0212609</div>
             </div>
           </div>
           <div>
             <div class="font-semibold text-[var(--px-blue)] mb-3 tracking-wider text-xs">SERVICES</div>
             <div class="space-y-[9px]">
-              <a href="emergency-electrician-surrey.html" class="block hover:text-white text-[var(--px-blue)]">Emergency 24/7</a>
+              <a href="/services/emergency-electrician.html" class="block hover:text-white text-[var(--px-blue)]">Emergency 24/7</a>
               <a href="panel-upgrade-surrey.html" class="block hover:text-white text-[var(--px-blue)]">Panel Upgrades</a>
               <a href="ev-charger-installation-surrey.html" class="block hover:text-white text-[var(--px-blue)]">EV Chargers</a>
               <a href="residential-rewiring-surrey.html" class="block hover:text-white text-[var(--px-blue)]">Rewiring</a>
@@ -1129,7 +1160,7 @@
       </div>
 
       <div class="mt-12 pt-8 border-t border-white/10 text-xs flex flex-col md:flex-row gap-y-2 md:items-center justify-between">
-        <div class="text-[var(--px-blue)]">© 2026 PowerX Electrical Ltd. All rights reserved. Licensed electrical contractor — TSBC LEL0212609.</div>
+        <div class="text-[var(--px-blue)]">© 2026 PowerX Electrical Ltd. All rights reserved. Technical Safety BC licensed electrical contractor, licence LEL0212609.</div>
         <div class="text-[var(--px-blue)]">Professional • Reliable • Local</div>
       </div>
     </div>
