@@ -20,7 +20,7 @@ const SITE = {
     country: "CA",
   },
   rating: "5.0",
-  reviewCount: "90",
+  reviewCount: "94",
   reviewsUrl:
     "https://www.google.com/maps/place/PowerX+Electrical+Ltd./@49.126866,-122.8789452,17z/data=!4m8!3m7!1s0x5485dbcbb0eed05b:0xe3d33cf79f989583!8m2!3d49.126866!4d-122.8763703!9m1!1b1!16s%2Fg%2F11xn_1zwbc",
   whatsapp:
@@ -54,7 +54,7 @@ const SERVICES = [
     priceNote: "Emergency call-outs are $300 (dispatch + first hour), then $75/hr. A regular non-emergency service call is $200.",
     // Answer-first block shown under the hero (service page only; combo pages still use faqs[0])
     answerIntro:
-      "PowerX Electrical Ltd is a Surrey-based, Technical Safety BC licensed electrical contractor (licence LEL0212609) offering 24/7 emergency electrical service across Surrey and the Lower Mainland. Emergency call-outs are $300 (includes dispatch and the first hour), then $75/hr. We're rated 5.0 stars from 90 Google reviews, were founded in Surrey in 2022, and are located at 12491 68 Avenue, Surrey, BC V3W 2C9. 2,000+ troubleshooting and repair jobs, from single-family homes to large multi-unit commercial buildings. Call 778-823-1575.",
+      `PowerX Electrical Ltd is a Surrey-based, Technical Safety BC licensed electrical contractor (licence LEL0212609) offering 24/7 emergency electrical service across Surrey and the Lower Mainland. Emergency call-outs are $300 (includes dispatch and the first hour), then $75/hr. We're rated ${SITE.rating} stars from ${SITE.reviewCount} Google reviews, were founded in Surrey in 2022, and are located at 12491 68 Avenue, Surrey, BC V3W 2C9. 2,000+ troubleshooting and repair jobs, from single-family homes to large multi-unit commercial buildings. Call 778-823-1575.`,
     leadFaqs: [
       ["Is there a 24/7 emergency electrician in Surrey?", "Yes. PowerX Electrical Ltd offers 24/7 emergency electrical service across Surrey and the Lower Mainland, including nights, weekends, and holidays. Call 778-823-1575 any time."],
       ["How much does an emergency electrician cost in Surrey?", "PowerX charges a $300 emergency call-out (dispatch + first hour), then $75/hr after the first hour. A regular non-emergency service call is $200. Same rates nights, weekends, and holidays, with no after-hours surprise markup — you get a clear, upfront price before any work begins."],
